@@ -6,73 +6,254 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
   *{box-sizing:border-box}
-  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#f8fafc;color:#0f172a;line-height:1.7;}
-  .wrap{max-width:1100px;margin:0 auto;padding:32px 20px 80px;}
-  header{background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%);color:#fff;padding:42px 32px;border-radius:18px;margin-bottom:28px;box-shadow:0 12px 40px rgba(15,23,42,.18);}
-  header h1{margin:0 0 10px;font-size:30px;font-weight:700;}
-  header .meta{opacity:.72;font-size:13px;}
-  header .lead{margin-top:14px;font-size:15px;opacity:.9;}
-  h2{margin:36px 0 18px;font-size:22px;border-left:4px solid #2563eb;padding-left:12px;}
-  h3{margin:18px 0 10px;font-size:17px;}
-  .toc{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:18px 24px;margin-bottom:24px;}
-  .toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;font-size:14px;}
-  .toc-grid a{color:#2563eb;text-decoration:none;padding:6px 10px;border-radius:6px;}
-  .toc-grid a:hover{background:#eff6ff;}
-  table.summary{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 12px rgba(15,23,42,.06);font-size:14px;}
-  table.summary th{background:#f1f5f9;padding:11px 8px;text-align:left;font-weight:600;color:#475569;border-bottom:1px solid #e2e8f0;font-size:12px;letter-spacing:.5px;text-transform:uppercase;}
-  table.summary td{padding:11px 8px;border-bottom:1px solid #f1f5f9;}
-  table.summary tr:hover td{background:#f8fafc;}
+  :root{
+    --bg:#0b1020;
+    --bg-2:#0f172a;
+    --surface:#111a2e;
+    --surface-2:#162033;
+    --surface-hi:#1c2742;
+    --border:rgba(148,163,184,.14);
+    --border-strong:rgba(148,163,184,.22);
+    --text:#e2e8f0;
+    --text-2:#cbd5e1;
+    --text-3:#94a3b8;
+    --text-4:#64748b;
+    --accent:#60a5fa;
+    --accent-2:#a78bfa;
+    --good:#34d399;
+    --bad:#f87171;
+    --warn:#fbbf24;
+  }
+  html,body{background:var(--bg);}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;
+    color:var(--text);
+    line-height:1.7;
+    background:
+      radial-gradient(1200px 600px at 10% -10%, rgba(96,165,250,.08), transparent 60%),
+      radial-gradient(1000px 500px at 100% 0%, rgba(167,139,250,.07), transparent 60%),
+      var(--bg);
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:rgba(96,165,250,.35);}
+  a{color:var(--accent);text-decoration:none;transition:color .15s;}
+  a:hover{color:#93c5fd;}
+  .wrap{max-width:1140px;margin:0 auto;padding:32px 22px 80px;}
+
+  /* HERO */
+  header.hero{
+    position:relative;overflow:hidden;
+    background:
+      linear-gradient(135deg, rgba(96,165,250,.12), rgba(167,139,250,.08) 50%, rgba(236,72,153,.08)),
+      linear-gradient(180deg,#101a31 0%, #0c1426 100%);
+    border:1px solid var(--border-strong);
+    color:#fff;padding:44px 36px;
+    border-radius:20px;margin-bottom:28px;
+    box-shadow:0 20px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);
+  }
+  header.hero::before{
+    content:"";position:absolute;inset:-1px;border-radius:20px;pointer-events:none;
+    background:radial-gradient(600px 240px at 80% -20%, rgba(96,165,250,.18), transparent 60%);
+  }
+  header.hero h1{margin:0 0 12px;font-size:30px;font-weight:700;letter-spacing:.3px;}
+  header.hero h1 .accent{background:linear-gradient(90deg,#60a5fa,#a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  header.hero .meta{font-size:13px;color:var(--text-3);}
+  header.hero .lead{margin-top:14px;font-size:15px;color:var(--text-2);max-width:880px;}
+  header.hero .lead b{color:#fff;}
+  header.hero .stat-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px;}
+  header.hero .stat{
+    background:rgba(255,255,255,.04);border:1px solid var(--border);
+    padding:10px 16px;border-radius:10px;font-size:12px;color:var(--text-3);
+  }
+  header.hero .stat b{color:#fff;font-size:14px;margin-left:4px;}
+
+  h2{
+    margin:38px 0 18px;font-size:22px;font-weight:700;
+    padding-left:14px;color:var(--text);
+    border-left:4px solid transparent;
+    border-image:linear-gradient(180deg,#60a5fa,#a78bfa) 1;
+  }
+  h3{margin:18px 0 10px;font-size:17px;color:var(--text);}
+
+  /* TOC */
+  .toc{
+    background:var(--surface);border:1px solid var(--border);border-radius:14px;
+    padding:18px 22px;margin-bottom:24px;
+  }
+  .toc h3{margin:0 0 12px;}
+  .toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:6px;font-size:13px;}
+  .toc-grid a{
+    color:var(--text-2);padding:7px 11px;border-radius:8px;
+    border:1px solid transparent;transition:all .15s;
+    font-variant-numeric:tabular-nums;
+  }
+  .toc-grid a:hover{background:var(--surface-hi);color:#fff;border-color:var(--border-strong);}
+  .toc-grid a b{color:var(--accent);margin-right:6px;}
+
+  /* SUMMARY TABLE */
+  table.summary{
+    width:100%;border-collapse:separate;border-spacing:0;
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:14px;overflow:hidden;font-size:13.5px;
+    box-shadow:0 4px 18px rgba(0,0,0,.30);
+  }
+  table.summary th{
+    background:var(--surface-2);padding:11px 10px;text-align:left;font-weight:600;
+    color:var(--text-3);border-bottom:1px solid var(--border-strong);
+    font-size:11px;letter-spacing:.6px;text-transform:uppercase;
+  }
+  table.summary td{
+    padding:12px 10px;border-bottom:1px solid var(--border);
+    color:var(--text);
+  }
+  table.summary tr:last-child td{border-bottom:none;}
+  table.summary tbody tr{transition:background .15s;}
+  table.summary tbody tr:hover td{background:var(--surface-hi);}
   table.summary .r{text-align:right;font-variant-numeric:tabular-nums;}
   table.summary .c{text-align:center;}
-  .badge{padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600;}
-  .card{background:#fff;border-radius:16px;padding:24px 28px;margin:22px 0;box-shadow:0 2px 14px rgba(15,23,42,.06);border:1px solid #e2e8f0;}
-  .card-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #f1f5f9;}
-  .card-title{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
-  .ticker{font-size:24px;font-weight:700;color:#0f172a;letter-spacing:.5px;}
-  .cn{font-size:16px;color:#475569;}
-  .sector-tag{font-size:11px;background:#eff6ff;color:#1d4ed8;padding:3px 9px;border-radius:10px;font-weight:600;}
-  .rating-pill{padding:6px 14px;border-radius:20px;font-weight:700;font-size:14px;}
-  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 22px;background:#f8fafc;padding:14px;border-radius:10px;}
-  .m{font-size:13px;}
-  .m-l{color:#64748b;font-size:11px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:3px;}
-  .m-v{font-weight:700;font-size:15px;color:#0f172a;font-variant-numeric:tabular-nums;}
+  table.summary a{color:var(--accent);font-weight:700;letter-spacing:.4px;}
+  .badge{
+    padding:3px 11px;border-radius:12px;font-size:12px;font-weight:700;
+    border:1px solid currentColor;letter-spacing:.3px;
+  }
+
+  /* CARD */
+  .card{
+    background:linear-gradient(180deg,var(--surface) 0%,var(--surface-2) 100%);
+    border:1px solid var(--border);
+    border-radius:18px;padding:26px 30px;margin:20px 0;
+    box-shadow:0 4px 22px rgba(0,0,0,.25);
+    transition:border-color .2s, transform .2s;
+  }
+  .card:hover{border-color:var(--border-strong);}
+  .card-header{
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--border);
+  }
+  .card-title{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+  .ticker{
+    font-size:26px;font-weight:800;letter-spacing:.6px;
+    background:linear-gradient(90deg,#60a5fa,#a78bfa);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .cn{font-size:16px;color:var(--text);font-weight:600;}
+  .sector-tag{
+    font-size:11px;background:rgba(96,165,250,.10);color:#93c5fd;
+    padding:4px 10px;border-radius:10px;font-weight:600;
+    border:1px solid rgba(96,165,250,.22);letter-spacing:.3px;
+  }
+  .rating-pill{
+    padding:6px 14px;border-radius:20px;font-weight:700;font-size:14px;
+    border:1px solid currentColor;letter-spacing:.3px;
+  }
+
+  /* METRICS */
+  .metrics{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    margin:14px 0 22px;background:var(--border);
+    padding:1px;border-radius:12px;overflow:hidden;
+  }
+  .m{background:var(--surface-2);padding:12px 14px;font-size:13px;}
+  .m-l{color:var(--text-4);font-size:10.5px;letter-spacing:.7px;text-transform:uppercase;margin-bottom:4px;font-weight:600;}
+  .m-v{font-weight:700;font-size:15.5px;color:var(--text);font-variant-numeric:tabular-nums;}
   .m-v.small{font-size:13px;}
-  .tag{font-size:10px;background:#e0e7ff;color:#3730a3;padding:1px 6px;border-radius:6px;margin-left:4px;font-weight:600;}
-  .bar{height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;margin:5px 0 3px;}
-  .bar-fill{height:100%;background:linear-gradient(90deg,#10b981 0%,#f59e0b 50%,#ef4444 100%);}
-  .small{font-size:12px;color:#64748b;}
-  .sections{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-  .sec{background:#f8fafc;padding:14px 18px;border-radius:10px;border-left:3px solid #cbd5e1;}
-  .sec h4{margin:0 0 6px;font-size:14px;color:#334155;}
-  .sec p{margin:0;font-size:14px;color:#0f172a;}
-  .sec-good{border-left-color:#10b981;background:#ecfdf5;}
-  .sec-bad{border-left-color:#ef4444;background:#fef2f2;}
-  .sec-action{border-left-color:#2563eb;background:#eff6ff;grid-column:1/-1;}
-  .sec-action p{font-size:15px;}
-  .disclaimer{margin-top:40px;padding:16px 20px;background:#fffbeb;border-left:4px solid #f59e0b;border-radius:8px;font-size:13px;color:#78350f;}
-  @media(max-width:720px){
+  .tag{
+    font-size:10px;background:rgba(167,139,250,.16);color:#c4b5fd;
+    padding:2px 7px;border-radius:6px;margin-left:5px;font-weight:700;
+    border:1px solid rgba(167,139,250,.25);
+  }
+  .bar{height:6px;background:rgba(148,163,184,.18);border-radius:3px;overflow:hidden;margin:6px 0 4px;}
+  .bar-fill{height:100%;background:linear-gradient(90deg,#34d399 0%,#fbbf24 50%,#f87171 100%);}
+  .small{font-size:12px;color:var(--text-3);}
+
+  /* SECTIONS */
+  .sections{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .sec{
+    background:rgba(255,255,255,.02);
+    padding:14px 18px;border-radius:10px;
+    border-left:3px solid rgba(148,163,184,.35);
+    border-top:1px solid var(--border);
+    border-right:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+  }
+  .sec h4{margin:0 0 6px;font-size:13.5px;color:var(--text-2);font-weight:700;letter-spacing:.2px;}
+  .sec p{margin:0;font-size:14px;color:var(--text);}
+  .sec p b{color:#fff;}
+  .sec-good{border-left-color:#34d399;background:rgba(52,211,153,.06);}
+  .sec-good h4{color:#6ee7b7;}
+  .sec-bad{border-left-color:#f87171;background:rgba(248,113,113,.06);}
+  .sec-bad h4{color:#fca5a5;}
+  .sec-action{
+    border-left-color:#60a5fa;
+    background:linear-gradient(90deg,rgba(96,165,250,.10),rgba(167,139,250,.06));
+    grid-column:1/-1;
+  }
+  .sec-action h4{color:#93c5fd;}
+  .sec-action p{font-size:15px;line-height:1.75;}
+
+  /* DISCLAIMER */
+  .disclaimer{
+    margin-top:42px;padding:18px 22px;
+    background:rgba(251,191,36,.07);
+    border:1px solid rgba(251,191,36,.22);
+    border-left:4px solid var(--warn);
+    border-radius:10px;font-size:13px;color:#fde68a;
+  }
+  .disclaimer b{color:#fbbf24;}
+
+  /* ALLOCATION CARD */
+  .alloc{
+    background:var(--surface);border:1px solid var(--border);border-radius:16px;
+    padding:22px 28px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;
+  }
+  .alloc-item{padding:14px 16px;border-radius:12px;}
+  .alloc-item h4{margin:0 0 6px;font-size:13px;letter-spacing:.4px;}
+  .alloc-item p{margin:0;font-size:14px;color:var(--text);line-height:1.65;}
+  .alloc-core{background:rgba(96,165,250,.10);border:1px solid rgba(96,165,250,.25);}
+  .alloc-core h4{color:#93c5fd;}
+  .alloc-grow{background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.22);}
+  .alloc-grow h4{color:#6ee7b7;}
+  .alloc-bet{background:rgba(167,139,250,.10);border:1px solid rgba(167,139,250,.25);}
+  .alloc-bet h4{color:#c4b5fd;}
+  .alloc-note{
+    grid-column:1/-1;color:var(--text-3);font-size:13px;margin-top:4px;
+    padding-top:14px;border-top:1px dashed var(--border-strong);
+  }
+
+  @media(max-width:760px){
+    .wrap{padding:22px 14px 60px;}
     .metrics{grid-template-columns:repeat(2,1fr);}
     .sections{grid-template-columns:1fr;}
     table.summary{font-size:12px;}
-    table.summary th,table.summary td{padding:7px 4px;}
-    header{padding:28px 20px;}
-    header h1{font-size:22px;}
+    table.summary th,table.summary td{padding:8px 6px;}
+    header.hero{padding:30px 22px;}
+    header.hero h1{font-size:22px;}
+    .card{padding:20px 18px;}
+    .ticker{font-size:22px;}
+    .alloc{grid-template-columns:1fr;}
   }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<header>
-  <h1>🇺🇸 美股潜力股深度研究 · 15 只非「七巨头」候选</h1>
+<header class="hero">
+  <h1>🇺🇸 美股潜力股<span class="accent">深度研究</span> · 15 只非「七巨头」候选</h1>
   <div class="meta">数据时间：2026-05-13 20:44:06 ET · 数据源：新浪财经 + 腾讯财经 + 公开财报</div>
-  <div class="lead">本报告聚焦 Mag-7 之外的中短期潜力股，覆盖 <b>核电/AI电力 · AI 芯片次主线 · 光互连 · 机器人 · 商业航天 · 量子计算 · AI 应用 · 医疗 AI · 数字健康</b> 六大主线 15 只标的，每只含基本面、财务、走势、行业地位、优劣势与建仓建议。</div>
+  <div class="lead">本报告聚焦 Mag-7 之外的中短期潜力股，覆盖 <b>核电/AI 电力 · AI 芯片次主线 · 光互连 · 机器人 · 商业航天 · 量子计算 · AI 应用 · 医疗 AI · 数字健康</b> 六大主线 15 只标的，每只含基本面、财务、走势、行业地位、优劣势与建仓建议。</div>
+  <div class="stat-row">
+    <div class="stat">候选股 <b>15</b></div>
+    <div class="stat">主线 <b>6</b></div>
+    <div class="stat">深度模块 <b>7×15</b></div>
+    <div class="stat">报告版本 <b>v2 · Dark</b></div>
+  </div>
 </header>
 
 <div class="toc">
-  <h3 style="margin:0 0 10px">📑 个股目录</h3>
+  <h3>📑 个股目录</h3>
   <div class="toc-grid">
-<a href="#stock-VRT">VRT · Vertiv</a><a href="#stock-VST">VST · Vistra</a><a href="#stock-CEG">CEG · Constellation Energy</a><a href="#stock-OKLO">OKLO · Oklo</a><a href="#stock-AMD">AMD · AMD</a><a href="#stock-AVGO">AVGO · Broadcom</a><a href="#stock-ARM">ARM · Arm Holdings</a><a href="#stock-CRDO">CRDO · Credo</a><a href="#stock-ALAB">ALAB · Astera Labs</a><a href="#stock-SYM">SYM · Symbotic</a><a href="#stock-RKLB">RKLB · Rocket Lab</a><a href="#stock-IONQ">IONQ · IonQ</a><a href="#stock-PLTR">PLTR · Palantir</a><a href="#stock-TEM">TEM · Tempus AI</a><a href="#stock-HIMS">HIMS · Hims & Hers</a>
+<a href="#stock-VRT"><b>VRT</b> Vertiv</a><a href="#stock-VST"><b>VST</b> Vistra</a><a href="#stock-CEG"><b>CEG</b> Constellation Energy</a><a href="#stock-OKLO"><b>OKLO</b> Oklo</a><a href="#stock-AMD"><b>AMD</b> AMD</a><a href="#stock-AVGO"><b>AVGO</b> Broadcom</a><a href="#stock-ARM"><b>ARM</b> Arm Holdings</a><a href="#stock-CRDO"><b>CRDO</b> Credo</a><a href="#stock-ALAB"><b>ALAB</b> Astera Labs</a><a href="#stock-SYM"><b>SYM</b> Symbotic</a><a href="#stock-RKLB"><b>RKLB</b> Rocket Lab</a><a href="#stock-IONQ"><b>IONQ</b> IonQ</a><a href="#stock-PLTR"><b>PLTR</b> Palantir</a><a href="#stock-TEM"><b>TEM</b> Tempus AI</a><a href="#stock-HIMS"><b>HIMS</b> Hims & Hers</a>
   </div>
 </div>
 
@@ -87,12 +268,12 @@
   <td><a href="#stock-VRT"><b>VRT</b></a></td>
   <td>Vertiv</td>
   <td class="r">$367.13</td>
-  <td class="r" style="color:#16a34a">-0.21%</td>
-  <td class="r" style="color:#dc2626">+116.6%</td>
+  <td class="r" style="color:#4ade80">-0.21%</td>
+  <td class="r" style="color:#f87171">+116.6%</td>
   <td class="r">70</td>
   <td class="r">$141.0B</td>
   <td class="r">105.2</td>
-  <td class="c"><span class="badge" style="background:#f1f5f9;color:#64748b">观望</span></td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
   <td class="r"><b>5.0</b></td>
 </tr>
 
@@ -100,12 +281,12 @@
   <td><a href="#stock-VST"><b>VST</b></a></td>
   <td>Vistra</td>
   <td class="r">$146.87</td>
-  <td class="r" style="color:#16a34a">-3.41%</td>
-  <td class="r" style="color:#16a34a">-10.4%</td>
+  <td class="r" style="color:#4ade80">-3.41%</td>
+  <td class="r" style="color:#4ade80">-10.4%</td>
   <td class="r">40</td>
   <td class="r">$49.5B</td>
   <td class="r">24.3</td>
-  <td class="c"><span class="badge" style="background:#f1f5f9;color:#64748b">观望</span></td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
   <td class="r"><b>6.1</b></td>
 </tr>
 
@@ -113,12 +294,12 @@
   <td><a href="#stock-CEG"><b>CEG</b></a></td>
   <td>Constellation Energy</td>
   <td class="r">$293.60</td>
-  <td class="r" style="color:#16a34a">-2.03%</td>
-  <td class="r" style="color:#16a34a">-18.0%</td>
+  <td class="r" style="color:#4ade80">-2.03%</td>
+  <td class="r" style="color:#4ade80">-18.0%</td>
   <td class="r">45</td>
   <td class="r">$106.4B</td>
   <td class="r">25.5</td>
-  <td class="c"><span class="badge" style="background:#fff7ed;color:#ea580c">增持</span></td>
+  <td class="c"><span class="badge" style="background:rgba(234,88,12,.18);color:#fdba74">增持</span></td>
   <td class="r"><b>7.2</b></td>
 </tr>
 
@@ -126,12 +307,12 @@
   <td><a href="#stock-OKLO"><b>OKLO</b></a></td>
   <td>Oklo</td>
   <td class="r">$73.63</td>
-  <td class="r" style="color:#16a34a">-5.76%</td>
-  <td class="r" style="color:#16a34a">-0.5%</td>
+  <td class="r" style="color:#4ade80">-5.76%</td>
+  <td class="r" style="color:#4ade80">-0.5%</td>
   <td class="r">55</td>
   <td class="r">$12.8B</td>
   <td class="r">N/A</td>
-  <td class="c"><span class="badge" style="background:#fef2f2;color:#dc2626">买入</span></td>
+  <td class="c"><span class="badge" style="background:rgba(220,38,38,.18);color:#fca5a5">买入</span></td>
   <td class="r"><b>7.8</b></td>
 </tr>
 
@@ -139,12 +320,12 @@
   <td><a href="#stock-AMD"><b>AMD</b></a></td>
   <td>AMD</td>
   <td class="r">$448.29</td>
-  <td class="r" style="color:#16a34a">-2.29%</td>
-  <td class="r" style="color:#dc2626">+104.8%</td>
+  <td class="r" style="color:#4ade80">-2.29%</td>
+  <td class="r" style="color:#f87171">+104.8%</td>
   <td class="r">77</td>
   <td class="r">$731.0B</td>
   <td class="r">145.6</td>
-  <td class="c"><span class="badge" style="background:#ecfeff;color:#0891b2">减持</span></td>
+  <td class="c"><span class="badge" style="background:rgba(8,145,178,.20);color:#67e8f9">减持</span></td>
   <td class="r"><b>3.8</b></td>
 </tr>
 
@@ -152,12 +333,12 @@
   <td><a href="#stock-AVGO"><b>AVGO</b></a></td>
   <td>Broadcom</td>
   <td class="r">$419.30</td>
-  <td class="r" style="color:#16a34a">-2.13%</td>
-  <td class="r" style="color:#dc2626">+18.9%</td>
+  <td class="r" style="color:#4ade80">-2.13%</td>
+  <td class="r" style="color:#f87171">+18.9%</td>
   <td class="r">60</td>
   <td class="r">$1985.2B</td>
   <td class="r">79.4</td>
-  <td class="c"><span class="badge" style="background:#f1f5f9;color:#64748b">观望</span></td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
   <td class="r"><b>5.3</b></td>
 </tr>
 
@@ -165,12 +346,12 @@
   <td><a href="#stock-ARM"><b>ARM</b></a></td>
   <td>Arm Holdings</td>
   <td class="r">$207.92</td>
-  <td class="r" style="color:#16a34a">-2.22%</td>
-  <td class="r" style="color:#dc2626">+84.3%</td>
+  <td class="r" style="color:#4ade80">-2.22%</td>
+  <td class="r" style="color:#f87171">+84.3%</td>
   <td class="r">57</td>
   <td class="r">$221.2B</td>
   <td class="r">244.6</td>
-  <td class="c"><span class="badge" style="background:#f1f5f9;color:#64748b">观望</span></td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
   <td class="r"><b>6.3</b></td>
 </tr>
 
@@ -178,12 +359,12 @@
   <td><a href="#stock-CRDO"><b>CRDO</b></a></td>
   <td>Credo</td>
   <td class="r">$198.57</td>
-  <td class="r" style="color:#16a34a">-5.54%</td>
-  <td class="r" style="color:#dc2626">+33.8%</td>
+  <td class="r" style="color:#4ade80">-5.54%</td>
+  <td class="r" style="color:#f87171">+33.8%</td>
   <td class="r">63</td>
   <td class="r">$36.6B</td>
   <td class="r">103.4</td>
-  <td class="c"><span class="badge" style="background:#f1f5f9;color:#64748b">观望</span></td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
   <td class="r"><b>5.3</b></td>
 </tr>
 
@@ -191,12 +372,12 @@
   <td><a href="#stock-ALAB"><b>ALAB</b></a></td>
   <td>Astera Labs</td>
   <td class="r">$204.42</td>
-  <td class="r" style="color:#16a34a">-1.41%</td>
-  <td class="r" style="color:#dc2626">+19.1%</td>
+  <td class="r" style="color:#4ade80">-1.41%</td>
+  <td class="r" style="color:#f87171">+19.1%</td>
   <td class="r">61</td>
   <td class="r">$35.0B</td>
   <td class="r">156.1</td>
-  <td class="c"><span class="badge" style="background:#f1f5f9;color:#64748b">观望</span></td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
   <td class="r"><b>6.3</b></td>
 </tr>
 
@@ -204,12 +385,12 @@
   <td><a href="#stock-SYM"><b>SYM</b></a></td>
   <td>Symbotic</td>
   <td class="r">$51.32</td>
-  <td class="r" style="color:#16a34a">-0.75%</td>
-  <td class="r" style="color:#16a34a">-15.6%</td>
+  <td class="r" style="color:#4ade80">-0.75%</td>
+  <td class="r" style="color:#4ade80">-15.6%</td>
   <td class="r">39</td>
   <td class="r">$30.9B</td>
   <td class="r">N/A</td>
-  <td class="c"><span class="badge" style="background:#f1f5f9;color:#64748b">观望</span></td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
   <td class="r"><b>6.4</b></td>
 </tr>
 
@@ -217,12 +398,12 @@
   <td><a href="#stock-RKLB"><b>RKLB</b></a></td>
   <td>Rocket Lab</td>
   <td class="r">$117.56</td>
-  <td class="r" style="color:#dc2626">+0.18%</td>
-  <td class="r" style="color:#dc2626">+66.4%</td>
+  <td class="r" style="color:#f87171">+0.18%</td>
+  <td class="r" style="color:#f87171">+66.4%</td>
   <td class="r">73</td>
   <td class="r">$68.0B</td>
   <td class="r">N/A</td>
-  <td class="c"><span class="badge" style="background:#f1f5f9;color:#64748b">观望</span></td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
   <td class="r"><b>5.0</b></td>
 </tr>
 
@@ -230,12 +411,12 @@
   <td><a href="#stock-IONQ"><b>IONQ</b></a></td>
   <td>IonQ</td>
   <td class="r">$55.87</td>
-  <td class="r" style="color:#16a34a">-1.79%</td>
-  <td class="r" style="color:#dc2626">+21.4%</td>
+  <td class="r" style="color:#4ade80">-1.79%</td>
+  <td class="r" style="color:#f87171">+21.4%</td>
   <td class="r">69</td>
   <td class="r">$20.9B</td>
   <td class="r">620.8</td>
-  <td class="c"><span class="badge" style="background:#fff7ed;color:#ea580c">增持</span></td>
+  <td class="c"><span class="badge" style="background:rgba(234,88,12,.18);color:#fdba74">增持</span></td>
   <td class="r"><b>6.5</b></td>
 </tr>
 
@@ -243,12 +424,12 @@
   <td><a href="#stock-PLTR"><b>PLTR</b></a></td>
   <td>Palantir</td>
   <td class="r">$136.00</td>
-  <td class="r" style="color:#16a34a">-0.65%</td>
-  <td class="r" style="color:#16a34a">-25.0%</td>
+  <td class="r" style="color:#4ade80">-0.65%</td>
+  <td class="r" style="color:#4ade80">-25.0%</td>
   <td class="r">44</td>
   <td class="r">$326.0B</td>
   <td class="r">141.7</td>
-  <td class="c"><span class="badge" style="background:#f1f5f9;color:#64748b">观望</span></td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
   <td class="r"><b>6.1</b></td>
 </tr>
 
@@ -256,12 +437,12 @@
   <td><a href="#stock-TEM"><b>TEM</b></a></td>
   <td>Tempus AI</td>
   <td class="r">$46.95</td>
-  <td class="r" style="color:#16a34a">-3.12%</td>
-  <td class="r" style="color:#16a34a">-22.0%</td>
+  <td class="r" style="color:#4ade80">-3.12%</td>
+  <td class="r" style="color:#4ade80">-22.0%</td>
   <td class="r">40</td>
   <td class="r">$8.4B</td>
   <td class="r">N/A</td>
-  <td class="c"><span class="badge" style="background:#fff7ed;color:#ea580c">增持</span></td>
+  <td class="c"><span class="badge" style="background:rgba(234,88,12,.18);color:#fdba74">增持</span></td>
   <td class="r"><b>7.0</b></td>
 </tr>
 
@@ -269,22 +450,31 @@
   <td><a href="#stock-HIMS"><b>HIMS</b></a></td>
   <td>Hims & Hers</td>
   <td class="r">$25.03</td>
-  <td class="r" style="color:#16a34a">-14.10%</td>
-  <td class="r" style="color:#16a34a">-24.2%</td>
+  <td class="r" style="color:#4ade80">-14.10%</td>
+  <td class="r" style="color:#4ade80">-24.2%</td>
   <td class="r">47</td>
   <td class="r">$5.8B</td>
   <td class="r">N/A</td>
-  <td class="c"><span class="badge" style="background:#fff7ed;color:#ea580c">增持</span></td>
+  <td class="c"><span class="badge" style="background:rgba(234,88,12,.18);color:#fdba74">增持</span></td>
   <td class="r"><b>6.7</b></td>
 </tr></tbody>
 </table>
 
 <h2>🎯 二、组合配置思路（参考）</h2>
-<div class="card" style="padding:20px 26px;">
-<p><b>核心仓位 60%</b>（确定性高、护城河深）：CEG、AVGO、PLTR、ARM、AMD</p>
-<p><b>成长仓位 30%</b>（增速快、高赔率）：VRT、VST、ALAB、CRDO、TEM、SYM、RKLB</p>
-<p><b>探索仓位 10%</b>（高风险高赔率）：OKLO、IONQ、HIMS</p>
-<p style="color:#64748b;font-size:13px;margin-top:10px">⚠️ 不要一次性买入。建议分 3-4 批在 4-8 周内建仓，每只设明确止损位（一般为建仓价 -10%~-15%）。</p>
+<div class="alloc">
+  <div class="alloc-item alloc-core">
+    <h4>核心仓位 60%</h4>
+    <p>确定性高、护城河深<br><b>CEG · AVGO · PLTR · ARM · AMD</b></p>
+  </div>
+  <div class="alloc-item alloc-grow">
+    <h4>成长仓位 30%</h4>
+    <p>增速快、高赔率<br><b>VRT · VST · ALAB · CRDO · TEM · SYM · RKLB</b></p>
+  </div>
+  <div class="alloc-item alloc-bet">
+    <h4>探索仓位 10%</h4>
+    <p>高风险高赔率<br><b>OKLO · IONQ · HIMS</b></p>
+  </div>
+  <div class="alloc-note">⚠️ 不要一次性买入。建议分 3-4 批在 4-8 周内建仓，每只设明确止损位（一般为建仓价 -10% ~ -15%）。</div>
 </div>
 
 <h2>📋 三、个股深度分析（按评分降序）</h2>
@@ -296,15 +486,15 @@
       <span class="cn">Vertiv</span>
       <span class="sector-tag">AI 电力基建</span>
     </div>
-    <div class="rating-pill" style="background:#f1f5f9;color:#64748b">
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
       观望 · 5.0/10
     </div>
   </div>
 
   <div class="metrics">
     <div class="m"><div class="m-l">现价</div><div class="m-v">$367.13</div></div>
-    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-0.21%</div></div>
-    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#dc2626">+116.63%</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-0.21%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#f87171">+116.63%</div></div>
     <div class="m"><div class="m-l">市值</div><div class="m-v">$141.0B</div></div>
     <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">105.2</div></div>
     <div class="m"><div class="m-l">RSI14</div><div class="m-v">70 <span class="tag">中性</span></div></div>
@@ -336,15 +526,15 @@
       <span class="cn">Vistra</span>
       <span class="sector-tag">核电/电力</span>
     </div>
-    <div class="rating-pill" style="background:#f1f5f9;color:#64748b">
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
       观望 · 6.1/10
     </div>
   </div>
 
   <div class="metrics">
     <div class="m"><div class="m-l">现价</div><div class="m-v">$146.87</div></div>
-    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-3.41%</div></div>
-    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#16a34a">-10.39%</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-3.41%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#4ade80">-10.39%</div></div>
     <div class="m"><div class="m-l">市值</div><div class="m-v">$49.5B</div></div>
     <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">24.3</div></div>
     <div class="m"><div class="m-l">RSI14</div><div class="m-v">40 <span class="tag">中性</span></div></div>
@@ -376,15 +566,15 @@
       <span class="cn">Constellation Energy</span>
       <span class="sector-tag">核电/电力</span>
     </div>
-    <div class="rating-pill" style="background:#fff7ed;color:#ea580c">
+    <div class="rating-pill" style="background:rgba(234,88,12,.18);color:#fdba74">
       增持 · 7.2/10
     </div>
   </div>
 
   <div class="metrics">
     <div class="m"><div class="m-l">现价</div><div class="m-v">$293.60</div></div>
-    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-2.03%</div></div>
-    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#16a34a">-17.99%</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-2.03%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#4ade80">-17.99%</div></div>
     <div class="m"><div class="m-l">市值</div><div class="m-v">$106.4B</div></div>
     <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">25.5</div></div>
     <div class="m"><div class="m-l">RSI14</div><div class="m-v">45 <span class="tag">中性</span></div></div>
@@ -416,15 +606,15 @@
       <span class="cn">Oklo</span>
       <span class="sector-tag">核电/电力</span>
     </div>
-    <div class="rating-pill" style="background:#fef2f2;color:#dc2626">
+    <div class="rating-pill" style="background:rgba(220,38,38,.18);color:#fca5a5">
       买入 · 7.8/10
     </div>
   </div>
 
   <div class="metrics">
     <div class="m"><div class="m-l">现价</div><div class="m-v">$73.63</div></div>
-    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-5.76%</div></div>
-    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#16a34a">-0.49%</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-5.76%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#4ade80">-0.49%</div></div>
     <div class="m"><div class="m-l">市值</div><div class="m-v">$12.8B</div></div>
     <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
     <div class="m"><div class="m-l">RSI14</div><div class="m-v">55 <span class="tag">中性</span></div></div>
@@ -456,15 +646,15 @@
       <span class="cn">AMD</span>
       <span class="sector-tag">AI 芯片</span>
     </div>
-    <div class="rating-pill" style="background:#ecfeff;color:#0891b2">
+    <div class="rating-pill" style="background:rgba(8,145,178,.20);color:#67e8f9">
       减持 · 3.8/10
     </div>
   </div>
 
   <div class="metrics">
     <div class="m"><div class="m-l">现价</div><div class="m-v">$448.29</div></div>
-    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-2.29%</div></div>
-    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#dc2626">+104.79%</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-2.29%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#f87171">+104.79%</div></div>
     <div class="m"><div class="m-l">市值</div><div class="m-v">$731.0B</div></div>
     <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">145.6</div></div>
     <div class="m"><div class="m-l">RSI14</div><div class="m-v">77 <span class="tag">超买⚠️</span></div></div>
@@ -496,15 +686,15 @@
       <span class="cn">Broadcom</span>
       <span class="sector-tag">AI 芯片</span>
     </div>
-    <div class="rating-pill" style="background:#f1f5f9;color:#64748b">
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
       观望 · 5.3/10
     </div>
   </div>
 
   <div class="metrics">
     <div class="m"><div class="m-l">现价</div><div class="m-v">$419.30</div></div>
-    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-2.13%</div></div>
-    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#dc2626">+18.86%</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-2.13%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#f87171">+18.86%</div></div>
     <div class="m"><div class="m-l">市值</div><div class="m-v">$1985.2B</div></div>
     <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">79.4</div></div>
     <div class="m"><div class="m-l">RSI14</div><div class="m-v">60 <span class="tag">中性</span></div></div>
@@ -536,15 +726,15 @@
       <span class="cn">Arm Holdings</span>
       <span class="sector-tag">AI 芯片</span>
     </div>
-    <div class="rating-pill" style="background:#f1f5f9;color:#64748b">
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
       观望 · 6.3/10
     </div>
   </div>
 
   <div class="metrics">
     <div class="m"><div class="m-l">现价</div><div class="m-v">$207.92</div></div>
-    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-2.22%</div></div>
-    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#dc2626">+84.28%</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-2.22%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#f87171">+84.28%</div></div>
     <div class="m"><div class="m-l">市值</div><div class="m-v">$221.2B</div></div>
     <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">244.6</div></div>
     <div class="m"><div class="m-l">RSI14</div><div class="m-v">57 <span class="tag">中性</span></div></div>
@@ -576,15 +766,15 @@
       <span class="cn">Credo</span>
       <span class="sector-tag">AI 网络（光/CPO）</span>
     </div>
-    <div class="rating-pill" style="background:#f1f5f9;color:#64748b">
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
       观望 · 5.3/10
     </div>
   </div>
 
   <div class="metrics">
     <div class="m"><div class="m-l">现价</div><div class="m-v">$198.57</div></div>
-    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-5.54%</div></div>
-    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#dc2626">+33.81%</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-5.54%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#f87171">+33.81%</div></div>
     <div class="m"><div class="m-l">市值</div><div class="m-v">$36.6B</div></div>
     <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">103.4</div></div>
     <div class="m"><div class="m-l">RSI14</div><div class="m-v">63 <span class="tag">中性</span></div></div>
@@ -616,15 +806,15 @@
       <span class="cn">Astera Labs</span>
       <span class="sector-tag">AI 网络（光/CPO）</span>
     </div>
-    <div class="rating-pill" style="background:#f1f5f9;color:#64748b">
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
       观望 · 6.3/10
     </div>
   </div>
 
   <div class="metrics">
     <div class="m"><div class="m-l">现价</div><div class="m-v">$204.42</div></div>
-    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-1.41%</div></div>
-    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#dc2626">+19.06%</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-1.41%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#f87171">+19.06%</div></div>
     <div class="m"><div class="m-l">市值</div><div class="m-v">$35.0B</div></div>
     <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">156.1</div></div>
     <div class="m"><div class="m-l">RSI14</div><div class="m-v">61 <span class="tag">中性</span></div></div>
@@ -656,15 +846,15 @@
       <span class="cn">Symbotic</span>
       <span class="sector-tag">机器人/自动化</span>
     </div>
-    <div class="rating-pill" style="background:#f1f5f9;color:#64748b">
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
       观望 · 6.4/10
     </div>
   </div>
 
   <div class="metrics">
     <div class="m"><div class="m-l">现价</div><div class="m-v">$51.32</div></div>
-    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-0.75%</div></div>
-    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#16a34a">-15.62%</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-0.75%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#4ade80">-15.62%</div></div>
     <div class="m"><div class="m-l">市值</div><div class="m-v">$30.9B</div></div>
     <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
     <div class="m"><div class="m-l">RSI14</div><div class="m-v">39 <span class="tag">中性</span></div></div>
@@ -696,15 +886,15 @@
       <span class="cn">Rocket Lab</span>
       <span class="sector-tag">商业航天</span>
     </div>
-    <div class="rating-pill" style="background:#f1f5f9;color:#64748b">
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
       观望 · 5.0/10
     </div>
   </div>
 
   <div class="metrics">
     <div class="m"><div class="m-l">现价</div><div class="m-v">$117.56</div></div>
-    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#dc2626">+0.18%</div></div>
-    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#dc2626">+66.44%</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#f87171">+0.18%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#f87171">+66.44%</div></div>
     <div class="m"><div class="m-l">市值</div><div class="m-v">$68.0B</div></div>
     <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
     <div class="m"><div class="m-l">RSI14</div><div class="m-v">73 <span class="tag">超买⚠️</span></div></div>
@@ -736,15 +926,15 @@
       <span class="cn">IonQ</span>
       <span class="sector-tag">量子计算</span>
     </div>
-    <div class="rating-pill" style="background:#fff7ed;color:#ea580c">
+    <div class="rating-pill" style="background:rgba(234,88,12,.18);color:#fdba74">
       增持 · 6.5/10
     </div>
   </div>
 
   <div class="metrics">
     <div class="m"><div class="m-l">现价</div><div class="m-v">$55.87</div></div>
-    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-1.79%</div></div>
-    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#dc2626">+21.43%</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-1.79%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#f87171">+21.43%</div></div>
     <div class="m"><div class="m-l">市值</div><div class="m-v">$20.9B</div></div>
     <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">620.8</div></div>
     <div class="m"><div class="m-l">RSI14</div><div class="m-v">69 <span class="tag">中性</span></div></div>
@@ -776,15 +966,15 @@
       <span class="cn">Palantir</span>
       <span class="sector-tag">AI 应用</span>
     </div>
-    <div class="rating-pill" style="background:#f1f5f9;color:#64748b">
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
       观望 · 6.1/10
     </div>
   </div>
 
   <div class="metrics">
     <div class="m"><div class="m-l">现价</div><div class="m-v">$136.00</div></div>
-    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-0.65%</div></div>
-    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#16a34a">-24.99%</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-0.65%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#4ade80">-24.99%</div></div>
     <div class="m"><div class="m-l">市值</div><div class="m-v">$326.0B</div></div>
     <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">141.7</div></div>
     <div class="m"><div class="m-l">RSI14</div><div class="m-v">44 <span class="tag">中性</span></div></div>
@@ -816,15 +1006,15 @@
       <span class="cn">Tempus AI</span>
       <span class="sector-tag">医疗 AI</span>
     </div>
-    <div class="rating-pill" style="background:#fff7ed;color:#ea580c">
+    <div class="rating-pill" style="background:rgba(234,88,12,.18);color:#fdba74">
       增持 · 7.0/10
     </div>
   </div>
 
   <div class="metrics">
     <div class="m"><div class="m-l">现价</div><div class="m-v">$46.95</div></div>
-    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-3.12%</div></div>
-    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#16a34a">-22.02%</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-3.12%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#4ade80">-22.02%</div></div>
     <div class="m"><div class="m-l">市值</div><div class="m-v">$8.4B</div></div>
     <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
     <div class="m"><div class="m-l">RSI14</div><div class="m-v">40 <span class="tag">中性</span></div></div>
@@ -856,15 +1046,15 @@
       <span class="cn">Hims & Hers</span>
       <span class="sector-tag">数字健康</span>
     </div>
-    <div class="rating-pill" style="background:#fff7ed;color:#ea580c">
+    <div class="rating-pill" style="background:rgba(234,88,12,.18);color:#fdba74">
       增持 · 6.7/10
     </div>
   </div>
 
   <div class="metrics">
     <div class="m"><div class="m-l">现价</div><div class="m-v">$25.03</div></div>
-    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-14.10%</div></div>
-    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#16a34a">-24.15%</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-14.10%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#4ade80">-24.15%</div></div>
     <div class="m"><div class="m-l">市值</div><div class="m-v">$5.8B</div></div>
     <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
     <div class="m"><div class="m-l">RSI14</div><div class="m-v">47 <span class="tag">中性</span></div></div>
