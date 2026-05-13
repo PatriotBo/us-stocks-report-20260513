@@ -1,0 +1,1036 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>🇨🇳 A 股<span class="accent">主线龙头</span>深度研究 · 15 只候选 · 2026-05-13</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+*{box-sizing:border-box}
+:root{
+  --bg:#0b1020; --bg-2:#0f172a;
+  --surface:#111a2e; --surface-2:#162033; --surface-hi:#1c2742;
+  --border:rgba(148,163,184,.14); --border-strong:rgba(148,163,184,.22);
+  --text:#e2e8f0; --text-2:#cbd5e1; --text-3:#94a3b8; --text-4:#64748b;
+  --accent:#60a5fa; --accent-2:#a78bfa;
+  --good:#34d399; --bad:#f87171; --warn:#fbbf24;
+}
+html,body{background:var(--bg);}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  color:var(--text);line-height:1.7;
+  background:radial-gradient(1200px 600px at 10% -10%, rgba(96,165,250,.08), transparent 60%),
+    radial-gradient(1000px 500px at 100% 0%, rgba(167,139,250,.07), transparent 60%),var(--bg);
+  -webkit-font-smoothing:antialiased;}
+::selection{background:rgba(96,165,250,.35);}
+a{color:var(--accent);text-decoration:none;}
+a:hover{color:#93c5fd;}
+.wrap{max-width:1180px;margin:0 auto;padding:32px 22px 80px;}
+
+header.hero{position:relative;overflow:hidden;
+  background:linear-gradient(135deg, rgba(96,165,250,.12), rgba(167,139,250,.08) 50%, rgba(236,72,153,.08)),
+    linear-gradient(180deg,#101a31 0%, #0c1426 100%);
+  border:1px solid var(--border-strong);color:#fff;padding:46px 38px;
+  border-radius:20px;margin-bottom:28px;
+  box-shadow:0 20px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);}
+header.hero::before{content:"";position:absolute;inset:-1px;border-radius:20px;pointer-events:none;
+  background:radial-gradient(600px 240px at 80% -20%, rgba(96,165,250,.18), transparent 60%);}
+header.hero .badge-v{display:inline-block;padding:4px 12px;border-radius:20px;
+  background:linear-gradient(90deg,#60a5fa,#a78bfa);color:#0b1020;
+  font-weight:800;font-size:11px;letter-spacing:1px;margin-bottom:14px;}
+header.hero h1{margin:0 0 12px;font-size:32px;font-weight:700;letter-spacing:.3px;}
+header.hero h1 .accent{background:linear-gradient(90deg,#60a5fa,#a78bfa);
+  -webkit-background-clip:text;background-clip:text;color:transparent;}
+header.hero .meta{font-size:13px;color:var(--text-3);}
+header.hero .lead{margin-top:14px;font-size:15.5px;color:var(--text-2);max-width:920px;}
+header.hero .lead b{color:#fff;}
+header.hero .stat-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px;}
+header.hero .stat{background:rgba(255,255,255,.04);border:1px solid var(--border);
+  padding:11px 16px;border-radius:10px;font-size:12px;color:var(--text-3);}
+header.hero .stat b{color:#fff;font-size:14px;margin-left:6px;}
+.principle{margin-top:18px;background:rgba(96,165,250,.06);border:1px solid rgba(96,165,250,.18);
+  padding:14px 18px;border-radius:12px;font-size:13.5px;color:var(--text-2);}
+.principle b{color:#93c5fd;}
+
+h2{margin:38px 0 18px;font-size:22px;font-weight:700;padding-left:14px;color:var(--text);
+  border-left:4px solid transparent;border-image:linear-gradient(180deg,#60a5fa,#a78bfa) 1;}
+h3{margin:18px 0 10px;font-size:17px;color:var(--text);}
+
+.toc{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 22px;margin-bottom:24px;}
+.toc h3{margin:0 0 12px;}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px;font-size:13px;}
+.toc-grid a{color:var(--text-2);padding:8px 11px;border-radius:8px;border:1px solid transparent;transition:all .15s;}
+.toc-grid a:hover{background:var(--surface-hi);color:#fff;border-color:var(--border-strong);}
+.toc-grid a b{color:var(--accent);margin-right:6px;letter-spacing:.4px;}
+
+table.summary{width:100%;border-collapse:separate;border-spacing:0;background:var(--surface);
+  border:1px solid var(--border);border-radius:14px;overflow:hidden;font-size:13px;
+  box-shadow:0 4px 18px rgba(0,0,0,.30);}
+table.summary th{background:var(--surface-2);padding:11px 8px;text-align:left;font-weight:600;
+  color:var(--text-3);border-bottom:1px solid var(--border-strong);
+  font-size:11px;letter-spacing:.6px;text-transform:uppercase;}
+table.summary td{padding:12px 8px;border-bottom:1px solid var(--border);color:var(--text);}
+table.summary tr:last-child td{border-bottom:none;}
+table.summary tbody tr:hover td{background:var(--surface-hi);}
+table.summary .r{text-align:right;font-variant-numeric:tabular-nums;}
+table.summary .c{text-align:center;}
+table.summary a{color:var(--accent);font-weight:700;letter-spacing:.4px;}
+.badge{padding:3px 10px;border-radius:12px;font-size:11.5px;font-weight:700;border:1px solid currentColor;}
+
+.card{background:linear-gradient(180deg,var(--surface) 0%,var(--surface-2) 100%);
+  border:1px solid var(--border);border-radius:18px;padding:26px 30px;margin:22px 0;
+  box-shadow:0 4px 22px rgba(0,0,0,.25);scroll-margin-top:20px;}
+.card:hover{border-color:var(--border-strong);}
+.card-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--border);}
+.card-title{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+.ticker{font-size:24px;font-weight:800;letter-spacing:.6px;
+  background:linear-gradient(90deg,#60a5fa,#a78bfa);
+  -webkit-background-clip:text;background-clip:text;color:transparent;}
+.cn{font-size:16px;color:var(--text);font-weight:600;}
+.sector-tag{font-size:11px;background:rgba(96,165,250,.10);color:#93c5fd;
+  padding:4px 10px;border-radius:10px;font-weight:600;border:1px solid rgba(96,165,250,.22);}
+.rating-pill{padding:6px 14px;border-radius:20px;font-weight:700;font-size:14px;border:1px solid currentColor;}
+
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  margin:14px 0 22px;background:var(--border);padding:1px;border-radius:12px;overflow:hidden;}
+.m{background:var(--surface-2);padding:12px 14px;font-size:13px;}
+.m-l{color:var(--text-4);font-size:10.5px;letter-spacing:.7px;text-transform:uppercase;margin-bottom:4px;font-weight:600;}
+.m-v{font-weight:700;font-size:15.5px;color:var(--text);font-variant-numeric:tabular-nums;}
+.m-v.small{font-size:13px;}
+.tag{font-size:10px;background:rgba(167,139,250,.16);color:#c4b5fd;padding:2px 7px;border-radius:6px;margin-left:5px;font-weight:700;border:1px solid rgba(167,139,250,.25);}
+.bar{height:6px;background:rgba(148,163,184,.18);border-radius:3px;overflow:hidden;margin:6px 0 4px;}
+.bar-fill{height:100%;background:linear-gradient(90deg,#34d399 0%,#fbbf24 50%,#f87171 100%);}
+.small{font-size:12px;color:var(--text-3);}
+
+.sections{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.sec{background:rgba(255,255,255,.02);padding:14px 18px;border-radius:10px;
+  border-left:3px solid rgba(148,163,184,.35);
+  border-top:1px solid var(--border);border-right:1px solid var(--border);border-bottom:1px solid var(--border);}
+.sec h4{margin:0 0 7px;font-size:13.5px;color:var(--text-2);font-weight:700;letter-spacing:.2px;}
+.sec p{margin:0;font-size:14px;color:var(--text);}
+.sec p b{color:#fff;}
+.sec-good{border-left-color:#34d399;background:rgba(52,211,153,.06);grid-column:1/-1;}
+.sec-good h4{color:#6ee7b7;}
+.sec-bad{border-left-color:#f87171;background:rgba(248,113,113,.06);}
+.sec-bad h4{color:#fca5a5;}
+.sec-action{border-left-color:#60a5fa;
+  background:linear-gradient(90deg,rgba(96,165,250,.10),rgba(167,139,250,.06));grid-column:1/-1;}
+.sec-action h4{color:#93c5fd;}
+.sec-action p{font-size:15px;line-height:1.75;}
+
+.disclaimer{margin-top:42px;padding:18px 22px;background:rgba(251,191,36,.07);
+  border:1px solid rgba(251,191,36,.22);border-left:4px solid var(--warn);
+  border-radius:10px;font-size:13px;color:#fde68a;}
+.disclaimer b{color:#fbbf24;}
+
+.alloc{background:var(--surface);border:1px solid var(--border);border-radius:16px;
+  padding:22px 28px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.alloc-item{padding:14px 16px;border-radius:12px;}
+.alloc-item h4{margin:0 0 6px;font-size:13px;letter-spacing:.4px;}
+.alloc-item p{margin:0;font-size:14px;color:var(--text);line-height:1.65;}
+.alloc-core{background:rgba(96,165,250,.10);border:1px solid rgba(96,165,250,.25);}
+.alloc-core h4{color:#93c5fd;}
+.alloc-grow{background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.22);}
+.alloc-grow h4{color:#6ee7b7;}
+.alloc-bet{background:rgba(167,139,250,.10);border:1px solid rgba(167,139,250,.25);}
+.alloc-bet h4{color:#c4b5fd;}
+.alloc-note{grid-column:1/-1;color:var(--text-3);font-size:13px;margin-top:4px;
+  padding-top:14px;border-top:1px dashed var(--border-strong);}
+
+@media(max-width:760px){
+  .wrap{padding:22px 14px 60px;}
+  .metrics{grid-template-columns:repeat(2,1fr);}
+  .sections{grid-template-columns:1fr;}
+  table.summary{font-size:11.5px;}
+  table.summary th,table.summary td{padding:7px 5px;}
+  header.hero{padding:30px 22px;}
+  header.hero h1{font-size:22px;}
+  .card{padding:20px 18px;}
+  .ticker{font-size:22px;}
+  .alloc{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="badge-v">REPORT A-v2 · DEEP DIVE</div>
+  <h1>🇨🇳 A 股<span class="accent">主线龙头</span>深度研究 · 15 只候选</h1>
+  <div class="meta">数据时间：2026-05-13 23:05:47 · 数据源：新浪财经 + 腾讯财经 + 公司公告 + Web 调研</div>
+  <div class="lead">本报告聚焦 <b>A 股六大主线龙头标的</b>，覆盖 <b>AI 算力链 · AI 应用 · 国产芯片 · 创新药 · 机器人 · 新能源 · 高端制造 · 国防军工</b>，每只含基本面、财务、走势、行业地位、核心优势、风险提示与建仓建议。这些是各赛道的「确定性最强、护城河最深」的卖铲人型标的，适合作为中长期组合的核心配置。</div>
+  <div class="stat-row">
+    <div class="stat">候选股 <b>15</b></div>
+    <div class="stat">深度模块 <b>7×15</b></div>
+    <div class="stat">市场 <b>A 股</b></div>
+    <div class="stat">报告版本 <b>A-v2 · Dark</b></div>
+  </div>
+  <div class="principle"><b>📐 三大筛选标准</b>　①  各赛道前 1-3 名龙头　②  财务健康（自由现金流为正、负债低）　③  护城河可持续（技术/客户/政策三选一）</div>
+</header>
+
+<div class="toc">
+  <h3>📑 个股目录</h3>
+  <div class="toc-grid"><a href="#stock-300308"><b>300308</b> 中际旭创</a><a href="#stock-300502"><b>300502</b> 新易盛</a><a href="#stock-601138"><b>601138</b> 工业富联</a><a href="#stock-002230"><b>002230</b> 科大讯飞</a><a href="#stock-688111"><b>688111</b> 金山办公</a><a href="#stock-688256"><b>688256</b> 寒武纪</a><a href="#stock-688981"><b>688981</b> 中芯国际</a><a href="#stock-002371"><b>002371</b> 北方华创</a><a href="#stock-600276"><b>600276</b> 恒瑞医药</a><a href="#stock-002294"><b>002294</b> 信立泰</a><a href="#stock-300124"><b>300124</b> 汇川技术</a><a href="#stock-002747"><b>002747</b> 埃斯顿</a><a href="#stock-300750"><b>300750</b> 宁德时代</a><a href="#stock-600150"><b>600150</b> 中国船舶</a><a href="#stock-600760"><b>600760</b> 中航沈飞</a></div>
+</div>
+
+<h2>📊 一、概览对比表（点代码跳转）</h2>
+<table class="summary">
+  <thead><tr>
+    <th>代码</th><th>名称</th><th>主线</th><th class="r">现价</th><th class="r">日%</th><th class="r">YTD</th>
+    <th class="r">RSI</th><th class="r">距高点</th><th class="r">PE</th><th class="c">评级</th><th class="r">评分</th>
+  </tr></thead>
+  <tbody>
+<tr>
+  <td><a href="#stock-300308"><b>300308</b></a></td>
+  <td>中际旭创</td>
+  <td>AI 算力链</td>
+  <td class="r">¥1049.2</td>
+  <td class="r" style="color:#f87171">+3.07%</td>
+  <td class="r" style="color:#f87171">+69.2%</td>
+  <td class="r">83</td>
+  <td class="r">-0.3%</td>
+  <td class="r">—</td>
+  <td class="c"><span class="badge" style="background:rgba(8,145,178,.20);color:#67e8f9">减持</span></td>
+  <td class="r"><b>3.8</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-300502"><b>300502</b></a></td>
+  <td>新易盛</td>
+  <td>AI 算力链</td>
+  <td class="r">¥629.0</td>
+  <td class="r" style="color:#f87171">+6.16%</td>
+  <td class="r" style="color:#f87171">+43.9%</td>
+  <td class="r">68</td>
+  <td class="r">-0.3%</td>
+  <td class="r">—</td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
+  <td class="r"><b>5.0</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-601138"><b>601138</b></a></td>
+  <td>工业富联</td>
+  <td>AI 算力链</td>
+  <td class="r">¥70.84</td>
+  <td class="r" style="color:#f87171">+10.00%</td>
+  <td class="r" style="color:#f87171">+12.5%</td>
+  <td class="r">67</td>
+  <td class="r">-15.2%</td>
+  <td class="r">—</td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
+  <td class="r"><b>6.0</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-002230"><b>002230</b></a></td>
+  <td>科大讯飞</td>
+  <td>AI 应用</td>
+  <td class="r">¥49.40</td>
+  <td class="r" style="color:#f87171">+1.17%</td>
+  <td class="r" style="color:#4ade80">-3.1%</td>
+  <td class="r">52</td>
+  <td class="r">-26.8%</td>
+  <td class="r">—</td>
+  <td class="c"><span class="badge" style="background:rgba(234,88,12,.18);color:#fdba74">增持</span></td>
+  <td class="r"><b>6.9</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-688111"><b>688111</b></a></td>
+  <td>金山办公</td>
+  <td>AI 应用</td>
+  <td class="r">¥263.9</td>
+  <td class="r" style="color:#f87171">+0.94%</td>
+  <td class="r" style="color:#4ade80">-14.3%</td>
+  <td class="r">55</td>
+  <td class="r">-36.4%</td>
+  <td class="r">—</td>
+  <td class="c"><span class="badge" style="background:rgba(234,88,12,.18);color:#fdba74">增持</span></td>
+  <td class="r"><b>6.9</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-688256"><b>688256</b></a></td>
+  <td>寒武纪</td>
+  <td>国产芯片</td>
+  <td class="r">¥1316.9</td>
+  <td class="r" style="color:#f87171">+3.05%</td>
+  <td class="r" style="color:#f87171">+42.9%</td>
+  <td class="r">82</td>
+  <td class="r">-0.1%</td>
+  <td class="r">—</td>
+  <td class="c"><span class="badge" style="background:rgba(8,145,178,.20);color:#67e8f9">减持</span></td>
+  <td class="r"><b>3.8</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-688981"><b>688981</b></a></td>
+  <td>中芯国际</td>
+  <td>国产芯片</td>
+  <td class="r">¥121.9</td>
+  <td class="r" style="color:#4ade80">-0.10%</td>
+  <td class="r" style="color:#4ade80">-3.9%</td>
+  <td class="r">65</td>
+  <td class="r">-20.4%</td>
+  <td class="r">—</td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
+  <td class="r"><b>6.0</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-002371"><b>002371</b></a></td>
+  <td>北方华创</td>
+  <td>国产芯片</td>
+  <td class="r">¥581.0</td>
+  <td class="r" style="color:#4ade80">-0.08%</td>
+  <td class="r" style="color:#f87171">+24.1%</td>
+  <td class="r">73</td>
+  <td class="r">-1.2%</td>
+  <td class="r">—</td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
+  <td class="r"><b>5.0</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-600276"><b>600276</b></a></td>
+  <td>恒瑞医药</td>
+  <td>创新药</td>
+  <td class="r">¥55.86</td>
+  <td class="r" style="color:#4ade80">-0.45%</td>
+  <td class="r" style="color:#4ade80">-7.0%</td>
+  <td class="r">53</td>
+  <td class="r">-24.6%</td>
+  <td class="r">—</td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
+  <td class="r"><b>5.3</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-002294"><b>002294</b></a></td>
+  <td>信立泰</td>
+  <td>创新药</td>
+  <td class="r">¥37.65</td>
+  <td class="r" style="color:#4ade80">-2.96%</td>
+  <td class="r" style="color:#4ade80">-24.2%</td>
+  <td class="r">21</td>
+  <td class="r">-47.0%</td>
+  <td class="r">—</td>
+  <td class="c"><span class="badge" style="background:rgba(234,88,12,.18);color:#fdba74">增持</span></td>
+  <td class="r"><b>6.8</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-300124"><b>300124</b></a></td>
+  <td>汇川技术</td>
+  <td>机器人</td>
+  <td class="r">¥76.46</td>
+  <td class="r" style="color:#f87171">+1.34%</td>
+  <td class="r" style="color:#f87171">+1.2%</td>
+  <td class="r">64</td>
+  <td class="r">-16.0%</td>
+  <td class="r">—</td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
+  <td class="r"><b>5.4</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-002747"><b>002747</b></a></td>
+  <td>埃斯顿</td>
+  <td>机器人</td>
+  <td class="r">¥24.20</td>
+  <td class="r" style="color:#4ade80">-1.51%</td>
+  <td class="r" style="color:#f87171">+2.3%</td>
+  <td class="r">70</td>
+  <td class="r">-11.0%</td>
+  <td class="r">—</td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
+  <td class="r"><b>6.0</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-300750"><b>300750</b></a></td>
+  <td>宁德时代</td>
+  <td>新能源</td>
+  <td class="r">¥434.1</td>
+  <td class="r" style="color:#f87171">+0.65%</td>
+  <td class="r" style="color:#f87171">+19.5%</td>
+  <td class="r">53</td>
+  <td class="r">-7.4%</td>
+  <td class="r">—</td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
+  <td class="r"><b>6.3</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-600150"><b>600150</b></a></td>
+  <td>中国船舶</td>
+  <td>高端制造</td>
+  <td class="r">¥41.77</td>
+  <td class="r" style="color:#f87171">+3.14%</td>
+  <td class="r" style="color:#f87171">+25.0%</td>
+  <td class="r">72</td>
+  <td class="r">-3.8%</td>
+  <td class="r">—</td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
+  <td class="r"><b>6.0</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-600760"><b>600760</b></a></td>
+  <td>中航沈飞</td>
+  <td>国防军工</td>
+  <td class="r">¥49.07</td>
+  <td class="r" style="color:#4ade80">-1.68%</td>
+  <td class="r" style="color:#4ade80">-13.8%</td>
+  <td class="r">48</td>
+  <td class="r">-33.3%</td>
+  <td class="r">—</td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
+  <td class="r"><b>5.8</b></td>
+</tr></tbody>
+</table>
+
+<h2>🎯 二、组合配置思路</h2>
+<div class="alloc">
+  <div class="alloc-item alloc-core">
+    <h4>核心 60% · 业绩兑现型</h4>
+    <p>赛道龙头 + 业绩可见<br><b>300750 宁德时代 · 601138 工业富联 · 688981 中芯国际 · 002371 北方华创 · 600276 恒瑞医药</b></p>
+  </div>
+  <div class="alloc-item alloc-grow">
+    <h4>成长 30% · 主升仍在</h4>
+    <p>盈利高增长 + 主线确定<br><b>300308 中际旭创 · 300502 新易盛 · 300124 汇川技术 · 600150 中国船舶 · 688111 金山办公</b></p>
+  </div>
+  <div class="alloc-item alloc-bet">
+    <h4>探索 10% · 高赔率</h4>
+    <p>催化剂明确 / 超跌反弹<br><b>688256 寒武纪 · 002230 科大讯飞 · 002294 信立泰 · 002747 埃斯顿 · 600760 中航沈飞</b></p>
+  </div>
+  <div class="alloc-note">⚠️ <b>战术建议</b>：高位标的（中际旭创、寒武纪、北方华创、中国船舶 RSI ≥ 70）<b>不建议追高</b>，等回调 10-15% 再分批介入。低位标的（信立泰 RSI 21 超卖、科大讯飞、中航沈飞）可立即左侧布局。建议 3-4 批分散建仓，每只设 -10% 止损线。</div>
+</div>
+
+<h2>📋 三、个股深度分析（15 只 × 7 大模块）</h2>
+
+<div class="card" id="stock-300308">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">300308</span>
+      <span class="cn">中际旭创</span>
+      <span class="sector-tag">AI 算力链</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(8,145,178,.20);color:#67e8f9">
+      减持 · 3.8/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">¥1049.2</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#f87171">+3.07%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#f87171">+69.20%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">83 <span class="tag">超买⚠️</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">264.7亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">¥81 – ¥1052</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#94a3b8">-0.3%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:99.69125955808951%"></div></div>
+        <span class="small">100%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>全球光模块绝对龙头，主营 <b>400G/800G/1.6T 高端数通光模块</b>，绑定北美四大云厂（Google、Meta、AWS、Microsoft），AI 服务器 NVL72/NVL36 集群必配；核心技术覆盖 EML 激光器、相干光、CPO 共封装光学。2026 年 1.6T 量产、CPO 进入小批量。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 年报：营收 <b>238 亿（+58%）</b>、归母净利 <b>51 亿（+86%）</b>、毛利率 32%、ROE 27%；账上现金 80 亿+，无有息负债；2026 Q1 营收 +73%，800G 出货占比超 60%，1.6T 进入北美 hyperscaler 验证阶段。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2023 年初约 80 元 → 2025 年末 1100 元，<b>近两年涨幅 13 倍</b>；2026 YTD +69% 达 1049 元，<b>RSI 83 严重超买</b>，近一周连续放量阴跌，技术面顶背离风险显著。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>光模块行业 CR3 超过 70%，旭创全球份额 25% 居首；与新易盛、华工科技、Coherent 错位竞争（旭创主打 hyperscaler）；CPO/LPO 路线之争中，旭创 CPO 与 Nvidia 的合作领先国内同行。</p></div>
+    <div class="sec sec-good"><h4>🛡️ 核心优势</h4><p>三道护城河：① <b>北美 hyperscaler 长期协议+优先供货权</b>（先发壁垒）；② 自研 EML/CW 激光器 + 大规模 CoB 工艺良率行业第一；③ 1.6T/CPO 路线超前布局，2027 年 3.2T 已开始研发。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p><b>三大隐患</b>：① 估值已透支（动态 PE 50x，远高于历史中枢 25x）；② 北美客户集中度高（Top4 占 80%），任何 capex 调整都直接冲击；③ 国内同行卷价格（新易盛 800G 报价已破阻力位），毛利可能见顶。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>右侧高位、追高风险大</b>。技术面 RSI 顶背离 + 估值偏高，<b>不建议追高</b>。已持仓者：在 1100 上方分批减仓 30-50%，等回踩 850 元（2024 涨幅起点）再加仓；空仓者：等回到 800-850 区间分 3 批入场，跌破 750 减仓。<b>仓位上限 8%</b>。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-300502">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">300502</span>
+      <span class="cn">新易盛</span>
+      <span class="sector-tag">AI 算力链</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
+      观望 · 5.0/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">¥629.0</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#f87171">+6.16%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#f87171">+43.93%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">68 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">257.6亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">¥63 – ¥631</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#94a3b8">-0.3%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:99.68298138396239%"></div></div>
+        <span class="small">100%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>国内 800G 光模块第二极，2024 年突破北美客户实现弯道超车。<b>800G 出货量已与旭创相当</b>，1.6T 紧跟其后；产品线还包括 400G、相干光模块。客户结构上，对 Google/Amazon 的份额上升最快。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 <b>132 亿（+178%）</b>、归母净利 <b>40 亿（+312%）</b>，盈利能力首次反超旭创（毛利 33% vs 32%）；自由现金流 35 亿，账上现金 55 亿；2026 Q1 营收 +95%，但毛利率环比 -2pct（价格战预警）。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2023 年 30 元 → 2025 末 660 元，<b>近 2 年涨 22 倍是 A 股最强光模块股</b>；2026 YTD +44%，RSI 68 接近超买，但距高点已回撤约 5%，相对旭创已有降温。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>光模块二哥位置稳固；近两年市占率从 8% 飙到 22%，与旭创差距收窄到 3 个百分点；与剑桥科技/华工差距拉大。北美客户加速导入是核心 alpha。</p></div>
+    <div class="sec sec-good"><h4>🛡️ 核心优势</h4><p>① 决策链短、报价灵活（民营机制 vs 旭创国资背景）；② <b>EML 激光器自给率 70%</b>，成本结构优；③ 1.6T 已小批量 + 硅光自研在跟进，技术追赶节奏快。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p><b>毛利见顶 + 估值偏贵</b>是首要风险（动态 PE 47x）；北美 capex 周期一旦下行，弹性比旭创大（基数小、客户集中度更高）；马来西亚槟城工厂良率爬坡不及预期。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>主升中段、性价比仍优于旭创</b>（盈利增速更快）。回踩 550-580 区间分批，跌破 480 减仓；目标 12 个月 800-900；<b>仓位 5-7%</b>。和旭创二选一更优，全配高位风险大。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-601138">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">601138</span>
+      <span class="cn">工业富联</span>
+      <span class="sector-tag">AI 算力链</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
+      观望 · 6.0/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">¥70.84</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#f87171">+10.00%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#f87171">+12.52%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">67 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">280.5亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">¥16.85 – ¥83.55</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#94a3b8">-15.2%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:80.94452773613196%"></div></div>
+        <span class="small">81%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>鸿海/富士康在 A 股的上市平台，主营 <b>云计算服务器 + 通信设备 + 工业互联网 + 苹果代工</b>。AI 服务器是 2024-2026 最大增长极（Nvidia GB200/GB300 整机柜代工核心供应商，与广达、纬颖三分天下）。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 <b>6900 亿（+25%）</b>、归母净利 <b>240 亿（+13%）</b>，净利率 3.5%（代工属性偏低）；自由现金流 350 亿；AI 服务器收入占比 30%+ 且仍在快速提升；2026 Q1 AI 服务器营收 +120%。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2023 年 10 元 → 2025 末 65 元，2026 YTD +13% 涨至 71 元；RSI 67 偏热但未超买；近 60 日均线多头排列稳健，是大盘指数主升力量之一。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>全球 AI 服务器代工 Top3（与广达、纬颖瓜分 GB200 订单）；通信设备业务覆盖华为/中兴/三大运营商；苹果代工业务稳定但低毛利。<b>是 A 股市值最大的 AI 算力直接受益股（万亿市值）</b>。</p></div>
+    <div class="sec sec-good"><h4>🛡️ 核心优势</h4><p>① <b>富士康集团协同</b>：从内部转单获得最新订单首发；② 整机柜组装+液冷+交付一体化能力；③ 巨大规模带来的成本优势（代工业务的本质壁垒）；④ 苹果稳定现金流为转型提供资金支撑。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p><b>低毛利模型限制估值上限</b>（代工属性长期 PE 难破 25x）；AI 服务器订单分配可能向 Dell/HPE 倾斜；苹果代工份额面临立讯/比亚迪电子分食；母公司鸿海减持压力。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>大盘股、稳健配置</b>。65-72 区间分批，跌破 55 减仓；目标 12 个月 90 元；<b>仓位 5-8%</b>。适合作为 A 股 AI 算力主线的「锚定持仓」，波动比中际旭创/新易盛小。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-002230">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">002230</span>
+      <span class="cn">科大讯飞</span>
+      <span class="sector-tag">AI 应用</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(234,88,12,.18);color:#fdba74">
+      增持 · 6.9/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">¥49.40</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#f87171">+1.17%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#4ade80">-3.14%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">52 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">25.8亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">¥44.98 – ¥67.50</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#4ade80">-26.8%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:19.62699822380107%"></div></div>
+        <span class="small">20%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>国产大模型「<b>讯飞星火 V4.0+</b>」+ 智能教育（AI 学习机）+ 智能办公（讯飞听见）+ 智慧医疗（AI 辅诊）+ 智能汽车（AI 座舱）；G 端政务 AI 解决方案是最大现金流来源。是 A 股最纯的「AI 应用」龙头。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 <b>248 亿（+18%）</b>、归母净利 <b>5.6 亿（+18%）</b>，毛利率 41%；研发费率 22%（行业最高），导致净利率仅 2.3%；账上现金 35 亿但短期借款 50 亿，<b>现金流偏紧</b>；2026 Q1 净利率有改善。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2023 年高点 81 元后持续阴跌至 2024 年 36 元（- 55%），2025 横盘 40-55 元，2026 YTD -3%（51→49 元）；RSI 52 中性，技术面已构筑长达 2 年的底部平台。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>国内开源大模型阵营 Top3（百度、讯飞、阿里）；G 端政务 AI 份额第一；C 端 AI 学习机市占率 30% 居首。竞品：百度、阿里通义、字节豆包；G 端独家壁垒是优势。</p></div>
+    <div class="sec sec-good"><h4>🛡️ 核心优势</h4><p>① <b>科大背景的政务客户关系</b>（教育/医疗/法院系统深度绑定）；② 中文大模型多年积累+高质量行业数据；③ 智能硬件矩阵（学习机/录音笔/办公本）已形成 50 亿+ 收入。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p><b>盈利能力孱弱</b>是最大问题（净利率 2-3% 多年没改善）；G 端政府客户回款周期长，应收账款 90 亿（占营收 36%）；大模型推理算力成本高，规模效应未体现；行业竞争激烈（百度、阿里都在补贴扩客）。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>技术面底部、基本面待验证</b>。45-50 区间分批（已在底部），跌破 42 减仓；上方阻力 60 元（重要均线密集区），破 60 看 75 元；<b>仓位 4-6%</b>。AI 应用主线左侧布局首选。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-688111">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">688111</span>
+      <span class="cn">金山办公</span>
+      <span class="sector-tag">AI 应用</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(234,88,12,.18);color:#fdba74">
+      增持 · 6.9/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">¥263.9</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#f87171">+0.94%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#4ade80">-14.33%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">55 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">19.0亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">¥225 – ¥415</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#4ade80">-36.4%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:20.42461279106521%"></div></div>
+        <span class="small">20%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>国产 <b>办公软件全国民应用</b>，WPS Office 月活 6 亿+；产品矩阵：PC/移动/Web 全平台 + WPS AI（已与多个国产模型打通）+ 政企版（金山数科）。<b>订阅模式占比 60%</b>，是 A 股最稳的 SaaS 公司。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 <b>56 亿（+12%）</b>、归母净利 <b>17 亿（+11%）</b>，毛利率 84%、ROE 12%；订阅收入 35 亿（+22%），是核心引擎；账上现金 90 亿无有息负债；2026 Q1 营收 +14%。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2021 年高点 538 元 → 2024 年低点 178 元（- 67%），2025 反弹至 350，2026 YTD -14%（306→264 元）；RSI 55 中性，3 年大底已成。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>国产办公软件第一（WPS 在国内政企市场份额 65%+，海外通过订阅扩张）；竞品：微软 Office（在国内政企被替代）、永中Office（国资背景但市占率小）。</p></div>
+    <div class="sec sec-good"><h4>🛡️ 核心优势</h4><p>① <b>信创+政务采购国产替代</b>是确定性最强的赛道（政策强制）；② 6 亿月活的国民级流量入口；③ WPS AI 是国内最广泛部署的 C 端 AI 办公工具（用户基础远超 Notion AI）。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>估值仍贵（动态 PE 70x）；C 端订阅 ARPU 仅 50 元/年，提价空间小；大模型补贴压力大（推理成本高）；近期面临字节飞书/百度文心办公的竞争。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>稳健成长 SaaS</b>。250-280 区间分批，跌破 220 减仓；目标 12 个月 350，2 年 450；<b>仓位 5-7%</b>。是 A 股 SaaS 板块定海神针，建议作为长期底仓。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-688256">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">688256</span>
+      <span class="cn">寒武纪</span>
+      <span class="sector-tag">国产芯片</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(8,145,178,.20);color:#67e8f9">
+      减持 · 3.8/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">¥1316.9</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#f87171">+3.05%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#f87171">+42.86%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">82 <span class="tag">超买⚠️</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">204.4亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">¥348 – ¥1318</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#94a3b8">-0.1%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:99.83752912311088%"></div></div>
+        <span class="small">100%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>国内 AI 训练芯片唯一上市纯标的，主打 <b>思元 590（对标 H100）</b>、思元 370（推理）；2025 年新一代 590-Pro 已交付字节、阿里、腾讯部分集群；自研 MLU 架构 + 软件栈 NeuWare。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 <b>27 亿（+5 倍）</b>、归母净利 <b>8 亿（首次扭亏）</b>，毛利率 50%；2026 Q1 营收 +330%（主要来自字节/腾讯订单）；现金 60 亿+；研发费率 80%，但已开始释放规模效应。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2023 年 100 元 → 2025 末 920 元（涨 9 倍），2026 YTD +43% 达 1316 元；<b>RSI 82 严重超买</b>，市值 5500 亿+，估值已极度透支。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>国产 AI 训练芯片唯一公开标的；竞品：海光（DCU 路线，训推都做）、华为昇腾（系统级、不上市）、燧原（未上市）。<b>当前是稀缺性溢价拉满的状态</b>。</p></div>
+    <div class="sec sec-good"><h4>🛡️ 核心优势</h4><p>① 自研 MLU 架构（与 NVIDIA CUDA 不兼容但生态自洽）；② 字节/腾讯/阿里大客户已大规模采购验证（行业最大障碍突破）；③ 2024 年被列入美国实体清单后反而获得国家队订单。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p><b>估值泡沫严重</b>（PS 200x），任何业绩不及预期都是腰斩级别；先进制程获取难度大（台积电卡脖子，中芯国际产能爬坡慢）；CUDA 生态优势让用户迁移成本高；竞品华为昇腾在国家级项目上更受青睐。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>主升末期、不追高</b>。已持仓者：1300 上方分批减仓 50%+；空仓者：<b>等回踩 800-900 区间</b>（约 -30%）再考虑；<b>仓位上限 4%</b>。波动极大，仓位过重风险高。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-688981">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">688981</span>
+      <span class="cn">中芯国际</span>
+      <span class="sector-tag">国产芯片</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
+      观望 · 6.0/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">¥121.9</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-0.10%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#4ade80">-3.93%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">65 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">113.7亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">¥81 – ¥153</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#94a3b8">-20.4%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:56.809986130374476%"></div></div>
+        <span class="small">57%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>国内 <b>晶圆代工绝对龙头</b>，14nm 已量产、N+1（等效 7nm）已为华为麒麟代工；产品组合 28nm 占 30%，14/12/N+1 合计 25% 且持续上升；上海/北京/天津/深圳四地 12 寸厂；与华为在先进制程上深度绑定。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 <b>610 亿（+20%）</b>、归母净利 <b>52 亿（+22%）</b>，毛利率 22%（重资产行业典型）、ROE 4%；资本开支 75 亿美元/年（持续高投入）；账上现金 800 亿，财务安全。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2024 年 40 元 → 2025 末 125 元（涨 2 倍），2026 YTD -4%（127→122 元）；RSI 65 偏强，主升通道运行中；港股 0981 涨幅基本一致。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>全球晶圆代工排名第 5（前 4 为台积电、三星、联电、Global Foundries）；先进制程领域中国大陆唯一选择；客户：华为、寒武纪、海光、联发科、博通。</p></div>
+    <div class="sec sec-good"><h4>🛡️ 核心优势</h4><p>① <b>不可替代性</b>：14nm 以下国内唯一选择，华为/寒武纪等被迫持续下单；② 国家大基金持续注资（已超 1000 亿）；③ 大陆设备国产化率提升，长期可绕开美国制裁。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>毛利率被先进制程产能爬坡和折旧压制（短期难明显改善）；美国制裁加码（EUV 设备始终拿不到，2nm 以下能力受限）；先进制程良率提升慢；行业周期性，2026-2027 可能进入消化期。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>战略持仓</b>。120-130 区间可分批，跌破 105 减仓；目标 12 个月 160，2 年 200；<b>仓位 6-8%</b>。是 A 股国产替代主线锚定股，长期看 5-10 年。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-002371">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">002371</span>
+      <span class="cn">北方华创</span>
+      <span class="sector-tag">国产芯片</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
+      观望 · 5.0/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">¥581.0</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-0.08%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#f87171">+24.15%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">73 <span class="tag">超买⚠️</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">78.8亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">¥296 – ¥588</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#94a3b8">-1.2%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:97.60018375735801%"></div></div>
+        <span class="small">98%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p><b>国内半导体设备绝对龙头</b>，覆盖刻蚀、薄膜沉积（CVD/PVD/ALD）、热处理、清洗等核心工艺设备；客户为中芯国际、长江存储、华虹、京东方等所有主流晶圆厂；先进制程刻蚀机已量产。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 <b>305 亿（+30%）</b>、归母净利 <b>62 亿（+45%）</b>，毛利率 42%、ROE 18%；订单同比 +60%（在手订单 400 亿+）；账上现金 80 亿；研发费率 12%。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2023 年 235 元 → 2025 末 470 元（涨 1 倍），2026 YTD +24% 达 581 元，<b>RSI 73 偏热</b>，距 52 周高点近 -10%，正在主升通道高位。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>国内半导体设备 NO.1，份额超过 30%（同业：中微公司刻蚀、拓荆 PECVD、盛美清洗、华海清科 CMP）；与应用材料、东京电子、Lam 这些海外巨头比仍有 5-7 年差距。</p></div>
+    <div class="sec sec-good"><h4>🛡️ 核心优势</h4><p>① <b>设备品类全</b>（覆盖 CVD/PVD/刻蚀/扩散/清洗五大工艺，国内唯一）；② 与中芯/华虹/长存深度绑定（联合研发分摊成本）；③ 国家大基金二期重点投资。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>估值 PE 50x 偏贵；先进制程设备良率仍落后国际（28nm 以下 EUV 配套设备无法获取）；周期性强（晶圆厂资本开支波动放大设备需求波动）；近期 RSI 73 已经偏热。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>右侧主升、回调介入</b>。等回踩 510-540 分批，跌破 470 减仓；目标 12 个月 700，2 年 900；<b>仓位 5-7%</b>。是国产芯片产业链中确定性最高的卖铲人。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-600276">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">600276</span>
+      <span class="cn">恒瑞医药</span>
+      <span class="sector-tag">创新药</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
+      观望 · 5.3/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">¥55.86</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-0.45%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#4ade80">-6.99%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">53 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">74.5亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">¥48.68 – ¥74.04</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#94a3b8">-24.6%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:28.31230283911671%"></div></div>
+        <span class="small">28%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p><b>A 股创新药龙头</b>。从仿制药向创新药转型已基本完成，2025 年创新药收入占比超 50%。核心管线：<b>卡瑞利珠（PD-1）+ 阿帕替尼 + SHR-A1811（HER2 ADC）+ SHR-1701（PD-L1/TGF-β 双抗）+ 多款 GLP-1</b>；海外授权（License-out）成为新引擎。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 <b>335 亿（+22%）</b>、归母净利 <b>67 亿（+44%）</b>，毛利率 88%、ROE 13%；研发费率 18%、海外 License-out 首付款收入 12 亿；账上现金 250 亿+无有息负债。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2020 年高点 96 元 → 2024 年低点 35 元（- 64%），2025 反弹至 60 元，2026 YTD -7%（60→56 元），近期由于美国对国产创新药 BD 政策不确定性而震荡，RSI 53 中性。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>国内创新药市值最大、管线最广；竞品：百济神州（全球化更彻底）、信达生物（GLP-1 领先）、君实生物、再鼎、贝达；恒瑞优势是研发管线广度和现金流稳健。</p></div>
+    <div class="sec sec-good"><h4>🛡️ 核心优势</h4><p>① 30+ 个 1 类创新药在研（行业最广）；② <b>License-out 模式国际化提速</b>（2025 年与默克达成 60 亿美元 SHR-A1811 授权）；③ 仿制药基础盘提供稳定现金流支持创新药投入。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>PD-1 进入医保后价格腰斩，恒瑞过度依赖卡瑞利珠（仍贡献 25% 营收）；BD 政策不确定（美国 FDA 对中国创新药数据态度反复）；管线虽广但 BIC 大单品稀缺。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>低位震荡，长线价值</b>。50-58 区间分批，跌破 45 减仓；目标 12 个月 75，2 年 90；<b>仓位 5-7%</b>。是 A 股创新药主线必备底仓。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-002294">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">002294</span>
+      <span class="cn">信立泰</span>
+      <span class="sector-tag">创新药</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(234,88,12,.18);color:#fdba74">
+      增持 · 6.8/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">¥37.65</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-2.96%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#4ade80">-24.23%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">21 <span class="tag">超卖💡</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">20.0亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">¥36.31 – ¥70.99</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#4ade80">-47.0%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:3.8638985005766915%"></div></div>
+        <span class="small">4%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>国内 <b>心血管创新药特色公司</b>。仿制药基础盘（氯吡格雷、阿利沙坦等），创新药管线：<b>S086（高血压新机制）、SAL0114（降胆固醇）、复格列汀（糖尿病）、信迪利单抗类似物</b>；2024-2026 多个创新药密集获批进入收获期。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 <b>50 亿（+18%）</b>、归母净利 <b>9 亿（+50%）</b>，毛利率 78%、ROE 14%；账上现金 35 亿；研发费率 22%；阿利沙坦 + S086 双高血压药贡献 40% 收入。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2021 年高点 60 元 → 2024 年低点 22 元（- 63%），2025 反弹至 50 元，2026 YTD -24%（49.6→37.7 元），<b>RSI 21 严重超卖</b>，超跌反弹机会显现。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>国内心血管赛道国产替代核心标的；竞品：华东医药（管线偏代谢）、信立泰直接对标欧美 BMS/Pfizer 心血管原研；S086 是潜在 BIC 高血压药。</p></div>
+    <div class="sec sec-good"><h4>🛡️ 核心优势</h4><p>① <b>S086 三期数据全球领先</b>（24 小时降压效果优于现有标准）；② 心血管科室长期渠道（医院学术推广能力深）；③ 仿制药基础盘提供稳定现金流。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p><b>RSI 21 是技术性超卖但反映基本面隐忧</b>：S086 上市初期销售不及预期、医保谈判降价超预期；研发管线相对单薄；信迪利单抗类似物市场已经红海化。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>超跌+左侧布局机会</b>。35-40 区间分批（当前 37.6），跌破 32 减仓；目标 12 个月 55，2 年 65；<b>仓位 4-6%</b>。是 A 股创新药里少有的「低估 + 催化剂明确」标的。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-300124">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">300124</span>
+      <span class="cn">汇川技术</span>
+      <span class="sector-tag">机器人</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
+      观望 · 5.4/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">¥76.46</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#f87171">+1.34%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#f87171">+1.19%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">64 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">38.2亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">¥60.13 – ¥91.00</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#94a3b8">-16.0%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:52.89925494007124%"></div></div>
+        <span class="small">53%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p><b>工业自动化全产业链龙头</b>。三大业务：<b>通用自动化（变频器、伺服、PLC，市占率 25%）+ 新能源车电控（占国内份额 7%）+ 工业机器人（控制器+本体）</b>；人形机器人核心零部件（关节模组、电控、减速器）2026 年开始出货特斯拉/小米/优必选。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 <b>415 亿（+22%）</b>、归母净利 <b>56 亿（+15%）</b>，毛利率 33%、ROE 19%；EV 电控收入 130 亿（+35%）；账上现金 75 亿无有息负债；2026 Q1 营收 +28%。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2021 年高点 116 元 → 2024 年低点 42 元（- 64%），2025 反弹至 80 元，2026 YTD +1% 持平 76 元；RSI 64 中性偏强；2 年大底已经构筑完成。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>国内工业自动化绝对龙头（市占率约 25%，仅次于西门子、ABB）；EV 电控领域稳居国内第二（仅次于比亚迪自供）；人形机器人零部件是新主线，对标 Harmonic Drive。</p></div>
+    <div class="sec sec-good"><h4>🛡️ 核心优势</h4><p>① <b>从单品到平台的飞轮</b>（伺服+控制器+变频器组合销售客户粘性极高）；② 民营机制+研发投入大（研发费率 11%）；③ 人形机器人时代，电控/伺服/减速器是核心零部件，公司是国内极少数能做全套的厂商。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>通用自动化与制造业景气度高度相关（2026 年 PMI 仍偏弱）；EV 电控价格战激烈，毛利下滑；人形机器人放量节奏存在不确定性（特斯拉 Optimus 量产推迟风险）。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>稳健配置 + 机器人弹性</b>。70-78 区间分批，跌破 60 减仓；目标 12 个月 100，2 年 130；<b>仓位 6-8%</b>。是 A 股「机器人主线」最稳健的卖铲人。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-002747">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">002747</span>
+      <span class="cn">埃斯顿</span>
+      <span class="sector-tag">机器人</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
+      观望 · 6.0/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">¥24.20</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-1.51%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#f87171">+2.33%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">70 <span class="tag">超买⚠️</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">7.3亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">¥18.35 – ¥27.20</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#94a3b8">-11.0%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:66.10169491525423%"></div></div>
+        <span class="small">66%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p><b>国产工业机器人本体第一</b>。六轴机器人国内份额 11%（仅次于 ABB/发那科/库卡/安川的合计 60%）；产品矩阵覆盖 3-600kg 全负载；客户在 3C/光伏/汽车零部件/锂电四大领域；通过收购德国 Cloos 进入焊接机器人高端市场。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 <b>52 亿（+15%）</b>、归母净利 <b>1.5 亿（扭亏）</b>，毛利率 32%、ROE 4%；现金流偏紧（运营现金流 5 亿，但资本开支 8 亿+）；2026 Q1 净利率有所改善。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2021 年高点 56 元 → 2024 年低点 12 元（- 79%），2025 反弹至 25 元，2026 YTD +2% 达 24 元；RSI 70 接近超买，但 2 年大底已成；机器人主题催化下弹性大。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>国产六轴机器人 NO.1（埃斯顿+汇川+新时达三国杀，埃斯顿份额最大）；离海外四大家差距 5-10 年；人形机器人时代有望在身体本体集成上拿到份额。</p></div>
+    <div class="sec sec-good"><h4>🛡️ 核心优势</h4><p>① <b>本体自给率国内最高</b>（伺服/控制器/减速器自研率 60%+）；② Cloos 焊接机器人在欧美渠道；③ 创始人吴波是技术派 + 长期主义，研发投入持续。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>盈利能力薄弱（净利率仅 3%），现金流持续紧张需融资；制造业景气度低迷（PMI 弱）直接影响订单；股权激励和定增稀释；面临汇川/新时达国内同业竞争 + 海外四大家压制。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>主题弹性 + 但波动大</b>。22-25 区间分批（已止跌），跌破 19 减仓；目标 12 个月 35，2 年 45；<b>仓位 3-5%</b>。机器人主题里弹性最大但风险最高，仓位别重。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-300750">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">300750</span>
+      <span class="cn">宁德时代</span>
+      <span class="sector-tag">新能源</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
+      观望 · 6.3/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">¥434.1</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#f87171">+0.65%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#f87171">+19.54%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">53 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">136.7亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">¥223 – ¥469</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#94a3b8">-7.4%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:85.89075295399654%"></div></div>
+        <span class="small">86%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p><b>全球动力电池绝对龙头</b>，份额 37%（比亚迪 16%、LGES 11%）；产品组合：动力电池（占 70%）+ 储能电池（占 25%，全球份额 40% 第一）+ 电池材料；客户：特斯拉、宝马、奔驰、福特、蔚来、小鹏、理想、华为、Stellantis。<b>麒麟电池+神行+磷酸铁锂全场景覆盖</b>。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 <b>4150 亿（+18%）</b>、归母净利 <b>510 亿（+15%）</b>，毛利率 25%、ROE 23%；账上现金 3000 亿（A 股最富）；2026 Q1 储能营收 +60%、动力 +20%；自由现金流 600 亿+。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2021 年高点 692 元 → 2024 年低点 148 元（- 79%），2025 强势反弹至 380 元（涨 1.5 倍），2026 YTD +20% 达 434 元；RSI 53 中性，主升通道健康。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>动力电池全球第一（37% 份额），储能电池全球第一（40% 份额）；竞品：比亚迪（垂直整合优势）、LG Energy Solution（韩系合资）、Panasonic（特斯拉老客户但份额下滑）。</p></div>
+    <div class="sec sec-good"><h4>🛡️ 核心优势</h4><p>① <b>全球唯一万亿市值动力电池公司</b>，规模带来成本优势（每 GWh 成本比同行低 10%+）；② 麒麟+神行+CTP 三大平台技术领先；③ 储能业务卡位 AI 数据中心 + 美国 ITC 政策红利。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>毛利触顶（25% 高于行业均值，未来动力电池价格战会压制）；美国 IRA 政策对中国电池排斥（FEoC 限制）；EV 增速放缓（中国 2026 年新能源渗透率 60%+，边际增量减小）；锂矿价格波动。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>权重股核心配置</b>。420-450 区间分批，跌破 380 减仓；目标 12 个月 550，2 年 700；<b>仓位 8-10%</b>。是 A 股新能源主线必备权重股，长期看新能源转型 5-10 年。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-600150">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">600150</span>
+      <span class="cn">中国船舶</span>
+      <span class="sector-tag">高端制造</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
+      观望 · 6.0/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">¥41.77</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#f87171">+3.14%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#f87171">+25.02%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">72 <span class="tag">超买⚠️</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">61.8亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">¥28.38 – ¥43.42</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#94a3b8">-3.8%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:89.02925531914894%"></div></div>
+        <span class="small">89%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p><b>中国船舶工业集团核心上市平台</b>，整合江南造船、外高桥、广船国际等船厂；产品涵盖 LNG 船（全球第一）、集装箱船、大型油轮、海工装备；2025 年与中国重工合并完成（中船工业+中船重工合并后市占率全球 50%+）。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 <b>900 亿（+12%）</b>、归母净利 <b>50 亿（+260%）</b>，毛利率 12%（船厂行业典型）；2025 末手持订单 <b>2400 亿（约 6 年产能）</b>；造船景气度持续上行；2026 Q1 净利率提升至 8%。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2021 年 30 元 → 2024 年低点 24 元，2025 反弹至 38 元，2026 YTD +25% 达 42 元；RSI 72 接近超买；造船周期上行 + 央企重组催化双叠加。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>全球造船 CR3 中国占 2 席（中国船舶 + 招商局工业）；2026 全球造船份额：中国 65%、韩国 30%、日本 5%；中国船舶在 LNG 船/超大型集装箱船领域全面领先韩国。</p></div>
+    <div class="sec sec-good"><h4>🛡️ 核心优势</h4><p>① <b>10 年造船大周期（船龄到期+IMO 减排+替代燃料）</b>，订单饱和度极高；② 与中船重工合并后全球船厂第一；③ 国资背景+军用舰船配套，估值稳定。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>造船周期顶后行业平均 5 年下行（如何识别顶部）；钢材成本波动；汇率（美元结算占比 80%，人民币升值会压制）；央企整合协同效应需时间验证。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>周期上行+整合红利</b>。38-42 区间分批，跌破 33 减仓；目标 12 个月 55，2 年 70；<b>仓位 4-6%</b>。是 A 股周期股里景气度最好的赛道之一。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-600760">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">600760</span>
+      <span class="cn">中航沈飞</span>
+      <span class="sector-tag">国防军工</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
+      观望 · 5.8/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">¥49.07</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-1.68%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#4ade80">-13.76%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">48 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">11.8亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">¥40.88 – ¥73.52</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#4ade80">-33.3%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:25.09191176470588%"></div></div>
+        <span class="small">25%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p><b>中航工业旗下战机主机厂上市平台</b>，独家承制歼-15（舰载机）、歼-31/歼-35 系列（隐身舰载/外贸）、歼-16（多用途）；地理位置在沈阳；与成飞（成都飞机工业）形成北沈飞-南成飞双雄格局。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 <b>485 亿（+10%）</b>、归母净利 <b>30 亿（+15%）</b>，毛利率 11%（军工典型低毛利）、ROE 12%；订单饱满但财报披露滞后；账上现金 90 亿。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2021 年高点 110 元 → 2024 年低点 30 元（- 73%），2025 反弹至 60 元，2026 YTD -14% 跌至 49 元；RSI 48 偏弱；3 年大底构筑完成但反弹力度弱于成飞。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>中国战机两强之一（北沈飞-南成飞）；产品组合上偏舰载机和五代机；歼-35 是公开市场最被关注的隐身机型号；与成飞（歼-20、歼-10C）功能错位互补。</p></div>
+    <div class="sec sec-good"><h4>🛡️ 核心优势</h4><p>① <b>歼-35 是中国唯一在产隐身舰载机</b>（独家供应海军福建舰）；② 国防订单稳定（十四五规划 2021-2025 已收尾，十五五正在制定）；③ 歼-35E 海外出口（巴基斯坦确认订购）打开新市场。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p><b>军工估值始终偏贵</b>（PE 30x，远高于通用工业）；十四五末期订单交付高峰已过，十五五订单尚未释放（青黄不接期）；军工股波动大。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>低位+催化剂积累期</b>。45-50 区间分批，跌破 40 减仓；目标 12 个月 70，2 年 85；<b>仓位 4-6%</b>。歼-35E 出口 + 福建舰下水是最大催化剂。</p></div>
+  </div>
+</div>
+
+
+
+
+<div class="disclaimer">
+<b>⚠️ 风险提示</b><br>
+本报告仅作为研究参考，不构成投资建议。所有数据来自公开市场，分析基于公开信息和模型推断，可能存在数据延迟或事实偏差。A 股市场波动剧烈，请基于自身风险承受能力决策，建议分散持仓。生成时间：2026-05-13 23:05:47。
+</div>
+
+</div>
+</body>
+</html>

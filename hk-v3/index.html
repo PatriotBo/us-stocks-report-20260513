@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>🇭🇰 港股爆发前期<span class="accent">深度研究</span> · 10 只候选 · 2026-05-13</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+*{box-sizing:border-box}
+:root{
+  --bg:#0b1020; --bg-2:#0f172a;
+  --surface:#111a2e; --surface-2:#162033; --surface-hi:#1c2742;
+  --border:rgba(148,163,184,.14); --border-strong:rgba(148,163,184,.22);
+  --text:#e2e8f0; --text-2:#cbd5e1; --text-3:#94a3b8; --text-4:#64748b;
+  --accent:#60a5fa; --accent-2:#a78bfa;
+  --good:#34d399; --bad:#f87171; --warn:#fbbf24;
+}
+html,body{background:var(--bg);}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  color:var(--text);line-height:1.7;
+  background:radial-gradient(1200px 600px at 10% -10%, rgba(96,165,250,.08), transparent 60%),
+    radial-gradient(1000px 500px at 100% 0%, rgba(167,139,250,.07), transparent 60%),var(--bg);
+  -webkit-font-smoothing:antialiased;}
+::selection{background:rgba(96,165,250,.35);}
+a{color:var(--accent);text-decoration:none;}
+a:hover{color:#93c5fd;}
+.wrap{max-width:1180px;margin:0 auto;padding:32px 22px 80px;}
+
+header.hero{position:relative;overflow:hidden;
+  background:linear-gradient(135deg, rgba(96,165,250,.12), rgba(167,139,250,.08) 50%, rgba(236,72,153,.08)),
+    linear-gradient(180deg,#101a31 0%, #0c1426 100%);
+  border:1px solid var(--border-strong);color:#fff;padding:46px 38px;
+  border-radius:20px;margin-bottom:28px;
+  box-shadow:0 20px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);}
+header.hero::before{content:"";position:absolute;inset:-1px;border-radius:20px;pointer-events:none;
+  background:radial-gradient(600px 240px at 80% -20%, rgba(96,165,250,.18), transparent 60%);}
+header.hero .badge-v{display:inline-block;padding:4px 12px;border-radius:20px;
+  background:linear-gradient(90deg,#60a5fa,#a78bfa);color:#0b1020;
+  font-weight:800;font-size:11px;letter-spacing:1px;margin-bottom:14px;}
+header.hero h1{margin:0 0 12px;font-size:32px;font-weight:700;letter-spacing:.3px;}
+header.hero h1 .accent{background:linear-gradient(90deg,#60a5fa,#a78bfa);
+  -webkit-background-clip:text;background-clip:text;color:transparent;}
+header.hero .meta{font-size:13px;color:var(--text-3);}
+header.hero .lead{margin-top:14px;font-size:15.5px;color:var(--text-2);max-width:920px;}
+header.hero .lead b{color:#fff;}
+header.hero .stat-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px;}
+header.hero .stat{background:rgba(255,255,255,.04);border:1px solid var(--border);
+  padding:11px 16px;border-radius:10px;font-size:12px;color:var(--text-3);}
+header.hero .stat b{color:#fff;font-size:14px;margin-left:6px;}
+.principle{margin-top:18px;background:rgba(96,165,250,.06);border:1px solid rgba(96,165,250,.18);
+  padding:14px 18px;border-radius:12px;font-size:13.5px;color:var(--text-2);}
+.principle b{color:#93c5fd;}
+
+h2{margin:38px 0 18px;font-size:22px;font-weight:700;padding-left:14px;color:var(--text);
+  border-left:4px solid transparent;border-image:linear-gradient(180deg,#60a5fa,#a78bfa) 1;}
+h3{margin:18px 0 10px;font-size:17px;color:var(--text);}
+
+.toc{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 22px;margin-bottom:24px;}
+.toc h3{margin:0 0 12px;}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px;font-size:13px;}
+.toc-grid a{color:var(--text-2);padding:8px 11px;border-radius:8px;border:1px solid transparent;transition:all .15s;}
+.toc-grid a:hover{background:var(--surface-hi);color:#fff;border-color:var(--border-strong);}
+.toc-grid a b{color:var(--accent);margin-right:6px;letter-spacing:.4px;}
+
+table.summary{width:100%;border-collapse:separate;border-spacing:0;background:var(--surface);
+  border:1px solid var(--border);border-radius:14px;overflow:hidden;font-size:13px;
+  box-shadow:0 4px 18px rgba(0,0,0,.30);}
+table.summary th{background:var(--surface-2);padding:11px 8px;text-align:left;font-weight:600;
+  color:var(--text-3);border-bottom:1px solid var(--border-strong);
+  font-size:11px;letter-spacing:.6px;text-transform:uppercase;}
+table.summary td{padding:12px 8px;border-bottom:1px solid var(--border);color:var(--text);}
+table.summary tr:last-child td{border-bottom:none;}
+table.summary tbody tr:hover td{background:var(--surface-hi);}
+table.summary .r{text-align:right;font-variant-numeric:tabular-nums;}
+table.summary .c{text-align:center;}
+table.summary a{color:var(--accent);font-weight:700;letter-spacing:.4px;}
+.badge{padding:3px 10px;border-radius:12px;font-size:11.5px;font-weight:700;border:1px solid currentColor;}
+
+.card{background:linear-gradient(180deg,var(--surface) 0%,var(--surface-2) 100%);
+  border:1px solid var(--border);border-radius:18px;padding:26px 30px;margin:22px 0;
+  box-shadow:0 4px 22px rgba(0,0,0,.25);scroll-margin-top:20px;}
+.card:hover{border-color:var(--border-strong);}
+.card-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--border);}
+.card-title{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+.ticker{font-size:24px;font-weight:800;letter-spacing:.6px;
+  background:linear-gradient(90deg,#60a5fa,#a78bfa);
+  -webkit-background-clip:text;background-clip:text;color:transparent;}
+.cn{font-size:16px;color:var(--text);font-weight:600;}
+.sector-tag{font-size:11px;background:rgba(96,165,250,.10);color:#93c5fd;
+  padding:4px 10px;border-radius:10px;font-weight:600;border:1px solid rgba(96,165,250,.22);}
+.rating-pill{padding:6px 14px;border-radius:20px;font-weight:700;font-size:14px;border:1px solid currentColor;}
+
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  margin:14px 0 22px;background:var(--border);padding:1px;border-radius:12px;overflow:hidden;}
+.m{background:var(--surface-2);padding:12px 14px;font-size:13px;}
+.m-l{color:var(--text-4);font-size:10.5px;letter-spacing:.7px;text-transform:uppercase;margin-bottom:4px;font-weight:600;}
+.m-v{font-weight:700;font-size:15.5px;color:var(--text);font-variant-numeric:tabular-nums;}
+.m-v.small{font-size:13px;}
+.tag{font-size:10px;background:rgba(167,139,250,.16);color:#c4b5fd;padding:2px 7px;border-radius:6px;margin-left:5px;font-weight:700;border:1px solid rgba(167,139,250,.25);}
+.bar{height:6px;background:rgba(148,163,184,.18);border-radius:3px;overflow:hidden;margin:6px 0 4px;}
+.bar-fill{height:100%;background:linear-gradient(90deg,#34d399 0%,#fbbf24 50%,#f87171 100%);}
+.small{font-size:12px;color:var(--text-3);}
+
+.sections{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.sec{background:rgba(255,255,255,.02);padding:14px 18px;border-radius:10px;
+  border-left:3px solid rgba(148,163,184,.35);
+  border-top:1px solid var(--border);border-right:1px solid var(--border);border-bottom:1px solid var(--border);}
+.sec h4{margin:0 0 7px;font-size:13.5px;color:var(--text-2);font-weight:700;letter-spacing:.2px;}
+.sec p{margin:0;font-size:14px;color:var(--text);}
+.sec p b{color:#fff;}
+.sec-good{border-left-color:#34d399;background:rgba(52,211,153,.06);grid-column:1/-1;}
+.sec-good h4{color:#6ee7b7;}
+.sec-bad{border-left-color:#f87171;background:rgba(248,113,113,.06);}
+.sec-bad h4{color:#fca5a5;}
+.sec-action{border-left-color:#60a5fa;
+  background:linear-gradient(90deg,rgba(96,165,250,.10),rgba(167,139,250,.06));grid-column:1/-1;}
+.sec-action h4{color:#93c5fd;}
+.sec-action p{font-size:15px;line-height:1.75;}
+
+.disclaimer{margin-top:42px;padding:18px 22px;background:rgba(251,191,36,.07);
+  border:1px solid rgba(251,191,36,.22);border-left:4px solid var(--warn);
+  border-radius:10px;font-size:13px;color:#fde68a;}
+.disclaimer b{color:#fbbf24;}
+
+.alloc{background:var(--surface);border:1px solid var(--border);border-radius:16px;
+  padding:22px 28px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.alloc-item{padding:14px 16px;border-radius:12px;}
+.alloc-item h4{margin:0 0 6px;font-size:13px;letter-spacing:.4px;}
+.alloc-item p{margin:0;font-size:14px;color:var(--text);line-height:1.65;}
+.alloc-core{background:rgba(96,165,250,.10);border:1px solid rgba(96,165,250,.25);}
+.alloc-core h4{color:#93c5fd;}
+.alloc-grow{background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.22);}
+.alloc-grow h4{color:#6ee7b7;}
+.alloc-bet{background:rgba(167,139,250,.10);border:1px solid rgba(167,139,250,.25);}
+.alloc-bet h4{color:#c4b5fd;}
+.alloc-note{grid-column:1/-1;color:var(--text-3);font-size:13px;margin-top:4px;
+  padding-top:14px;border-top:1px dashed var(--border-strong);}
+
+@media(max-width:760px){
+  .wrap{padding:22px 14px 60px;}
+  .metrics{grid-template-columns:repeat(2,1fr);}
+  .sections{grid-template-columns:1fr;}
+  table.summary{font-size:11.5px;}
+  table.summary th,table.summary td{padding:7px 5px;}
+  header.hero{padding:30px 22px;}
+  header.hero h1{font-size:22px;}
+  .card{padding:20px 18px;}
+  .ticker{font-size:22px;}
+  .alloc{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="badge-v">REPORT V3 · DEEP DIVE</div>
+  <h1>🇭🇰 港股爆发前期<span class="accent">深度研究</span> · 10 只候选</h1>
+  <div class="meta">数据时间：2026-05-13 23:05:58 · 数据源：新浪财经 + 腾讯财经 + 公司公告 + Web 调研</div>
+  <div class="lead">本报告聚焦港股「<b>仍处底部 / 主升浪刚启动</b>」的 10 只爆发前期标的，覆盖 <b>创新药左侧 · 港股 SaaS · 智能驾驶 · 机器人 · 周期反转 · 半导体 · 数字资产</b> 七大赛道。每只 9 大模块深度分析，强调<b>催化剂时间表</b>，定位中长线 1-3 年配置。</div>
+  <div class="stat-row">
+    <div class="stat">候选股 <b>10</b></div>
+    <div class="stat">深度模块 <b>10×10</b></div>
+    <div class="stat">市场 <b>港股</b></div>
+    <div class="stat">报告版本 <b>V3 · Dark</b></div>
+  </div>
+  <div class="principle"><b>📐 报告思路 · </b>「<b>底部 + 催化剂</b>」是港股小盘股最有效的择时框架。本报告优选已有 1-2 个明确 12 个月内催化剂的标的：业绩兑现、产品里程碑、估值修复、回购+分红等。<b>把每只标的都看作 1-3 年期权</b>，单独仓位小但组合赔率高。</div>
+</header>
+
+<div class="toc">
+  <h3>📑 个股目录</h3>
+  <div class="toc-grid"><a href="#stock-09926"><b>09926</b> 康方生物</a><a href="#stock-09688"><b>09688</b> 再鼎医药</a><a href="#stock-00268"><b>00268</b> 金蝶国际</a><a href="#stock-02013"><b>02013</b> 微盟集团</a><a href="#stock-09660"><b>09660</b> 地平线机器人</a><a href="#stock-02533"><b>02533</b> 黑芝麻智能</a><a href="#stock-09880"><b>09880</b> 优必选</a><a href="#stock-01378"><b>01378</b> 中国宏桥</a><a href="#stock-01347"><b>01347</b> 华虹半导体</a><a href="#stock-00863"><b>00863</b> OSL集团</a></div>
+</div>
+
+<h2>📊 一、概览对比表（点代码跳转）</h2>
+<table class="summary">
+  <thead><tr>
+    <th>代码</th><th>名称</th><th>主线</th><th class="r">现价</th><th class="r">日%</th><th class="r">YTD</th>
+    <th class="r">RSI</th><th class="r">距高点</th><th class="r">PE</th><th class="c">评级</th><th class="r">评分</th>
+  </tr></thead>
+  <tbody>
+<tr>
+  <td><a href="#stock-09926"><b>09926</b></a></td>
+  <td>康方生物</td>
+  <td>创新药左侧</td>
+  <td class="r">HK$127.3</td>
+  <td class="r" style="color:#4ade80">-2.08%</td>
+  <td class="r" style="color:#f87171">+12.7%</td>
+  <td class="r">44</td>
+  <td class="r">-28.9%</td>
+  <td class="r">—</td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
+  <td class="r"><b>6.0</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-09688"><b>09688</b></a></td>
+  <td>再鼎医药</td>
+  <td>创新药左侧</td>
+  <td class="r">HK$15.08</td>
+  <td class="r" style="color:#4ade80">-2.33%</td>
+  <td class="r" style="color:#f87171">+10.5%</td>
+  <td class="r">39</td>
+  <td class="r">-57.5%</td>
+  <td class="r">—</td>
+  <td class="c"><span class="badge" style="background:rgba(234,88,12,.18);color:#fdba74">增持</span></td>
+  <td class="r"><b>7.0</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-00268"><b>00268</b></a></td>
+  <td>金蝶国际</td>
+  <td>港股 SaaS</td>
+  <td class="r">HK$8.60</td>
+  <td class="r" style="color:#4ade80">-1.15%</td>
+  <td class="r" style="color:#4ade80">-35.7%</td>
+  <td class="r">45</td>
+  <td class="r">-54.7%</td>
+  <td class="r">290</td>
+  <td class="c"><span class="badge" style="background:rgba(234,88,12,.18);color:#fdba74">增持</span></td>
+  <td class="r"><b>6.9</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-02013"><b>02013</b></a></td>
+  <td>微盟集团</td>
+  <td>港股 SaaS</td>
+  <td class="r">HK$1.53</td>
+  <td class="r" style="color:#94a3b8">-0.00%</td>
+  <td class="r" style="color:#4ade80">-17.7%</td>
+  <td class="r">49</td>
+  <td class="r">-49.0%</td>
+  <td class="r">—</td>
+  <td class="c"><span class="badge" style="background:rgba(234,88,12,.18);color:#fdba74">增持</span></td>
+  <td class="r"><b>6.9</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-09660"><b>09660</b></a></td>
+  <td>地平线机器人</td>
+  <td>智能驾驶</td>
+  <td class="r">HK$6.71</td>
+  <td class="r" style="color:#f87171">+0.30%</td>
+  <td class="r" style="color:#4ade80">-23.3%</td>
+  <td class="r">38</td>
+  <td class="r">-40.7%</td>
+  <td class="r">—</td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
+  <td class="r"><b>6.1</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-02533"><b>02533</b></a></td>
+  <td>黑芝麻智能</td>
+  <td>智能驾驶</td>
+  <td class="r">HK$17.80</td>
+  <td class="r" style="color:#f87171">+0.17%</td>
+  <td class="r" style="color:#4ade80">-7.7%</td>
+  <td class="r">52</td>
+  <td class="r">-32.5%</td>
+  <td class="r">—</td>
+  <td class="c"><span class="badge" style="background:rgba(234,88,12,.18);color:#fdba74">增持</span></td>
+  <td class="r"><b>6.9</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-09880"><b>09880</b></a></td>
+  <td>优必选</td>
+  <td>机器人</td>
+  <td class="r">HK$112.8</td>
+  <td class="r" style="color:#f87171">+1.62%</td>
+  <td class="r" style="color:#4ade80">-11.2%</td>
+  <td class="r">57</td>
+  <td class="r">-29.9%</td>
+  <td class="r">—</td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
+  <td class="r"><b>6.3</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-01378"><b>01378</b></a></td>
+  <td>中国宏桥</td>
+  <td>周期反转</td>
+  <td class="r">HK$33.96</td>
+  <td class="r" style="color:#f87171">+1.86%</td>
+  <td class="r" style="color:#f87171">+3.2%</td>
+  <td class="r">45</td>
+  <td class="r">-17.9%</td>
+  <td class="r">13</td>
+  <td class="c"><span class="badge" style="background:rgba(8,145,178,.20);color:#67e8f9">减持</span></td>
+  <td class="r"><b>4.3</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-01347"><b>01347</b></a></td>
+  <td>华虹半导体</td>
+  <td>半导体设备</td>
+  <td class="r">HK$129.8</td>
+  <td class="r" style="color:#f87171">+0.23%</td>
+  <td class="r" style="color:#f87171">+74.7%</td>
+  <td class="r">64</td>
+  <td class="r">-10.3%</td>
+  <td class="r">520</td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
+  <td class="r"><b>6.3</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-00863"><b>00863</b></a></td>
+  <td>OSL集团</td>
+  <td>数字资产</td>
+  <td class="r">HK$12.20</td>
+  <td class="r" style="color:#4ade80">-0.41%</td>
+  <td class="r" style="color:#4ade80">-28.0%</td>
+  <td class="r">37</td>
+  <td class="r">-39.9%</td>
+  <td class="r">—</td>
+  <td class="c"><span class="badge" style="background:rgba(100,116,139,.22);color:#cbd5e1">观望</span></td>
+  <td class="r"><b>6.1</b></td>
+</tr></tbody>
+</table>
+
+<h2>🎯 二、组合配置思路</h2>
+<div class="alloc">
+  <div class="alloc-item alloc-core">
+    <h4>核心仓位 50%</h4>
+    <p>确定性 + 现金流<br><b>09926 康方生物 · 01378 中国宏桥 · 01347 华虹半导体</b></p>
+  </div>
+  <div class="alloc-item alloc-grow">
+    <h4>成长仓位 35%</h4>
+    <p>已有边际改善<br><b>09660 地平线 · 09880 优必选 · 09688 再鼎 · 00268 金蝶</b></p>
+  </div>
+  <div class="alloc-item alloc-bet">
+    <h4>探索仓位 15%</h4>
+    <p>高赔率 / 反转<br><b>02533 黑芝麻 · 02013 微盟 · 00863 OSL</b></p>
+  </div>
+  <div class="alloc-note">⚠️ 港股小盘股波动远大于主板龙头，建议每只单股仓位不超过 3-5%，分 6-8 周分批建仓。设硬止损 -15%。注意港股做空机制活跃，避免一次性重仓。</div>
+</div>
+
+<h2>📋 三、个股深度分析（10 只 × 10 大模块）</h2>
+
+<div class="card" id="stock-09926">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">09926</span>
+      <span class="cn">康方生物</span>
+      <span class="sector-tag">创新药左侧</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
+      观望 · 6.0/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">HK$127.3</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-2.08%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#f87171">+12.65%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">44 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">HK$6.2亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">HK$73 – HK$179</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#4ade80">-28.9%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:51.180358829084035%"></div></div>
+        <span class="small">51%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>中国 Biotech 黑马。AK104（卡度尼利，全球首个 PD-1/CTLA-4 双抗）已获批多个适应症；AK112（依沃西，PD-1/VEGF 双抗）III 期 NSCLC 数据击败 K 药，已被 Summit Therapeutics 以 50 亿美元 BD 引入海外。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 30 亿+（+90% YoY），AK104 销售额 12 亿+；BD 里程碑款持续到账；账上现金 60 亿+，可支撑研发到 2028 年。</p></div>
+    <div class="sec"><h4>💎 估值评估</h4><p>市值约 1,150 亿港币，对应 2026 营收（预估 50 亿）PS ≈ 23x；考虑 AK112 海外销售分成（潜在 80 亿美元/年），DCF 公允价值预估 200 港币左右。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2024-2025 从 35 涨至 130+，2026 YTD +13%，127 港币处 52w 中部 (51%)，技术面强势整理。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>中国创新药双抗赛道全球领跑，是「中国创新药出海打败 K 药」的旗帜。</p></div>
+    <div class="sec"><h4>🛡️ 护城河 / 优势</h4><p><b>AK112 三期 HARMONi-2 数据击败 K 药</b>，是迄今唯一在中国头对头试验中击败 PD-1 王者的国产药；双抗平台储备深；与 Summit Therapeutics BD 模式分成长期受益。</p></div>
+    <div class="sec"><h4>👤 管理层</h4><p>夏瑜（董事长 / CEO，中山大学免疫学博士+ Crown Bioscience 创始人，技术派 + 全球眼光）；研发负责人李百勇等核心团队稳定多年。</p></div>
+    <div class="sec sec-good"><h4>🚀 爆发催化剂时间表</h4><p><b>2026 H1</b>：AK112 NSCLC 二线数据读出；<b>2026 Q3</b>：AK112 美国 III 期数据；<b>2026-2027</b>：AK104 + AK112 海外多个适应症获批，BD 里程碑款集中到账。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>AK112 海外 III 期数据若不及预期估值大幅回调；BD 合作伙伴 Summit 商业化能力存疑；港股 18A 流动性折价。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>核心持仓</b>。120-130 港币分批，跌破 105 减仓；目标 12 个月 200+。建议仓位 7-9%。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-09688">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">09688</span>
+      <span class="cn">再鼎医药</span>
+      <span class="sector-tag">创新药左侧</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(234,88,12,.18);color:#fdba74">
+      增持 · 7.0/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">HK$15.08</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-2.33%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#f87171">+10.48%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">39 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">HK$1.2亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">HK$12.31 – HK$35.50</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#4ade80">-57.5%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:11.944803794739112%"></div></div>
+        <span class="small">12%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>License-in 商业化龙头。已上市产品 5 个（则乐 PARP / 爱普盾肿瘤电场 / 卫伟迦癌症抗体等），多个海外授权在国内做注册+商业化；AI/中国本土自研管线逐步崛起。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 5 亿美元 (+25% YoY)，亏损持续收窄至 1 亿+；2026 全年指引 7-7.5 亿美元，运营盈亏平衡可期；现金 2.6 亿。</p></div>
+    <div class="sec"><h4>💎 估值评估</h4><p>市值约 130 亿港币 (~17 亿美元)，PS 仅 3.4x，显著低于行业平均 (8x+)；如则乐+卫伟迦放量，2027 年盈利后估值有望翻倍。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2024-2025 从 60 跌到 12，深度回撤 80%；2026 YTD +10%，15 港币处 52w 下沿 (12%)。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>License-in 模式从「拿来主义」向自研双轨转型，是中国 Biotech 商业化能力最强的代表。</p></div>
+    <div class="sec"><h4>🛡️ 护城河 / 优势</h4><p>成熟商业化团队 (1,000+ 销售)；与 GSK / Bristol-Myers / Karuna 等深度授权合作；ZL-1310 (DLL3 ADC) 自研 BD 进展超预期。</p></div>
+    <div class="sec"><h4>👤 管理层</h4><p>杜莹（创始人 / CEO，原赛诺菲中国总裁，Pharma 老将，全球视野）；2025 年完成高管接班布局，团队相对稳定。</p></div>
+    <div class="sec sec-good"><h4>🚀 爆发催化剂时间表</h4><p><b>2026</b>：盈亏平衡里程碑；<b>2026 Q2</b>：ZL-1310 海外 BD 谈判进展；<b>2026 H2</b>：核心产品销售放量加速；<b>2027</b>：自研管线进入收获期。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>License-in 续约成本高；自研管线临床数据不及预期；港股流动性差导致大幅波动。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>逆向左侧</b>。14-16 港币分批，跌破 12 撤；目标 12 个月 28+。建议仓位 3-5%。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-00268">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">00268</span>
+      <span class="cn">金蝶国际</span>
+      <span class="sector-tag">港股 SaaS</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(234,88,12,.18);color:#fdba74">
+      增持 · 6.9/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">HK$8.60</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-1.15%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#4ade80">-35.72%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">290.2</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">45 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">HK$2.3亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">HK$7.92 – HK$19.00</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#4ade80">-54.7%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:6.137184115523463%"></div></div>
+        <span class="small">6%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>中国企业管理 SaaS 龙头。星瀚（大型企业）+ 星空（中型）+ 精斗云（小微）三层产品；签约客户超 740 万；AI Copilot 嵌入财务/HR/供应链全场景。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 65 亿+（云订阅占比 81%），合同负债 45 亿+；亏损同比收窄 50%，2026 年盈亏平衡是关键里程碑；现金 40 亿。</p></div>
+    <div class="sec"><h4>💎 估值评估</h4><p>市值约 290 亿港币，PS 4.5x（云转型已基本完成）；与中国软件云转型同业（用友 / 浪潮）相比估值有折价空间。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2024-2025 从 15 跌到 8，2026 YTD -36%（市场对中国 SaaS 整体悲观），8.6 港币处 52w 下沿 (6%)，<b>极度低估</b>。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>中国企业 SaaS 行业渗透率仍低 (3%)，AI Copilot 推动 ARPU 上升；星瀚替代 SAP/Oracle 的国产替代订单正在涌入。</p></div>
+    <div class="sec"><h4>🛡️ 护城河 / 优势</h4><p>全球工艺最完整的中国 ERP 云原生厂商；客户主要为 500 强 + 央国企；AI 应用「金蝶云·苍穹+ 星瀚 AI」上市领先。</p></div>
+    <div class="sec"><h4>👤 管理层</h4><p>徐少春（董事长 / CEO，金蝶创始人，云转型 10 年战略坚定）；CFO/COO 长期稳定。</p></div>
+    <div class="sec sec-good"><h4>🚀 爆发催化剂时间表</h4><p><b>2026 H1</b>：盈亏平衡指引达成；<b>2026</b>：星瀚拿下大型央企订单；<b>2026 Q4</b>：AI Copilot 商业化收入占比突破 5%。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>中国 SaaS 行业整体投融资不足；央国企采购周期长；与用友的低价竞争。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>底部布局</b>。8-9.5 港币分批，跌破 7 撤；目标 12 个月 14+。建议仓位 3-4%。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-02013">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">02013</span>
+      <span class="cn">微盟集团</span>
+      <span class="sector-tag">港股 SaaS</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(234,88,12,.18);color:#fdba74">
+      增持 · 6.9/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">HK$1.53</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#94a3b8">-0.00%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#4ade80">-17.74%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">49 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">HK$0.5亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">HK$1.41 – HK$3.00</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#4ade80">-49.0%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:7.547169811320761%"></div></div>
+        <span class="small">8%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>腾讯生态 SaaS 龙头。微商城/智慧零售/餐饮/酒店 SaaS + 精准营销（腾讯广告核心代理）+ AI Agent 「WAI」嵌入小程序生态。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 17 亿+（SaaS 订阅 + 营销服务），毛利率 60%+；亏损同比大幅收窄；账上现金 9 亿+。AI 业务 GMV 增速 100%+。</p></div>
+    <div class="sec"><h4>💎 估值评估</h4><p>市值约 50 亿港币，PS 仅 3x，远低于 A 股 SaaS 平均 (8-12x)；属于「腾讯+ AI Agent + 微信小店」三重逻辑标的。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2024-2025 从 4 跌到 1.5，2026 YTD -18%，1.53 港币处 52w 下沿 (7.5%)。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>微信小店是 2025-2026 年腾讯重点战略，微盟是核心合作伙伴；视频号商家+ 公众号变现+ AI Agent 三个增量。</p></div>
+    <div class="sec"><h4>🛡️ 护城河 / 优势</h4><p>腾讯持股 4%+ 长期合作；GMV 流水视野最完整；WAI Agent 与混元大模型紧密结合，是为数不多的电商 AI 入口。</p></div>
+    <div class="sec"><h4>👤 管理层</h4><p>孙涛勇（创始人 / 董事长，与腾讯关系密切）；管理层经历过 2022-2024 重大调整，已重新聚焦核心。</p></div>
+    <div class="sec sec-good"><h4>🚀 爆发催化剂时间表</h4><p><b>2026 Q2</b>：WAI Agent 月活突破 100 万；<b>2026 H2</b>：盈利指引；<b>2026-2027</b>：微信小店 GMV 1 万亿目标实现，微盟受益。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>微信生态政策变化；广告业务受腾讯返点影响；现金流如不及时转正面临融资风险。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>高赔率小仓</b>。1.4-1.6 港币分批，跌破 1.2 撤；目标 12 个月 3.5+。建议仓位 1-2%。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-09660">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">09660</span>
+      <span class="cn">地平线机器人</span>
+      <span class="sector-tag">智能驾驶</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
+      观望 · 6.1/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">HK$6.71</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#f87171">+0.30%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#4ade80">-23.31%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">38 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">HK$9.2亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">HK$6.10 – HK$11.32</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#4ade80">-40.7%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:11.685823754789276%"></div></div>
+        <span class="small">12%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>中国汽车智驾芯片龙头。征程 5/征程 6 系列芯片量产，全栈智驾方案 SuperDrive 进入比亚迪/奇瑞/理想等车厂；机器人芯片业务 2026 启动。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 30 亿+（+45% YoY），毛利率 70%+（IP+ 芯片授权混合）；持续亏损（研发投入大）；现金 100 亿+。</p></div>
+    <div class="sec"><h4>💎 估值评估</h4><p>市值约 800 亿港币，PS 25x（按 2026E）；与英伟达/Mobileye 比仍有空间，但远高于传统芯片公司。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2024 IPO 后从 4 涨到 9.5，2026 YTD -23%，6.7 港币处 52w 下沿 (12%)，技术面深度回调。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>中国智驾芯片国产替代核心受益者，2026-2027 是智驾平权（10 万级 L2++）的爆发期。</p></div>
+    <div class="sec"><h4>🛡️ 护城河 / 优势</h4><p>中国车厂智驾芯片市占率第一（约 40%）；车厂深度合作（理想/比亚迪/奇瑞/广汽全部接入）；BPU 架构自研。</p></div>
+    <div class="sec"><h4>👤 管理层</h4><p>余凯（创始人 / CEO，前百度深度学习实验室主任，技术领袖型 + 长期主义）；CTO 黄畅、COO 陶斐雯团队稳定。</p></div>
+    <div class="sec sec-good"><h4>🚀 爆发催化剂时间表</h4><p><b>2026</b>：征程 6 大规模量产；<b>2026 H2</b>：SuperDrive 用户突破 100 万；<b>2026 Q4</b>：盈亏平衡接近；<b>2027</b>：机器人芯片 J6P-X 流片。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>与 Momenta、华为 MDC 直接竞争；车厂智驾自研可能减少外采；研发投入巨大持续亏损。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>左侧布局</b>。6.5-7 港币分批，跌破 5.8 撤；目标 12 个月 12+。建议仓位 4-5%。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-02533">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">02533</span>
+      <span class="cn">黑芝麻智能</span>
+      <span class="sector-tag">智能驾驶</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(234,88,12,.18);color:#fdba74">
+      增持 · 6.9/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">HK$17.80</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#f87171">+0.17%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#4ade80">-7.68%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">52 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">HK$1.3亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">HK$14.92 – HK$26.38</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#4ade80">-32.5%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:25.13089005235603%"></div></div>
+        <span class="small">25%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>国内智驾芯片二线龙头。华山系列芯片（A1000 / A2000）已量产，主打 5-15 万车型「智驾平权」市场；与吉利、东风、合众等深度合作。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 10 亿+（+80% YoY），亏损扩大但毛利率改善；现金 25 亿（IPO 募资+老股东注资）；产品矩阵补齐。</p></div>
+    <div class="sec"><h4>💎 估值评估</h4><p>市值约 110 亿港币，PS 11x；相对地平线折价较多但客户质量与体量也较地平线弱。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2024 港股 IPO 后从 28 跌到 10 又反弹至 18，2026 YTD -8%，17.8 港币处 52w 偏下 (25%)。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>中国智驾芯片第二梯队龙头，与黑芝麻、寒武纪、芯擎等竞争 5-15 万元车型市场。</p></div>
+    <div class="sec"><h4>🛡️ 护城河 / 优势</h4><p>A1000 系列在 5-15 万车型中性价比突出；与吉利、东风等深度合作；车规级芯片认证完整。</p></div>
+    <div class="sec"><h4>👤 管理层</h4><p>单记章（创始人 / CEO，前 OmniVision 联合创始人，硅谷归国系企业家）；技术团队来自 IBM/英伟达/华为海思。</p></div>
+    <div class="sec sec-good"><h4>🚀 爆发催化剂时间表</h4><p><b>2026 Q2</b>：A2000 量产上车；<b>2026 H2</b>：营收突破 20 亿；<b>2027</b>：盈亏平衡接近。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>技术追赶地平线持续投入大；下游车厂智驾自研冲击；港股流动性差。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>小仓投机</b>。16-18 港币分批，跌破 14 撤；目标 12 个月 30+。建议仓位 2-3%。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-09880">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">09880</span>
+      <span class="cn">优必选</span>
+      <span class="sector-tag">机器人</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
+      观望 · 6.3/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">HK$112.8</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#f87171">+1.62%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#4ade80">-11.18%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">57 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">HK$5.1亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">HK$74 – HK$161</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#4ade80">-29.9%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:44.91428571428571%"></div></div>
+        <span class="small">45%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>中国人形机器人龙头。Walker S 系列已进入比亚迪/吉利/极氪/顺丰工厂实训；核心部件（伺服关节/控制器）自研；教育机器人收入贡献稳定。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 15 亿+（教育+企业服务+人形），亏损扩大（人形研发持续投入）；现金 25 亿+；定增已完成。</p></div>
+    <div class="sec"><h4>💎 估值评估</h4><p>市值约 580 亿港币，PS 38x（按 2026E）；估值贵但符合人形机器人行业「一年一个故事」逻辑。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2024 IPO 后从 90 涨至 280+ 又回到 110，2026 YTD -11%，113 港币处 52w 中部 (45%)。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>中国人形机器人产业化领跑者，与 Tesla Optimus、Figure、宇树 H2 同台竞争。</p></div>
+    <div class="sec"><h4>🛡️ 护城河 / 优势</h4><p>工厂场景实训领先；车厂合作深度（比亚迪/极氪/吉利/顺丰）；伺服关节自研降本；教育机器人提供基本盘现金流。</p></div>
+    <div class="sec"><h4>👤 管理层</h4><p>周剑（创始人 / 董事长，深圳本土科技企业家，长期主义）；近年引入华为/英伟达背景研发副总裁。</p></div>
+    <div class="sec sec-good"><h4>🚀 爆发催化剂时间表</h4><p><b>2026 Q2</b>：Walker S2 在比亚迪量产实训；<b>2026 H2</b>：第三方场景（餐饮/物流/酒店）订单；<b>2027</b>：海外（美/欧/日）批量订单。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>人形机器人商业化进度慢于预期；与海外 Figure/Tesla Optimus 在关键零部件竞争；估值消化压力。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>小仓位长持</b>。105-115 港币分批，跌破 90 撤；目标 12 个月 180+。建议仓位 2-3%。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-01378">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">01378</span>
+      <span class="cn">中国宏桥</span>
+      <span class="sector-tag">周期反转</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(8,145,178,.20);color:#67e8f9">
+      减持 · 4.3/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">HK$33.96</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#f87171">+1.86%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#f87171">+3.22%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">12.8</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">45 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">HK$10.1亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">HK$13.64 – HK$41.36</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#94a3b8">-17.9%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:73.29965722532926%"></div></div>
+        <span class="small">73%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>中国民营电解铝龙头。山东 + 几内亚铝土矿一体化产业链；自备电厂（火电+绿电转型）；产能 646 万吨/年（约占全国 14%）。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 1,500 亿+，净利 240 亿+ (+25% YoY)，自由现金流 200 亿+；股息率超 7%；2025 完成全部债务结构优化。</p></div>
+    <div class="sec"><h4>💎 估值评估</h4><p>市值约 3,000 亿港币，PE 12x，PB 1.5x，股息率 7%+；铝价中枢上行+ 绿电转型双逻辑。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2024-2025 从 5 涨到 30+，2026 YTD +3%，34 港币处 52w 上沿 (73%)，趋势仍向上。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>AI 数据中心、新能源车、光伏组件等推动电解铝长期需求；中国电解铝产能天花板已锁死，价格易涨难跌。</p></div>
+    <div class="sec"><h4>🛡️ 护城河 / 优势</h4><p>几内亚自有铝土矿（成本最低），<b>能源端 60% 已切换为绿电</b>，规避碳关税；产业链一体化（铝土矿-氧化铝-电解铝-铝合金）。</p></div>
+    <div class="sec"><h4>👤 管理层</h4><p>张波（董事长，宏桥创始人张士平之子，子承父业）；新能源转型决策果断（绿电+ 几内亚 + 印尼）。</p></div>
+    <div class="sec sec-good"><h4>🚀 爆发催化剂时间表</h4><p><b>2026 H1</b>：欧盟碳关税正式实施，宏桥绿电铝享受溢价；<b>2026</b>：分红+ 回购加大；<b>2026-2027</b>：印尼几内亚一体化项目并表。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>全球宏观经济下行铝价回落；几内亚地缘风险；电解铝行业产能政策变化。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>稳健核心</b>。32-35 港币分批，跌破 28 减仓；目标 12 个月 50+。建议仓位 5-7%。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-01347">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">01347</span>
+      <span class="cn">华虹半导体</span>
+      <span class="sector-tag">半导体设备</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
+      观望 · 6.3/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">HK$129.8</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#f87171">+0.23%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#f87171">+74.70%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">520.1</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">64 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">HK$37.4亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">HK$29 – HK$145</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#94a3b8">-10.3%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:87.12186689714781%"></div></div>
+        <span class="small">87%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>中国大陆第二大晶圆代工厂。专注 8 寸+ 12 寸成熟制程（55nm-180nm），主攻功率半导体（IGBT/SiC/MOSFET）+ MCU + 射频；新能源车与工业电源核心代工方。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 25 亿美元 (+30% YoY)，毛利率 18%；产能利用率 98%+；上海无锡 12 寸厂二期 2026 投产；账上现金 20 亿+。</p></div>
+    <div class="sec"><h4>💎 估值评估</h4><p>市值约 2,400 亿港币，PE 35x；相对中芯有溢价（产品结构高端化）；功率半导体景气度持续。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2024 从 16 跌到 18 区间宽幅震荡，2025 启动主升至 130+，2026 YTD +75%，130 港币处 52w 上沿 (87%)。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p>新能源车功率半导体国产替代核心受益者，与英飞凌/安森美在中国市场抢份额。</p></div>
+    <div class="sec"><h4>🛡️ 护城河 / 优势</h4><p>8 寸+ 12 寸功率/特色工艺中国市占率第一；与比亚迪/中车/华为车 BU 长期战略合作；二期产能扩张被订单提前锁定。</p></div>
+    <div class="sec"><h4>👤 管理层</h4><p>唐均君（CEO，半导体老兵）；上海国资+ 大基金深度持股，资源支持力度大。</p></div>
+    <div class="sec sec-good"><h4>🚀 爆发催化剂时间表</h4><p><b>2026 Q2</b>：12 寸二期投产；<b>2026 H2</b>：SiC 量产爬坡；<b>2026 Q4</b>：营收同比 +40%+ 业绩兑现。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>估值已偏贵（PE 35x），技术面 RSI 偏热；功率半导体周期下行风险；地缘对设备进口影响。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>逢回调进</b>。115-125 港币分批，跌破 100 撤；目标 12 个月 180+。建议仓位 4-5%。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-00863">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">00863</span>
+      <span class="cn">OSL集团</span>
+      <span class="sector-tag">数字资产</span>
+    </div>
+    <div class="rating-pill" style="background:rgba(100,116,139,.22);color:#cbd5e1">
+      观望 · 6.1/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">HK$12.20</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#4ade80">-0.41%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#4ade80">-28.02%</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">37 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">成交额</div><div class="m-v small">HK$0.3亿</div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">HK$10.42 – HK$20.30</div></div>
+    <div class="m"><div class="m-l">距 52w 高</div><div class="m-v" style="color:#4ade80">-39.9%</div></div>
+    <div class="m" style="grid-column:1/-1"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:18.016194331983797%"></div></div>
+        <span class="small">18%（位置越低性价比越高）</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p><b>香港持牌虚拟资产交易平台</b>。提供机构+零售比特币/以太币现货+衍生品交易，已获 SFC 1/4/7/9 号牌；与渣打银行、富达等机构深度合作。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2025 营收 5 亿+ (+150% YoY，受比特币 ETF 推动)，亏损快速收窄；现金 8 亿+；持有部分比特币储备。</p></div>
+    <div class="sec"><h4>💎 估值评估</h4><p>市值约 50 亿港币，PS 10x（按 2026E）；与 Coinbase 比仍有大幅折价；香港牌照稀缺性高。</p></div>
+    <div class="sec"><h4>📈 近 2 年走势</h4><p>2024 从 6 涨至 18，2025 受 BTC 调整跌至 12，2026 YTD -28%，12.2 港币处 52w 下沿 (18%)。</p></div>
+    <div class="sec"><h4>🏭 行业地位</h4><p><b>香港 Web3 政策核心受益者</b>，是亚洲首家持牌合规交易所；BTC ETF 港股版做市商之一。</p></div>
+    <div class="sec"><h4>🛡️ 护城河 / 优势</h4><p>香港 SFC 全牌照（亚洲首批）；机构客户深度（家族办公室+ 银行+ 资管）；与中东主权基金合作进入加密货币托管。</p></div>
+    <div class="sec"><h4>👤 管理层</h4><p>Hugh Madden（CEO，原 BC Group 创始人，香港 Web3 老兵）；股东背景含 BC Technology Group。</p></div>
+    <div class="sec sec-good"><h4>🚀 爆发催化剂时间表</h4><p><b>2026 Q2</b>：BTC 减半周期 18-24 个月窗口；<b>2026 H2</b>：稳定币 / 代币化基金业务上线；<b>2027</b>：盈亏平衡。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p><b>极高波动</b>，币价大跌时业务量同步崩塌；监管政策反复；与 HashKey 等同业激烈竞争。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>高赔率彩票仓</b>。11-13 港币分批，跌破 9 撤；目标 12 个月 24+。建议仓位 1-2%。</p></div>
+  </div>
+</div>
+
+
+
+
+<div class="disclaimer">
+<b>⚠️ 风险提示</b><br>
+本报告仅作为研究参考，不构成投资建议。所有数据来自公开市场，分析基于公开信息和模型推断，可能存在数据延迟或事实偏差。港股市场波动剧烈，请基于自身风险承受能力决策，建议分散持仓。生成时间：2026-05-13 23:05:58。
+</div>
+
+</div>
+</body>
+</html>
