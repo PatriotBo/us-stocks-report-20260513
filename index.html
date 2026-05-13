@@ -1,859 +1,898 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>美股潜力股研究 · 2026年5月13日</title>
+<meta charset="utf-8">
+<title>美股潜力股深度研究 · 2026-05-13</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
-  background: #0b0e14;
-  color: #e6e6e6;
-  line-height: 1.6;
-  padding: 0;
-  -webkit-text-size-adjust: 100%;
-}
-.container { max-width: 980px; margin: 0 auto; padding: 24px 18px 48px; }
-
-/* 头部 */
-.hero {
-  background: linear-gradient(135deg, #1a2332 0%, #2d1b4e 100%);
-  border-radius: 16px;
-  padding: 32px 24px;
-  margin-bottom: 24px;
-  border: 1px solid rgba(255,255,255,0.08);
-}
-.hero h1 {
-  font-size: 26px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  background: linear-gradient(90deg, #f5d774 0%, #ff6b9d 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.hero .subtitle { font-size: 14px; color: #a0a8b8; margin-bottom: 16px; }
-.hero .meta {
-  display: flex; flex-wrap: wrap; gap: 14px;
-  font-size: 12px; color: #7a8290;
-}
-.hero .meta span {
-  background: rgba(255,255,255,0.05);
-  padding: 5px 12px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.06);
-}
-
-/* 章节标题 */
-h2 {
-  font-size: 18px;
-  font-weight: 600;
-  margin: 28px 0 14px;
-  padding-left: 12px;
-  border-left: 3px solid #4f8cff;
-  color: #ffffff;
-}
-
-/* 主线主题概览 */
-.themes {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 10px;
-  margin-bottom: 8px;
-}
-.theme-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 10px;
-  padding: 12px;
-  font-size: 12px;
-}
-.theme-card .title { font-weight: 600; color: #f5d774; margin-bottom: 4px; font-size: 13px; }
-.theme-card .stocks { color: #b8c0cc; font-size: 11px; }
-
-/* 排行榜表 */
-.summary-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: rgba(255,255,255,0.03);
-  border-radius: 12px;
-  overflow: hidden;
-  font-size: 12px;
-  margin-bottom: 8px;
-}
-.summary-table th {
-  background: rgba(79,140,255,0.15);
-  color: #c5d4f0;
-  padding: 10px 8px;
-  text-align: left;
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 0.5px;
-}
-.summary-table td {
-  padding: 11px 8px;
-  border-top: 1px solid rgba(255,255,255,0.05);
-}
-.summary-table .ticker { font-weight: 700; color: #ffffff; }
-.summary-table .name { color: #a0a8b8; font-size: 11px; }
-.up    { color: #4ade80; }
-.down  { color: #f87171; }
-.neutral { color: #9ca3af; }
-
-/* 评分进度条 */
-.score-bar {
-  width: 50px; height: 6px;
-  background: rgba(255,255,255,0.08);
-  border-radius: 3px;
-  position: relative;
-  margin-top: 4px;
-  overflow: hidden;
-}
-.score-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #f87171, #fbbf24, #4ade80);
-  border-radius: 3px;
-}
-
-/* 评级徽章 */
-.rating-badge {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 10px;
-  font-size: 11px;
-  font-weight: 600;
-  white-space: nowrap;
-}
-.rating-buy      { background: #064e3b; color: #6ee7b7; }
-.rating-hold-up  { background: #1e3a5f; color: #93c5fd; }
-.rating-watch    { background: #3f3f46; color: #d4d4d8; }
-.rating-reduce   { background: #5b1d1d; color: #fca5a5; }
-
-/* 个股深度卡片 */
-.stock-card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 14px;
-  padding: 20px;
-  margin-bottom: 14px;
-}
-.stock-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 14px;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.stock-title { flex: 1; min-width: 180px; }
-.stock-title .ticker-row {
-  display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
-}
-.stock-title .ticker {
-  font-size: 22px; font-weight: 700; color: #ffffff;
-}
-.stock-title .name-cn { font-size: 14px; color: #a0a8b8; }
-.stock-title .theme {
-  font-size: 11px; color: #f5d774;
-  background: rgba(245,215,116,0.1);
-  padding: 2px 8px; border-radius: 8px;
-  display: inline-block; margin-top: 6px;
-}
-.stock-price-block { text-align: right; }
-.stock-price {
-  font-size: 22px; font-weight: 700; color: #ffffff;
-}
-.stock-change { font-size: 13px; font-weight: 600; }
-
-/* 指标网格 */
-.metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
-  gap: 8px;
-  margin-bottom: 14px;
-  padding: 12px;
-  background: rgba(0,0,0,0.25);
-  border-radius: 10px;
-}
-.metric { text-align: center; }
-.metric .label {
-  font-size: 10px; color: #7a8290;
-  text-transform: uppercase; letter-spacing: 0.5px;
-  margin-bottom: 3px;
-}
-.metric .value { font-size: 14px; font-weight: 600; color: #e6e6e6; }
-
-.rsi-hot { color: #f87171; }
-.rsi-cold { color: #60a5fa; }
-.rsi-mid { color: #d4d4d8; }
-
-/* 52 周位置条 */
-.position-bar {
-  margin: 6px 0 14px;
-  padding: 8px 10px;
-  background: rgba(0,0,0,0.25);
-  border-radius: 8px;
-  font-size: 11px;
-}
-.position-bar .pb-label {
-  display: flex; justify-content: space-between;
-  margin-bottom: 4px; color: #7a8290;
-}
-.position-bar .pb-track {
-  height: 6px;
-  background: linear-gradient(90deg, #1e3a5f 0%, #5b1d1d 100%);
-  border-radius: 3px; position: relative;
-}
-.position-bar .pb-marker {
-  position: absolute; top: -2px;
-  width: 10px; height: 10px;
-  background: #ffffff; border-radius: 50%;
-  border: 2px solid #1a2332;
-  transform: translateX(-50%);
-}
-
-/* 分析段落 */
-.analysis { margin-top: 12px; }
-.analysis h4 {
-  font-size: 12px; font-weight: 600; color: #c5d4f0;
-  margin-bottom: 6px;
-  display: flex; align-items: center; gap: 6px;
-}
-.analysis h4::before {
-  content: ""; display: inline-block;
-  width: 3px; height: 14px; background: #4f8cff; border-radius: 2px;
-}
-.analysis p, .analysis ul {
-  font-size: 13px; color: #c0c8d4;
-  margin-bottom: 10px; padding-left: 9px;
-}
-.analysis ul { list-style: none; padding-left: 9px; }
-.analysis ul li {
-  position: relative; padding-left: 14px; margin-bottom: 3px;
-}
-.analysis ul li::before {
-  content: "▸"; position: absolute; left: 0; color: #4f8cff;
-}
-.view-block {
-  background: linear-gradient(135deg, rgba(79,140,255,0.08), rgba(245,215,116,0.05));
-  border-left: 3px solid #f5d774;
-  padding: 10px 14px;
-  border-radius: 0 8px 8px 0;
-  margin-top: 10px;
-  font-size: 13px;
-  color: #f5e6b8;
-}
-.view-block strong { color: #f5d774; }
-
-/* 信号标签 */
-.signals {
-  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;
-}
-.signal-tag {
-  font-size: 10px;
-  padding: 3px 9px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.06);
-  color: #b8c0cc;
-  border: 1px solid rgba(255,255,255,0.05);
-}
-.signal-tag.danger { background: rgba(248,113,113,0.1); color: #fca5a5; border-color: rgba(248,113,113,0.2); }
-.signal-tag.success { background: rgba(74,222,128,0.1); color: #6ee7b7; border-color: rgba(74,222,128,0.2); }
-
-/* 底部免责 */
-.disclaimer {
-  margin-top: 28px;
-  padding: 16px;
-  background: rgba(248,113,113,0.05);
-  border: 1px solid rgba(248,113,113,0.15);
-  border-radius: 10px;
-  font-size: 11px;
-  color: #a0a8b8;
-  line-height: 1.7;
-}
-.footer {
-  text-align: center;
-  margin-top: 18px;
-  font-size: 11px;
-  color: #5a6270;
-}
-
-/* 移动端优化 */
-@media (max-width: 600px) {
-  .container { padding: 16px 12px 32px; }
-  .hero { padding: 24px 18px; }
-  .hero h1 { font-size: 22px; }
-  .stock-card { padding: 16px; }
-  .stock-title .ticker { font-size: 20px; }
-  .stock-price { font-size: 20px; }
-  .summary-table { font-size: 11px; }
-  .summary-table th, .summary-table td { padding: 8px 5px; }
-}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#f8fafc;color:#0f172a;line-height:1.7;}
+  .wrap{max-width:1100px;margin:0 auto;padding:32px 20px 80px;}
+  header{background:linear-gradient(135deg,#1e293b 0%,#0f172a 100%);color:#fff;padding:42px 32px;border-radius:18px;margin-bottom:28px;box-shadow:0 12px 40px rgba(15,23,42,.18);}
+  header h1{margin:0 0 10px;font-size:30px;font-weight:700;}
+  header .meta{opacity:.72;font-size:13px;}
+  header .lead{margin-top:14px;font-size:15px;opacity:.9;}
+  h2{margin:36px 0 18px;font-size:22px;border-left:4px solid #2563eb;padding-left:12px;}
+  h3{margin:18px 0 10px;font-size:17px;}
+  .toc{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:18px 24px;margin-bottom:24px;}
+  .toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;font-size:14px;}
+  .toc-grid a{color:#2563eb;text-decoration:none;padding:6px 10px;border-radius:6px;}
+  .toc-grid a:hover{background:#eff6ff;}
+  table.summary{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 12px rgba(15,23,42,.06);font-size:14px;}
+  table.summary th{background:#f1f5f9;padding:11px 8px;text-align:left;font-weight:600;color:#475569;border-bottom:1px solid #e2e8f0;font-size:12px;letter-spacing:.5px;text-transform:uppercase;}
+  table.summary td{padding:11px 8px;border-bottom:1px solid #f1f5f9;}
+  table.summary tr:hover td{background:#f8fafc;}
+  table.summary .r{text-align:right;font-variant-numeric:tabular-nums;}
+  table.summary .c{text-align:center;}
+  .badge{padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600;}
+  .card{background:#fff;border-radius:16px;padding:24px 28px;margin:22px 0;box-shadow:0 2px 14px rgba(15,23,42,.06);border:1px solid #e2e8f0;}
+  .card-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #f1f5f9;}
+  .card-title{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .ticker{font-size:24px;font-weight:700;color:#0f172a;letter-spacing:.5px;}
+  .cn{font-size:16px;color:#475569;}
+  .sector-tag{font-size:11px;background:#eff6ff;color:#1d4ed8;padding:3px 9px;border-radius:10px;font-weight:600;}
+  .rating-pill{padding:6px 14px;border-radius:20px;font-weight:700;font-size:14px;}
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 22px;background:#f8fafc;padding:14px;border-radius:10px;}
+  .m{font-size:13px;}
+  .m-l{color:#64748b;font-size:11px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:3px;}
+  .m-v{font-weight:700;font-size:15px;color:#0f172a;font-variant-numeric:tabular-nums;}
+  .m-v.small{font-size:13px;}
+  .tag{font-size:10px;background:#e0e7ff;color:#3730a3;padding:1px 6px;border-radius:6px;margin-left:4px;font-weight:600;}
+  .bar{height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;margin:5px 0 3px;}
+  .bar-fill{height:100%;background:linear-gradient(90deg,#10b981 0%,#f59e0b 50%,#ef4444 100%);}
+  .small{font-size:12px;color:#64748b;}
+  .sections{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .sec{background:#f8fafc;padding:14px 18px;border-radius:10px;border-left:3px solid #cbd5e1;}
+  .sec h4{margin:0 0 6px;font-size:14px;color:#334155;}
+  .sec p{margin:0;font-size:14px;color:#0f172a;}
+  .sec-good{border-left-color:#10b981;background:#ecfdf5;}
+  .sec-bad{border-left-color:#ef4444;background:#fef2f2;}
+  .sec-action{border-left-color:#2563eb;background:#eff6ff;grid-column:1/-1;}
+  .sec-action p{font-size:15px;}
+  .disclaimer{margin-top:40px;padding:16px 20px;background:#fffbeb;border-left:4px solid #f59e0b;border-radius:8px;font-size:13px;color:#78350f;}
+  @media(max-width:720px){
+    .metrics{grid-template-columns:repeat(2,1fr);}
+    .sections{grid-template-columns:1fr;}
+    table.summary{font-size:12px;}
+    table.summary th,table.summary td{padding:7px 4px;}
+    header{padding:28px 20px;}
+    header h1{font-size:22px;}
+  }
 </style>
 </head>
 <body>
-<div class="container">
+<div class="wrap">
 
-  <div class="hero">
-    <h1>美股中短期潜力股研究</h1>
-    <div class="subtitle">"七巨头"之外，AI 二级供应链 / 电力 / 机器人 / 量子 主题精选</div>
-    <div class="meta">
-      <span>📅 2026-05-13 00:08:03</span>
-      <span>📊 8 只候选 · 5 大主线</span>
-      <span>📡 数据源 · Sina + 腾讯财经</span>
+<header>
+  <h1>🇺🇸 美股潜力股深度研究 · 15 只非「七巨头」候选</h1>
+  <div class="meta">数据时间：2026-05-13 20:44:06 ET · 数据源：新浪财经 + 腾讯财经 + 公开财报</div>
+  <div class="lead">本报告聚焦 Mag-7 之外的中短期潜力股，覆盖 <b>核电/AI电力 · AI 芯片次主线 · 光互连 · 机器人 · 商业航天 · 量子计算 · AI 应用 · 医疗 AI · 数字健康</b> 六大主线 15 只标的，每只含基本面、财务、走势、行业地位、优劣势与建仓建议。</div>
+</header>
+
+<div class="toc">
+  <h3 style="margin:0 0 10px">📑 个股目录</h3>
+  <div class="toc-grid">
+<a href="#stock-VRT">VRT · Vertiv</a><a href="#stock-VST">VST · Vistra</a><a href="#stock-CEG">CEG · Constellation Energy</a><a href="#stock-OKLO">OKLO · Oklo</a><a href="#stock-AMD">AMD · AMD</a><a href="#stock-AVGO">AVGO · Broadcom</a><a href="#stock-ARM">ARM · Arm Holdings</a><a href="#stock-CRDO">CRDO · Credo</a><a href="#stock-ALAB">ALAB · Astera Labs</a><a href="#stock-SYM">SYM · Symbotic</a><a href="#stock-RKLB">RKLB · Rocket Lab</a><a href="#stock-IONQ">IONQ · IonQ</a><a href="#stock-PLTR">PLTR · Palantir</a><a href="#stock-TEM">TEM · Tempus AI</a><a href="#stock-HIMS">HIMS · Hims & Hers</a>
+  </div>
+</div>
+
+<h2>📊 一、概览对比表</h2>
+<table class="summary">
+  <thead><tr>
+    <th>代码</th><th>名称</th><th class="r">现价</th><th class="r">日涨跌</th><th class="r">YTD</th>
+    <th class="r">RSI</th><th class="r">市值</th><th class="r">PE</th><th class="c">评级</th><th class="r">评分</th>
+  </tr></thead>
+  <tbody>
+<tr>
+  <td><a href="#stock-VRT"><b>VRT</b></a></td>
+  <td>Vertiv</td>
+  <td class="r">$367.13</td>
+  <td class="r" style="color:#16a34a">-0.21%</td>
+  <td class="r" style="color:#dc2626">+116.6%</td>
+  <td class="r">70</td>
+  <td class="r">$141.0B</td>
+  <td class="r">105.2</td>
+  <td class="c"><span class="badge" style="background:#f1f5f9;color:#64748b">观望</span></td>
+  <td class="r"><b>5.0</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-VST"><b>VST</b></a></td>
+  <td>Vistra</td>
+  <td class="r">$146.87</td>
+  <td class="r" style="color:#16a34a">-3.41%</td>
+  <td class="r" style="color:#16a34a">-10.4%</td>
+  <td class="r">40</td>
+  <td class="r">$49.5B</td>
+  <td class="r">24.3</td>
+  <td class="c"><span class="badge" style="background:#f1f5f9;color:#64748b">观望</span></td>
+  <td class="r"><b>6.1</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-CEG"><b>CEG</b></a></td>
+  <td>Constellation Energy</td>
+  <td class="r">$293.60</td>
+  <td class="r" style="color:#16a34a">-2.03%</td>
+  <td class="r" style="color:#16a34a">-18.0%</td>
+  <td class="r">45</td>
+  <td class="r">$106.4B</td>
+  <td class="r">25.5</td>
+  <td class="c"><span class="badge" style="background:#fff7ed;color:#ea580c">增持</span></td>
+  <td class="r"><b>7.2</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-OKLO"><b>OKLO</b></a></td>
+  <td>Oklo</td>
+  <td class="r">$73.63</td>
+  <td class="r" style="color:#16a34a">-5.76%</td>
+  <td class="r" style="color:#16a34a">-0.5%</td>
+  <td class="r">55</td>
+  <td class="r">$12.8B</td>
+  <td class="r">N/A</td>
+  <td class="c"><span class="badge" style="background:#fef2f2;color:#dc2626">买入</span></td>
+  <td class="r"><b>7.8</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-AMD"><b>AMD</b></a></td>
+  <td>AMD</td>
+  <td class="r">$448.29</td>
+  <td class="r" style="color:#16a34a">-2.29%</td>
+  <td class="r" style="color:#dc2626">+104.8%</td>
+  <td class="r">77</td>
+  <td class="r">$731.0B</td>
+  <td class="r">145.6</td>
+  <td class="c"><span class="badge" style="background:#ecfeff;color:#0891b2">减持</span></td>
+  <td class="r"><b>3.8</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-AVGO"><b>AVGO</b></a></td>
+  <td>Broadcom</td>
+  <td class="r">$419.30</td>
+  <td class="r" style="color:#16a34a">-2.13%</td>
+  <td class="r" style="color:#dc2626">+18.9%</td>
+  <td class="r">60</td>
+  <td class="r">$1985.2B</td>
+  <td class="r">79.4</td>
+  <td class="c"><span class="badge" style="background:#f1f5f9;color:#64748b">观望</span></td>
+  <td class="r"><b>5.3</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-ARM"><b>ARM</b></a></td>
+  <td>Arm Holdings</td>
+  <td class="r">$207.92</td>
+  <td class="r" style="color:#16a34a">-2.22%</td>
+  <td class="r" style="color:#dc2626">+84.3%</td>
+  <td class="r">57</td>
+  <td class="r">$221.2B</td>
+  <td class="r">244.6</td>
+  <td class="c"><span class="badge" style="background:#f1f5f9;color:#64748b">观望</span></td>
+  <td class="r"><b>6.3</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-CRDO"><b>CRDO</b></a></td>
+  <td>Credo</td>
+  <td class="r">$198.57</td>
+  <td class="r" style="color:#16a34a">-5.54%</td>
+  <td class="r" style="color:#dc2626">+33.8%</td>
+  <td class="r">63</td>
+  <td class="r">$36.6B</td>
+  <td class="r">103.4</td>
+  <td class="c"><span class="badge" style="background:#f1f5f9;color:#64748b">观望</span></td>
+  <td class="r"><b>5.3</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-ALAB"><b>ALAB</b></a></td>
+  <td>Astera Labs</td>
+  <td class="r">$204.42</td>
+  <td class="r" style="color:#16a34a">-1.41%</td>
+  <td class="r" style="color:#dc2626">+19.1%</td>
+  <td class="r">61</td>
+  <td class="r">$35.0B</td>
+  <td class="r">156.1</td>
+  <td class="c"><span class="badge" style="background:#f1f5f9;color:#64748b">观望</span></td>
+  <td class="r"><b>6.3</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-SYM"><b>SYM</b></a></td>
+  <td>Symbotic</td>
+  <td class="r">$51.32</td>
+  <td class="r" style="color:#16a34a">-0.75%</td>
+  <td class="r" style="color:#16a34a">-15.6%</td>
+  <td class="r">39</td>
+  <td class="r">$30.9B</td>
+  <td class="r">N/A</td>
+  <td class="c"><span class="badge" style="background:#f1f5f9;color:#64748b">观望</span></td>
+  <td class="r"><b>6.4</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-RKLB"><b>RKLB</b></a></td>
+  <td>Rocket Lab</td>
+  <td class="r">$117.56</td>
+  <td class="r" style="color:#dc2626">+0.18%</td>
+  <td class="r" style="color:#dc2626">+66.4%</td>
+  <td class="r">73</td>
+  <td class="r">$68.0B</td>
+  <td class="r">N/A</td>
+  <td class="c"><span class="badge" style="background:#f1f5f9;color:#64748b">观望</span></td>
+  <td class="r"><b>5.0</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-IONQ"><b>IONQ</b></a></td>
+  <td>IonQ</td>
+  <td class="r">$55.87</td>
+  <td class="r" style="color:#16a34a">-1.79%</td>
+  <td class="r" style="color:#dc2626">+21.4%</td>
+  <td class="r">69</td>
+  <td class="r">$20.9B</td>
+  <td class="r">620.8</td>
+  <td class="c"><span class="badge" style="background:#fff7ed;color:#ea580c">增持</span></td>
+  <td class="r"><b>6.5</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-PLTR"><b>PLTR</b></a></td>
+  <td>Palantir</td>
+  <td class="r">$136.00</td>
+  <td class="r" style="color:#16a34a">-0.65%</td>
+  <td class="r" style="color:#16a34a">-25.0%</td>
+  <td class="r">44</td>
+  <td class="r">$326.0B</td>
+  <td class="r">141.7</td>
+  <td class="c"><span class="badge" style="background:#f1f5f9;color:#64748b">观望</span></td>
+  <td class="r"><b>6.1</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-TEM"><b>TEM</b></a></td>
+  <td>Tempus AI</td>
+  <td class="r">$46.95</td>
+  <td class="r" style="color:#16a34a">-3.12%</td>
+  <td class="r" style="color:#16a34a">-22.0%</td>
+  <td class="r">40</td>
+  <td class="r">$8.4B</td>
+  <td class="r">N/A</td>
+  <td class="c"><span class="badge" style="background:#fff7ed;color:#ea580c">增持</span></td>
+  <td class="r"><b>7.0</b></td>
+</tr>
+
+<tr>
+  <td><a href="#stock-HIMS"><b>HIMS</b></a></td>
+  <td>Hims & Hers</td>
+  <td class="r">$25.03</td>
+  <td class="r" style="color:#16a34a">-14.10%</td>
+  <td class="r" style="color:#16a34a">-24.2%</td>
+  <td class="r">47</td>
+  <td class="r">$5.8B</td>
+  <td class="r">N/A</td>
+  <td class="c"><span class="badge" style="background:#fff7ed;color:#ea580c">增持</span></td>
+  <td class="r"><b>6.7</b></td>
+</tr></tbody>
+</table>
+
+<h2>🎯 二、组合配置思路（参考）</h2>
+<div class="card" style="padding:20px 26px;">
+<p><b>核心仓位 60%</b>（确定性高、护城河深）：CEG、AVGO、PLTR、ARM、AMD</p>
+<p><b>成长仓位 30%</b>（增速快、高赔率）：VRT、VST、ALAB、CRDO、TEM、SYM、RKLB</p>
+<p><b>探索仓位 10%</b>（高风险高赔率）：OKLO、IONQ、HIMS</p>
+<p style="color:#64748b;font-size:13px;margin-top:10px">⚠️ 不要一次性买入。建议分 3-4 批在 4-8 周内建仓，每只设明确止损位（一般为建仓价 -10%~-15%）。</p>
+</div>
+
+<h2>📋 三、个股深度分析（按评分降序）</h2>
+
+<div class="card" id="stock-VRT">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">VRT</span>
+      <span class="cn">Vertiv</span>
+      <span class="sector-tag">AI 电力基建</span>
+    </div>
+    <div class="rating-pill" style="background:#f1f5f9;color:#64748b">
+      观望 · 5.0/10
     </div>
   </div>
 
-  <h2>🎯 五大主线分布</h2>
-  <div class="themes">
-    <div class="theme-card">
-      <div class="title">AI 二线基建</div>
-      <div class="stocks">VRT · 数据中心电力</div>
-    </div>
-    <div class="theme-card">
-      <div class="title">电力 / 核电</div>
-      <div class="stocks">VST · AI 用电</div>
-    </div>
-    <div class="theme-card">
-      <div class="title">AI 芯片</div>
-      <div class="stocks">AMD · AVGO</div>
-    </div>
-    <div class="theme-card">
-      <div class="title">AI 网络（光/CPO）</div>
-      <div class="stocks">CRDO · ALAB</div>
-    </div>
-    <div class="theme-card">
-      <div class="title">机器人</div>
-      <div class="stocks">SYM · 仓储自动化</div>
-    </div>
-    <div class="theme-card">
-      <div class="title">量子计算</div>
-      <div class="stocks">IONQ · 离子阱</div>
-    </div>
-  </div>
-
-  <h2>🏆 综合评分排行</h2>
-  <table class="summary-table">
-    <thead>
-      <tr>
-        <th>排</th><th>代码</th><th>价格</th><th>日涨</th>
-        <th>RSI</th><th>52W位</th><th>YTD</th><th>评分</th><th>评级</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td><div class="ticker">IONQ</div><div class="name">IonQ</div></td>
-        <td>$53.83</td>
-        <td class="down">-5.38%</td>
-        <td class="rsi-mid">65</td>
-        <td>48%</td>
-        <td class="up">+16.84%</td>
-        <td>
-          <strong>7.2</strong>
-          <div class="score-bar"><div class="score-bar-fill" style="width:72%"></div></div>
-        </td>
-        <td><span class="rating-badge rating-hold-up">增持</span></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td><div class="ticker">ALAB</div><div class="name">Astera Labs</div></td>
-        <td>$196.83</td>
-        <td class="down">-5.07%</td>
-        <td class="rsi-mid">57</td>
-        <td>64%</td>
-        <td class="up">+14.64%</td>
-        <td>
-          <strong>6.8</strong>
-          <div class="score-bar"><div class="score-bar-fill" style="width:68%"></div></div>
-        </td>
-        <td><span class="rating-badge rating-hold-up">增持</span></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td><div class="ticker">SYM</div><div class="name">Symbotic</div></td>
-        <td>$50.56</td>
-        <td class="down">-2.22%</td>
-        <td class="rsi-mid">38</td>
-        <td>40%</td>
-        <td class="down">-16.87%</td>
-        <td>
-          <strong>6.4</strong>
-          <div class="score-bar"><div class="score-bar-fill" style="width:64%"></div></div>
-        </td>
-        <td><span class="rating-badge rating-watch">观望</span></td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td><div class="ticker">AVGO</div><div class="name">Broadcom</div></td>
-        <td>$412.82</td>
-        <td class="down">-3.64%</td>
-        <td class="rsi-mid">57</td>
-        <td>89%</td>
-        <td class="up">+17.04%</td>
-        <td>
-          <strong>6.3</strong>
-          <div class="score-bar"><div class="score-bar-fill" style="width:63%"></div></div>
-        </td>
-        <td><span class="rating-badge rating-watch">观望</span></td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td><div class="ticker">CRDO</div><div class="name">Credo</div></td>
-        <td>$187.60</td>
-        <td class="down">-10.76%</td>
-        <td class="rsi-mid">57</td>
-        <td>83%</td>
-        <td class="up">+26.42%</td>
-        <td>
-          <strong>6.3</strong>
-          <div class="score-bar"><div class="score-bar-fill" style="width:63%"></div></div>
-        </td>
-        <td><span class="rating-badge rating-watch">观望</span></td>
-      </tr>
-      <tr>
-        <td>6</td>
-        <td><div class="ticker">VST</div><div class="name">Vistra</div></td>
-        <td>$146.48</td>
-        <td class="down">-3.66%</td>
-        <td class="rsi-mid">40</td>
-        <td>10%</td>
-        <td class="down">-10.62%</td>
-        <td>
-          <strong>6.1</strong>
-          <div class="score-bar"><div class="score-bar-fill" style="width:61%"></div></div>
-        </td>
-        <td><span class="rating-badge rating-watch">观望</span></td>
-      </tr>
-      <tr>
-        <td>7</td>
-        <td><div class="ticker">VRT</div><div class="name">Vertiv</div></td>
-        <td>$353.93</td>
-        <td class="down">-3.80%</td>
-        <td class="rsi-mid">64</td>
-        <td>96%</td>
-        <td class="up">+108.85%</td>
-        <td>
-          <strong>5.3</strong>
-          <div class="score-bar"><div class="score-bar-fill" style="width:53%"></div></div>
-        </td>
-        <td><span class="rating-badge rating-watch">观望</span></td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td><div class="ticker">AMD</div><div class="name">AMD</div></td>
-        <td>$434.75</td>
-        <td class="down">-5.24%</td>
-        <td class="rsi-hot">73</td>
-        <td>93%</td>
-        <td class="up">+98.54%</td>
-        <td>
-          <strong>5.0</strong>
-          <div class="score-bar"><div class="score-bar-fill" style="width:50%"></div></div>
-        </td>
-        <td><span class="rating-badge rating-watch">观望</span></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2>🔍 个股深度分析</h2>
-
-  <div class="stock-card">
-    <div class="stock-header">
-      <div class="stock-title">
-        <div class="ticker-row">
-          <span class="ticker">IONQ</span>
-          <span class="name-cn">IonQ</span>
-          <span class="rating-badge rating-hold-up">增持 · 7.2/10</span>
-        </div>
-        <span class="theme">离子阱量子计算</span>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">$53.83</div>
-        <div class="stock-change down">-5.38%</div>
-      </div>
-    </div>
-
-    <div class="metrics-grid">
-      <div class="metric"><div class="label">市值</div><div class="value">$20.1B</div></div>
-      <div class="metric"><div class="label">PE</div><div class="value">598.1</div></div>
-      <div class="metric"><div class="label">RSI(14)</div><div class="value rsi-mid">65</div></div>
-      <div class="metric"><div class="label">YTD</div><div class="value up">+16.84%</div></div>
-      <div class="metric"><div class="label">52W 高</div><div class="value">$85</div></div>
-      <div class="metric"><div class="label">52W 低</div><div class="value">$26</div></div>
-    </div>
-
-    <div class="position-bar">
-      <div class="pb-label"><span>52 周位置</span><span>48%</span></div>
-      <div class="pb-track"><div class="pb-marker" style="left:48%"></div></div>
-    </div>
-
-    <div class="analysis">
-      <h4>核心逻辑</h4>
-      <p>量子计算第一梯队。2026 年是量子从'实验室'进入'商业可用'的关键年，IBM 路线图与之竞争，IonQ 离子阱方案被很多机构采纳。</p>
-
-      <h4>催化剂</h4>
-      <ul><li>美国国防部合同</li><li>Forte Enterprise 系统量产</li><li>量子主题情绪回归</li></ul>
-
-      <h4>风险点</h4>
-      <ul><li>PE 600+ 完全是预期估值</li><li>技术路线长期不确定</li><li>量子板块波动巨大</li></ul>
-
-      <div class="signals"><span class="signal-tag ">短期均线多头（MA5>MA20）</span><span class="signal-tag ">中期多头（MA20>MA60）</span><span class="signal-tag danger">距 52 周高点回撤 -36.4%，深度调整</span><span class="signal-tag danger">今日大跌 -5.4%</span></div>
-
-      <div class="view-block">
-        <strong>💡 操作建议：</strong>纯主题/期权式标的。仓位严格控制在总仓 3% 以内，做对就赚 3-5 倍，做错最多亏掉。
-      </div>
-    </div>
-  </div>
-
-  <div class="stock-card">
-    <div class="stock-header">
-      <div class="stock-title">
-        <div class="ticker-row">
-          <span class="ticker">ALAB</span>
-          <span class="name-cn">Astera Labs</span>
-          <span class="rating-badge rating-hold-up">增持 · 6.8/10</span>
-        </div>
-        <span class="theme">PCIe/CXL 互连芯片</span>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">$196.83</div>
-        <div class="stock-change down">-5.07%</div>
-      </div>
-    </div>
-
-    <div class="metrics-grid">
-      <div class="metric"><div class="label">市值</div><div class="value">$33.7B</div></div>
-      <div class="metric"><div class="label">PE</div><div class="value">150.3</div></div>
-      <div class="metric"><div class="label">RSI(14)</div><div class="value rsi-mid">57</div></div>
-      <div class="metric"><div class="label">YTD</div><div class="value up">+14.64%</div></div>
-      <div class="metric"><div class="label">52W 高</div><div class="value">$263</div></div>
-      <div class="metric"><div class="label">52W 低</div><div class="value">$81</div></div>
-    </div>
-
-    <div class="position-bar">
-      <div class="pb-label"><span>52 周位置</span><span>64%</span></div>
-      <div class="pb-track"><div class="pb-marker" style="left:64%"></div></div>
-    </div>
-
-    <div class="analysis">
-      <h4>核心逻辑</h4>
-      <p>PCIe Retimer / CXL 切换芯片唯一龙头。AI 服务器 GPU 之间互连，PCIe 5.0/6.0 必须用它的芯片，没有替代品。</p>
-
-      <h4>催化剂</h4>
-      <ul><li>GB300 量产带来 PCIe 6.0 渗透</li><li>CXL 进入实质部署阶段</li><li>管理层连续四个季度提高指引</li></ul>
-
-      <h4>风险点</h4>
-      <ul><li>从高点回撤 25% 但 YTD 仍偏高</li><li>PE 150 超贵</li><li>估值压缩风险</li></ul>
-
-      <div class="signals"><span class="signal-tag ">短期均线多头（MA5>MA20）</span><span class="signal-tag ">中期多头（MA20>MA60）</span><span class="signal-tag danger">距 52 周高点回撤 -25.1%，深度调整</span><span class="signal-tag danger">今日大跌 -5.1%</span></div>
-
-      <div class="view-block">
-        <strong>💡 操作建议：</strong>技术壁垒高 + 调整充分，195 附近性价比开始合理。可以小仓试错，分批加仓到 180 区域。
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">$367.13</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-0.21%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#dc2626">+116.63%</div></div>
+    <div class="m"><div class="m-l">市值</div><div class="m-v">$141.0B</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">105.2</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">70 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">$101 – $372</div></div>
+    <div class="m"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:98.20608787035158%"></div></div>
+        <span class="small">98%</span>
       </div>
     </div>
   </div>
 
-  <div class="stock-card">
-    <div class="stock-header">
-      <div class="stock-title">
-        <div class="ticker-row">
-          <span class="ticker">SYM</span>
-          <span class="name-cn">Symbotic</span>
-          <span class="rating-badge rating-watch">观望 · 6.4/10</span>
-        </div>
-        <span class="theme">仓储机器人/工业 AI</span>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">$50.56</div>
-        <div class="stock-change down">-2.22%</div>
-      </div>
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>数据中心电力管理与液冷散热龙头。提供 UPS、配电、热管理、机柜与监控软件，是 AI 数据中心从「机柜内」到「整楼」的关键基础设施供应商。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2026 Q1 营收 +30% YoY，订单积压 (backlog) 突破 <b>150 亿美元</b>，全年指引上调；自由现金流持续扩张。毛利率 35%+，净利率 13%+。</p></div>
+    <div class="sec"><h4>📈 近2年走势</h4><p>近 2 年从 50 美元一路冲到 380+，涨幅近 7 倍，是「卖铲人」叙事的最大受益者；2026 年 YTD 已 +116%，估值快速消化中。</p></div>
+    <div class="sec"><h4>🏭 行业地位 & 板块</h4><p>AI 数据中心 capex 周期高潮期，全行业 backlog 创纪录。竞争对手仅 Schneider、Eaton。</p></div>
+    <div class="sec sec-good"><h4>✅ 核心优势</h4><p>液冷参考设计被 NVIDIA / 微软 / Meta 直接采用；产品端到端覆盖；规模效应壁垒。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>估值高（PE 105），AI 资本开支若降温，订单回落风险显著；技术工人短缺。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>不追高</b>。回踩 300-320 美元区间分批建仓，止损 280；目标 12 个月 450+。建议仓位 5-7%。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-VST">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">VST</span>
+      <span class="cn">Vistra</span>
+      <span class="sector-tag">核电/电力</span>
     </div>
-
-    <div class="metrics-grid">
-      <div class="metric"><div class="label">市值</div><div class="value">$30.5B</div></div>
-      <div class="metric"><div class="label">PE</div><div class="value">—</div></div>
-      <div class="metric"><div class="label">RSI(14)</div><div class="value rsi-mid">38</div></div>
-      <div class="metric"><div class="label">YTD</div><div class="value down">-16.87%</div></div>
-      <div class="metric"><div class="label">52W 高</div><div class="value">$88</div></div>
-      <div class="metric"><div class="label">52W 低</div><div class="value">$26</div></div>
+    <div class="rating-pill" style="background:#f1f5f9;color:#64748b">
+      观望 · 6.1/10
     </div>
+  </div>
 
-    <div class="position-bar">
-      <div class="pb-label"><span>52 周位置</span><span>40%</span></div>
-      <div class="pb-track"><div class="pb-marker" style="left:40%"></div></div>
-    </div>
-
-    <div class="analysis">
-      <h4>核心逻辑</h4>
-      <p>仓储自动化机器人。沃尔玛是大客户，AI + 工业机器人主题里少有的真正落地、有营收的标的。</p>
-
-      <h4>催化剂</h4>
-      <ul><li>沃尔玛续签 + 扩部署</li><li>进入软银生态合作</li><li>美国制造业回流推动仓储自动化</li></ul>
-
-      <h4>风险点</h4>
-      <ul><li>创始人卖股票事件冲击信心</li><li>盈利持续亏损（EPS 负）</li><li>回撤 42% 显示市场对前景质疑</li></ul>
-
-      <div class="signals"><span class="signal-tag ">RSI 38 中性偏弱，回调中</span><span class="signal-tag ">短期均线空头（MA5<MA20）</span><span class="signal-tag ">中期多头（MA20>MA60）</span><span class="signal-tag danger">距 52 周高点回撤 -42.5%，深度调整</span><span class="signal-tag danger">YTD -16.9%，跑输大盘</span></div>
-
-      <div class="view-block">
-        <strong>💡 操作建议：</strong>高 beta 黑马型标的。50 附近是技术支撑，可以小仓位博反弹。强止损放 45。
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">$146.87</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-3.41%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#16a34a">-10.39%</div></div>
+    <div class="m"><div class="m-l">市值</div><div class="m-v">$49.5B</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">24.3</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">40 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">$138 – $219</div></div>
+    <div class="m"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:10.569557011213513%"></div></div>
+        <span class="small">11%</span>
       </div>
     </div>
   </div>
 
-  <div class="stock-card">
-    <div class="stock-header">
-      <div class="stock-title">
-        <div class="ticker-row">
-          <span class="ticker">AVGO</span>
-          <span class="name-cn">Broadcom</span>
-          <span class="rating-badge rating-watch">观望 · 6.3/10</span>
-        </div>
-        <span class="theme">定制 ASIC / 网络</span>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">$412.82</div>
-        <div class="stock-change down">-3.64%</div>
-      </div>
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>美国最大独立发电商之一，拥有核电（Comanche Peak）+ 燃气 + 储能组合，2024 年收购 Energy Harbor 后核电装机进一步扩大。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2026 Q1 营收承压（暖冬+电价波动），但全年 EBITDA 指引维持 50 亿美元上方；自由现金流强劲，持续回购。</p></div>
+    <div class="sec"><h4>📈 近2年走势</h4><p>2024-2025 涨幅惊人（80→200），2026 年 YTD -10%，从高点深度回调。当前 RSI 40 处于超卖边缘。</p></div>
+    <div class="sec"><h4>🏭 行业地位 & 板块</h4><p>核电+AI 数据中心 PPA 主线核心标的。Meta 已与其签 1.1GW PPA。</p></div>
+    <div class="sec sec-good"><h4>✅ 核心优势</h4><p>存量核电几乎不可复制；同时拥有燃气调峰能力，电力组合最完整。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>电价对天气敏感；天然气价格波动；监管审批周期长。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>左侧机会</b>。140-150 美元逐步建仓，跌破 130 减仓；目标 12 个月 200。建议仓位 5-7%。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-CEG">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">CEG</span>
+      <span class="cn">Constellation Energy</span>
+      <span class="sector-tag">核电/电力</span>
     </div>
-
-    <div class="metrics-grid">
-      <div class="metric"><div class="label">市值</div><div class="value">$1.95T</div></div>
-      <div class="metric"><div class="label">PE</div><div class="value">78.2</div></div>
-      <div class="metric"><div class="label">RSI(14)</div><div class="value rsi-mid">57</div></div>
-      <div class="metric"><div class="label">YTD</div><div class="value up">+17.04%</div></div>
-      <div class="metric"><div class="label">52W 高</div><div class="value">$438</div></div>
-      <div class="metric"><div class="label">52W 低</div><div class="value">$219</div></div>
+    <div class="rating-pill" style="background:#fff7ed;color:#ea580c">
+      增持 · 7.2/10
     </div>
+  </div>
 
-    <div class="position-bar">
-      <div class="pb-label"><span>52 周位置</span><span>89%</span></div>
-      <div class="pb-track"><div class="pb-marker" style="left:89%"></div></div>
-    </div>
-
-    <div class="analysis">
-      <h4>核心逻辑</h4>
-      <p>AI 隐形王者。Google TPU + Meta MTIA 等定制 ASIC 都是它做的，这块业务比 NVDA 业务更稳，估值也更便宜（PE 78 vs NVDA ~50 但增长更确定）。</p>
-
-      <h4>催化剂</h4>
-      <ul><li>新增 Apple/字节定制 ASIC 客户传闻</li><li>VMware 整合超预期</li><li>网络芯片受益于 AI 集群东西向流量爆发</li></ul>
-
-      <h4>风险点</h4>
-      <ul><li>市值 1.95 万亿美元已经成为大体量</li><li>ASIC 客户集中度高（Google 占比~30%）</li></ul>
-
-      <div class="signals"><span class="signal-tag ">短期均线多头（MA5>MA20）</span><span class="signal-tag ">中期多头（MA20>MA60）</span></div>
-
-      <div class="view-block">
-        <strong>💡 操作建议：</strong>趋势完好的核心仓位。回调到 380 加，跌破 350 减。
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">$293.60</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-2.03%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#16a34a">-17.99%</div></div>
+    <div class="m"><div class="m-l">市值</div><div class="m-v">$106.4B</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">25.5</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">45 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">$243 – $412</div></div>
+    <div class="m"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:30.01325349679314%"></div></div>
+        <span class="small">30%</span>
       </div>
     </div>
   </div>
 
-  <div class="stock-card">
-    <div class="stock-header">
-      <div class="stock-title">
-        <div class="ticker-row">
-          <span class="ticker">CRDO</span>
-          <span class="name-cn">Credo</span>
-          <span class="rating-badge rating-watch">观望 · 6.3/10</span>
-        </div>
-        <span class="theme">光互连/AEC 高速线缆</span>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">$187.60</div>
-        <div class="stock-change down">-10.76%</div>
-      </div>
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>美国最大核电运营商，约占全美核电产能的 25%。已与微软签下 Three Mile Island 复活 PPA（2028 年起 20 年）。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2026 Q1 EBITDA 强劲，自由现金流稳定；负债率行业内最低；无碳电力溢价持续提升。</p></div>
+    <div class="sec"><h4>📈 近2年走势</h4><p>2025 年涨至 350+，2026 年 YTD -18%，回调幅度可观。RSI 45，技术面处筑底阶段。</p></div>
+    <div class="sec"><h4>🏭 行业地位 & 板块</h4><p>「核电+超大规模数据中心 PPA」最纯粹标的，多个 AI 客户排队签约。</p></div>
+    <div class="sec sec-good"><h4>✅ 核心优势</h4><p>存量核电资产护城河无法复制；与微软/Meta 长协锁定 20 年现金流。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>电网接入审批延期；核安全事件（极小概率但黑天鹅）；电价改革风险。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>核心持仓</b>。280-300 美元分批，跌破 260 减仓；目标 12 个月 380+。建议仓位 7-10%。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-OKLO">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">OKLO</span>
+      <span class="cn">Oklo</span>
+      <span class="sector-tag">核电/电力</span>
     </div>
-
-    <div class="metrics-grid">
-      <div class="metric"><div class="label">市值</div><div class="value">$34.6B</div></div>
-      <div class="metric"><div class="label">PE</div><div class="value">97.7</div></div>
-      <div class="metric"><div class="label">RSI(14)</div><div class="value rsi-mid">57</div></div>
-      <div class="metric"><div class="label">YTD</div><div class="value up">+26.42%</div></div>
-      <div class="metric"><div class="label">52W 高</div><div class="value">$214</div></div>
-      <div class="metric"><div class="label">52W 低</div><div class="value">$56</div></div>
+    <div class="rating-pill" style="background:#fef2f2;color:#dc2626">
+      买入 · 7.8/10
     </div>
+  </div>
 
-    <div class="position-bar">
-      <div class="pb-label"><span>52 周位置</span><span>83%</span></div>
-      <div class="pb-track"><div class="pb-marker" style="left:83%"></div></div>
-    </div>
-
-    <div class="analysis">
-      <h4>核心逻辑</h4>
-      <p>AEC 高速线缆 + 光 DSP 的隐形龙头。AI 集群规模越大、线缆越长、需要的信号补偿芯片越多，本季亚马逊订单已暴增。</p>
-
-      <h4>催化剂</h4>
-      <ul><li>Q4 财报指引大超预期</li><li>亚马逊外多云客户拓展</li><li>200G→400G/800G 升级周期</li></ul>
-
-      <h4>风险点</h4>
-      <ul><li>今日 -10.8% 受 CPO 板块整体获利了结拖累</li><li>客户集中（亚马逊占比~60%）</li><li>PE 接近 100 弹性高但波动也高</li></ul>
-
-      <div class="signals"><span class="signal-tag ">短期均线多头（MA5>MA20）</span><span class="signal-tag ">中期多头（MA20>MA60）</span><span class="signal-tag danger">今日大跌 -10.8%</span></div>
-
-      <div class="view-block">
-        <strong>💡 操作建议：</strong>光互连里弹性最强的小盘股。回调是机会，180 以下分批，目标 250-280。
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">$73.63</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-5.76%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#16a34a">-0.49%</div></div>
+    <div class="m"><div class="m-l">市值</div><div class="m-v">$12.8B</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">55 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">$34 – $194</div></div>
+    <div class="m"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:24.74646300237886%"></div></div>
+        <span class="small">25%</span>
       </div>
     </div>
   </div>
 
-  <div class="stock-card">
-    <div class="stock-header">
-      <div class="stock-title">
-        <div class="ticker-row">
-          <span class="ticker">VST</span>
-          <span class="name-cn">Vistra</span>
-          <span class="rating-badge rating-watch">观望 · 6.1/10</span>
-        </div>
-        <span class="theme">核电+电力（AI 用电主线）</span>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">$146.48</div>
-        <div class="stock-change down">-3.66%</div>
-      </div>
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>小型模块化反应堆 (SMR) 设计公司，主推 15-50 MW 微堆「Aurora」，与 DOE 国家实验室深度合作，目标 AI 数据中心专属电源。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p><b>仍处烧钱阶段，无营收</b>。账上现金约 5 亿美元，2027 年前持续亏损；2027-2028 年首座反应堆并网为关键里程碑。</p></div>
+    <div class="sec"><h4>📈 近2年走势</h4><p>2025 上半年从 7 美元飙至 70+，2026 年震荡，YTD 持平；高波动品种。</p></div>
+    <div class="sec"><h4>🏭 行业地位 & 板块</h4><p>SMR 赛道概念龙头，与 NuScale、TerraPower 同台竞争。Sam Altman 是早期投资人。</p></div>
+    <div class="sec sec-good"><h4>✅ 核心优势</h4><p>Aurora 设计已过 NRC 预审；与 Meta、Equinix 已签订意向。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p><b>技术与监管双重不确定</b>，首堆若延期估值崩塌；Pre-revenue 公司，依赖融资。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>高风险高赔率</b>。仅作小仓位「彩票」，60-65 美元分批；跌破 50 止损；建议仓位 1-2%。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-AMD">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">AMD</span>
+      <span class="cn">AMD</span>
+      <span class="sector-tag">AI 芯片</span>
     </div>
-
-    <div class="metrics-grid">
-      <div class="metric"><div class="label">市值</div><div class="value">$49.4B</div></div>
-      <div class="metric"><div class="label">PE</div><div class="value">24.2</div></div>
-      <div class="metric"><div class="label">RSI(14)</div><div class="value rsi-mid">40</div></div>
-      <div class="metric"><div class="label">YTD</div><div class="value down">-10.62%</div></div>
-      <div class="metric"><div class="label">52W 高</div><div class="value">$219</div></div>
-      <div class="metric"><div class="label">52W 低</div><div class="value">$138</div></div>
+    <div class="rating-pill" style="background:#ecfeff;color:#0891b2">
+      减持 · 3.8/10
     </div>
+  </div>
 
-    <div class="position-bar">
-      <div class="pb-label"><span>52 周位置</span><span>10%</span></div>
-      <div class="pb-track"><div class="pb-marker" style="left:10%"></div></div>
-    </div>
-
-    <div class="analysis">
-      <h4>核心逻辑</h4>
-      <p>核电 + 美国本土电力的稀缺组合。AI 用电主题里 VST 是少数能给云厂商签 PPA 长期合同的运营商，电价 + 容量都被锁死，现金流可见性极强。</p>
-
-      <h4>催化剂</h4>
-      <ul><li>AWS/微软/Meta 与电力公司续约/新签</li><li>美国核能政策延期至 2026</li><li>数据中心电价持续上行</li></ul>
-
-      <h4>风险点</h4>
-      <ul><li>距 52 周高点回撤 33%，市场担心 AI 用电增速乐观预期回归现实</li><li>天然气价波动影响混合电力成本</li></ul>
-
-      <div class="signals"><span class="signal-tag ">RSI 40 中性偏弱，回调中</span><span class="signal-tag ">短期均线空头（MA5<MA20）</span><span class="signal-tag success">位于 52 周低位 10%，性价比高</span><span class="signal-tag danger">距 52 周高点回撤 -33.2%，深度调整</span></div>
-
-      <div class="view-block">
-        <strong>💡 操作建议：</strong>我最看好的标的之一。低位 + 业务有护城河，145 附近性价比高，止损放在 130。
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">$448.29</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-2.29%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#dc2626">+104.79%</div></div>
+    <div class="m"><div class="m-l">市值</div><div class="m-v">$731.0B</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">145.6</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">77 <span class="tag">超买⚠️</span></div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">$108 – $469</div></div>
+    <div class="m"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:94.21238673703078%"></div></div>
+        <span class="small">94%</span>
       </div>
     </div>
   </div>
 
-  <div class="stock-card">
-    <div class="stock-header">
-      <div class="stock-title">
-        <div class="ticker-row">
-          <span class="ticker">VRT</span>
-          <span class="name-cn">Vertiv</span>
-          <span class="rating-badge rating-watch">观望 · 5.3/10</span>
-        </div>
-        <span class="theme">AI 数据中心电力/散热</span>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">$353.93</div>
-        <div class="stock-change down">-3.80%</div>
-      </div>
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>CPU + GPU 双核驱动。EPYC 数据中心 CPU 持续抢英特尔份额；MI300/MI400 系列在 AI 推理市场对 NVIDIA 形成补位。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2026 Q1 数据中心营收同比 +60%，AI 加速器年化营收突破 100 亿；毛利率 53%。</p></div>
+    <div class="sec"><h4>📈 近2年走势</h4><p>2026 年 YTD +105%，RSI 77 严重超买，技术面接近阶段顶部。</p></div>
+    <div class="sec"><h4>🏭 行业地位 & 板块</h4><p>AI 芯片次主线，是 NVIDIA 之外唯一能拿下 hyperscaler 大单的玩家。</p></div>
+    <div class="sec sec-good"><h4>✅ 核心优势</h4><p>CPU+GPU 协同；ROCm 软件栈逐步成熟；OpenAI 已签 6GW 部署协议。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>NVIDIA Blackwell/Rubin 持续压制；MI400 出货延期风险；估值已 price in 大量预期。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>不追高</b>。回踩 380-400 美元区间布局，跌破 350 撤退；目标 12 个月 550。仓位 5-7%。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-AVGO">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">AVGO</span>
+      <span class="cn">Broadcom</span>
+      <span class="sector-tag">AI 芯片</span>
     </div>
-
-    <div class="metrics-grid">
-      <div class="metric"><div class="label">市值</div><div class="value">$135.9B</div></div>
-      <div class="metric"><div class="label">PE</div><div class="value">101.4</div></div>
-      <div class="metric"><div class="label">RSI(14)</div><div class="value rsi-mid">64</div></div>
-      <div class="metric"><div class="label">YTD</div><div class="value up">+108.85%</div></div>
-      <div class="metric"><div class="label">52W 高</div><div class="value">$365</div></div>
-      <div class="metric"><div class="label">52W 低</div><div class="value">$101</div></div>
+    <div class="rating-pill" style="background:#f1f5f9;color:#64748b">
+      观望 · 5.3/10
     </div>
+  </div>
 
-    <div class="position-bar">
-      <div class="pb-label"><span>52 周位置</span><span>96%</span></div>
-      <div class="pb-track"><div class="pb-marker" style="left:96%"></div></div>
-    </div>
-
-    <div class="analysis">
-      <h4>核心逻辑</h4>
-      <p>AI 数据中心刚需基建龙头。液冷散热 + 高密度供电系统是 GB200/GB300 部署的硬卡口环节，几乎所有云厂商资本开支都要走它的产品。</p>
-
-      <h4>催化剂</h4>
-      <ul><li>北美超大规模数据中心 2026 H2 集中投产</li><li>液冷渗透率快速提升</li><li>管理层每季度上调订单指引</li></ul>
-
-      <h4>风险点</h4>
-      <ul><li>YTD 涨幅过大（+108%）</li><li>估值已经 PE 100+ 反映很多预期</li><li>AI capex 边际放缓时是高 beta 重灾区</li></ul>
-
-      <div class="signals"><span class="signal-tag ">短期均线多头（MA5>MA20）</span><span class="signal-tag ">中期多头（MA20>MA60）</span><span class="signal-tag danger">位于 52 周高位 96%，追高风险</span><span class="signal-tag ">YTD +108.8%，涨幅显著</span></div>
-
-      <div class="view-block">
-        <strong>💡 操作建议：</strong>趋势没问题，价格透支了。等待 15-20% 回调到 280-300 区间再上车。
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">$419.30</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-2.13%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#dc2626">+18.86%</div></div>
+    <div class="m"><div class="m-l">市值</div><div class="m-v">$1985.2B</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">79.4</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">60 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">$219 – $438</div></div>
+    <div class="m"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:91.59040995607613%"></div></div>
+        <span class="small">92%</span>
       </div>
     </div>
   </div>
 
-  <div class="stock-card">
-    <div class="stock-header">
-      <div class="stock-title">
-        <div class="ticker-row">
-          <span class="ticker">AMD</span>
-          <span class="name-cn">AMD</span>
-          <span class="rating-badge rating-watch">观望 · 5.0/10</span>
-        </div>
-        <span class="theme">AI CPU/GPU 第二极</span>
-      </div>
-      <div class="stock-price-block">
-        <div class="stock-price">$434.75</div>
-        <div class="stock-change down">-5.24%</div>
-      </div>
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>全球最大半导体设计公司之一。AI 业务两条腿：定制 ASIC（Google TPU、Meta MTIA）+ 网络芯片 Tomahawk/Jericho。VMware 收购后软件占比快速上升。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2026 Q1 AI 营收 84 亿美元（+106% YoY），全年指引超 400 亿；毛利率 75%+；股息+回购双轮。</p></div>
+    <div class="sec"><h4>📈 近2年走势</h4><p>2024-2026 年从 80（拆股后）涨至 420+，长牛趋势；2026 YTD +19%，估值合理。</p></div>
+    <div class="sec"><h4>🏭 行业地位 & 板块</h4><p>ASIC 替代 GPU 趋势的最大受益者，CEO Hock Tan 公开预计「2027 年 1000 亿美元 AI 营收」。</p></div>
+    <div class="sec sec-good"><h4>✅ 核心优势</h4><p>客户绑定深（Google/Meta/苹果）；网络芯片市占 70%+；现金流足够支撑大型并购。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>客户集中度高（前三大占 60%）；ASIC 定制周期长；VMware 整合执行风险。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>核心持仓</b>。400-420 区间分批，跌破 380 减仓；目标 12 个月 550。仓位 8-10%。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-ARM">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">ARM</span>
+      <span class="cn">Arm Holdings</span>
+      <span class="sector-tag">AI 芯片</span>
     </div>
-
-    <div class="metrics-grid">
-      <div class="metric"><div class="label">市值</div><div class="value">$708.9B</div></div>
-      <div class="metric"><div class="label">PE</div><div class="value">141.1</div></div>
-      <div class="metric"><div class="label">RSI(14)</div><div class="value rsi-hot">73</div></div>
-      <div class="metric"><div class="label">YTD</div><div class="value up">+98.54%</div></div>
-      <div class="metric"><div class="label">52W 高</div><div class="value">$459</div></div>
-      <div class="metric"><div class="label">52W 低</div><div class="value">$108</div></div>
+    <div class="rating-pill" style="background:#f1f5f9;color:#64748b">
+      观望 · 6.3/10
     </div>
+  </div>
 
-    <div class="position-bar">
-      <div class="pb-label"><span>52 周位置</span><span>93%</span></div>
-      <div class="pb-track"><div class="pb-marker" style="left:93%"></div></div>
-    </div>
-
-    <div class="analysis">
-      <h4>核心逻辑</h4>
-      <p>AI 芯片唯二选项。MI400 系列 2026 H2 量产，OpenAI/Meta 都在加大采购，CPU 端在数据中心继续抢英特尔份额。</p>
-
-      <h4>催化剂</h4>
-      <ul><li>MI400 GA + 大订单落地</li><li>Q1 财报已经超预期</li><li>云厂自研 ASIC 争夺战 AMD 是中立第三方</li></ul>
-
-      <h4>风险点</h4>
-      <ul><li>RSI 73 短期偏热</li><li>PE 140 估值不便宜</li><li>今日 -5.4% 显示资金分歧加大</li></ul>
-
-      <div class="signals"><span class="signal-tag ">RSI 73 偏热</span><span class="signal-tag ">短期均线多头（MA5>MA20）</span><span class="signal-tag ">中期多头（MA20>MA60）</span><span class="signal-tag danger">位于 52 周高位 93%，追高风险</span><span class="signal-tag danger">今日大跌 -5.2%</span><span class="signal-tag ">YTD +98.5%，涨幅显著</span></div>
-
-      <div class="view-block">
-        <strong>💡 操作建议：</strong>中长期逻辑成立，但今天位置是顶部区域。等回调到 380 以下再考虑，或拆分小仓位金字塔加仓。
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">$207.92</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-2.22%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#dc2626">+84.28%</div></div>
+    <div class="m"><div class="m-l">市值</div><div class="m-v">$221.2B</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">244.6</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">57 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">$100 – $240</div></div>
+    <div class="m"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:77.35876111270431%"></div></div>
+        <span class="small">77%</span>
       </div>
     </div>
   </div>
 
-  <div class="disclaimer">
-    <strong>⚠️ 免责声明：</strong>
-    本报告由 AI 自动生成，数据采集自新浪财经与腾讯财经公开接口，可能存在 15-20 分钟延迟。
-    内容仅供学习交流和投资思考使用，<strong>不构成任何投资建议</strong>。
-    投资有风险，入市需谨慎。所有交易决策请基于您自己的独立判断和专业投资顾问的建议。
-    历史表现不代表未来收益。请充分评估自身风险承受能力后做出决策。
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>全球 CPU 指令集架构 (ISA) 授权龙头，移动端 99% 市占；近年 v9 架构 + 数据中心 Neoverse 切入服务器 CPU。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2026 Q1 授权费 +30%，版税 +25%；毛利率 95%（IP 公司本质）；现金充裕。</p></div>
+    <div class="sec"><h4>📈 近2年走势</h4><p>2024 IPO 至今 +400%，2026 YTD +84%，强势主升浪。</p></div>
+    <div class="sec"><h4>🏭 行业地位 & 板块</h4><p>AI 时代 CPU 架构话语权重塑，AWS Graviton、NVIDIA Grace、苹果 M 系列均基于 Arm。</p></div>
+    <div class="sec sec-good"><h4>✅ 核心优势</h4><p>生态壁垒最高；新版本架构议价权强；自有芯片业务正在试水。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>估值极高（PE 244）；与 Qualcomm 法律纠纷余波；中国市场地缘风险（安谋中国）。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>逢低布局</b>。回踩 180-190 区间，跌破 170 撤退；目标 12 个月 260。仓位 4-6%。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-CRDO">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">CRDO</span>
+      <span class="cn">Credo</span>
+      <span class="sector-tag">AI 网络（光/CPO）</span>
+    </div>
+    <div class="rating-pill" style="background:#f1f5f9;color:#64748b">
+      观望 · 5.3/10
+    </div>
   </div>
 
-  <div class="footer">
-    Powered by WorkBuddy · Generated at 2026-05-13 00:08:03
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">$198.57</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-5.54%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#dc2626">+33.81%</div></div>
+    <div class="m"><div class="m-l">市值</div><div class="m-v">$36.6B</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">103.4</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">63 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">$57 – $214</div></div>
+    <div class="m"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:90.27396385465227%"></div></div>
+        <span class="small">90%</span>
+      </div>
+    </div>
   </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>AI 数据中心高速互联龙头。核心产品 AEC（Active Electrical Cable）替代光模块用于机架内短距连接，PHY/Retimer 芯片用于高速串行。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>FY26 营收同比 +274%，毛利率 65%+；前五大客户均为 hyperscaler；现金流转正。</p></div>
+    <div class="sec"><h4>📈 近2年走势</h4><p>2024 至今 5 倍涨幅，2026 YTD +34%，RSI 62 处于强势区间。</p></div>
+    <div class="sec"><h4>🏭 行业地位 & 板块</h4><p>AI 算力网络爆发期，scale-up/scale-out 双向需求。</p></div>
+    <div class="sec sec-good"><h4>✅ 核心优势</h4><p>AEC 在 800G 时代相比光模块成本/可靠性双优；客户集中但深度绑定；技术领先 18 个月。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>客户集中度极高（单一客户占 40%+）；CPO 光电共封若提前商用替代电缆；PE 103 估值偏高。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>波段操作</b>。180-190 分批，跌破 165 撤；目标 250。仓位 3-5%。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-ALAB">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">ALAB</span>
+      <span class="cn">Astera Labs</span>
+      <span class="sector-tag">AI 网络（光/CPO）</span>
+    </div>
+    <div class="rating-pill" style="background:#f1f5f9;color:#64748b">
+      观望 · 6.3/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">$204.42</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-1.41%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#dc2626">+19.06%</div></div>
+    <div class="m"><div class="m-l">市值</div><div class="m-v">$35.0B</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">156.1</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">61 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">$85 – $263</div></div>
+    <div class="m"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:67.16820121266562%"></div></div>
+        <span class="small">67%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>AI 服务器机箱内连接龙头。PCIe Gen6/CXL Retimer + Smart Cable Module + Aries/Taurus/Leo/Scorpio 全栈方案。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2026 Q1 营收 3.08 亿美元（+93% YoY），毛利率 75%；自由现金流大幅转正。</p></div>
+    <div class="sec"><h4>📈 近2年走势</h4><p>2024 IPO 后从 36 涨至 200+，2026 YTD +19%，技术面阶段整理。</p></div>
+    <div class="sec"><h4>🏭 行业地位 & 板块</h4><p>PCIe Gen6 + CXL 标准化升级期，与 Credo 互补（一个机内一个机外）。</p></div>
+    <div class="sec sec-good"><h4>✅ 核心优势</h4><p>PCIe Gen6 量产首发；与 Intel/AMD/NVIDIA/三大云全部合作；新品 Scorpio 切入 scale-up switch。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>估值高（PE 156）；竞争对手 Marvell 加大投入；定价权未来可能受压。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>分批建仓</b>。190-200 区间，跌破 175 撤；目标 280。仓位 4-6%。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-SYM">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">SYM</span>
+      <span class="cn">Symbotic</span>
+      <span class="sector-tag">机器人/自动化</span>
+    </div>
+    <div class="rating-pill" style="background:#f1f5f9;color:#64748b">
+      观望 · 6.4/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">$51.32</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-0.75%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#16a34a">-15.62%</div></div>
+    <div class="m"><div class="m-l">市值</div><div class="m-v">$30.9B</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">39 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">$26 – $88</div></div>
+    <div class="m"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:40.88924818108327%"></div></div>
+        <span class="small">41%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>仓储自动化机器人龙头，提供端到端 AI 驱动的高密度自动化仓储系统。Walmart 是最大客户与战略股东，沃尔玛全美仓储改造合同价值 110 亿美元+。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>FY26 营收指引 26-27 亿美元，毛利率提升中；订单积压超 230 亿美元（约 9 倍营收）。</p></div>
+    <div class="sec"><h4>📈 近2年走势</h4><p>近 2 年从 60 跌至 20 又反弹至 50+，波动剧烈；2026 YTD -16%，RSI 39 处超卖边缘。</p></div>
+    <div class="sec"><h4>🏭 行业地位 & 板块</h4><p>仓储自动化+人形机器人外溢叙事，与 Amazon Robotics 同台。</p></div>
+    <div class="sec sec-good"><h4>✅ 核心优势</h4><p>Walmart 锁定 + GreenBox 合资公司打开第三方市场；专利壁垒；端到端方案稀缺。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>项目延期+收入确认问题历史频发；客户高度集中；执行风险大。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>左侧布局</b>。45-50 分批，跌破 40 撤退；目标 75。仓位 3-5%。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-RKLB">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">RKLB</span>
+      <span class="cn">Rocket Lab</span>
+      <span class="sector-tag">商业航天</span>
+    </div>
+    <div class="rating-pill" style="background:#f1f5f9;color:#64748b">
+      观望 · 5.0/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">$117.56</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#dc2626">+0.18%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#dc2626">+66.44%</div></div>
+    <div class="m"><div class="m-l">市值</div><div class="m-v">$68.0B</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">73 <span class="tag">超买⚠️</span></div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">$22 – $124</div></div>
+    <div class="m"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:93.75%"></div></div>
+        <span class="small">94%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>全球第二大商业发射服务商，Electron 火箭累计发射 60+；Neutron 中型可回收火箭 2026 H2 首飞；Space Systems 业务（卫星总线/光学）增长更快。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2026 Q1 营收 2 亿美元（+63.5% YoY），首次接近盈亏平衡；签下史上最大客户合同（Neutron+Electron 至 2029）。</p></div>
+    <div class="sec"><h4>📈 近2年走势</h4><p>2024 至今 +700%，2026 YTD +66%，RSI 73 偏热。</p></div>
+    <div class="sec"><h4>🏭 行业地位 & 板块</h4><p>商业航天+军用低轨星座建设期，SpaceX 之外稀缺纯标的。</p></div>
+    <div class="sec sec-good"><h4>✅ 核心优势</h4><p>全栈能力（火箭+卫星总线+光学）；产能爬坡顺利；军方+商业双订单。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>Neutron 首飞如失败估值大幅修正；现金消耗大；估值靠未来叙事。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>波段+小仓长持</b>。100-110 区间分批，跌破 90 撤；首飞前减仓避险；目标 160。仓位 3-4%。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-IONQ">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">IONQ</span>
+      <span class="cn">IonQ</span>
+      <span class="sector-tag">量子计算</span>
+    </div>
+    <div class="rating-pill" style="background:#fff7ed;color:#ea580c">
+      增持 · 6.5/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">$55.87</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-1.79%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#dc2626">+21.43%</div></div>
+    <div class="m"><div class="m-l">市值</div><div class="m-v">$20.9B</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">620.8</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">69 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">$26 – $85</div></div>
+    <div class="m"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:51.029787234042544%"></div></div>
+        <span class="small">51%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>离子阱量子计算 (Trapped Ion) 龙头。AQ #qubits 持续提升，2026 路线图目标 AQ 64+；提供云量子 + 政府/科研合同。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2026 Q1 营收 7000 万左右（+200%+），仍亏损；现金 7 亿+ 支撑到 2028 年；并购 Oxford Ionics 强化技术。</p></div>
+    <div class="sec"><h4>📈 近2年走势</h4><p>高波动品种，2024 从 8 涨至 50+，2026 YTD +21%，RSI 69。</p></div>
+    <div class="sec"><h4>🏭 行业地位 & 板块</h4><p>量子计算最纯标的之一，与 RGTI/QBTS 一起被视为「量子三剑客」。</p></div>
+    <div class="sec sec-good"><h4>✅ 核心优势</h4><p>离子阱保真度全行业最高；与 AWS/Azure/Google Cloud 全面合作；政府订单稳定。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p><b>商业化遥远</b>，量子优势 (Quantum Advantage) 落地至少 3-5 年；估值靠叙事；超导路线 (IBM/Google) 竞争。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>小仓位长持</b>。50-55 分批，跌破 42 撤；目标 80（投机）。仓位 1-2%。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-PLTR">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">PLTR</span>
+      <span class="cn">Palantir</span>
+      <span class="sector-tag">AI 应用</span>
+    </div>
+    <div class="rating-pill" style="background:#f1f5f9;color:#64748b">
+      观望 · 6.1/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">$136.00</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-0.65%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#16a34a">-24.99%</div></div>
+    <div class="m"><div class="m-l">市值</div><div class="m-v">$326.0B</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">141.7</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">44 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">$119 – $208</div></div>
+    <div class="m"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:19.26854046732136%"></div></div>
+        <span class="small">19%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>政企 AI 数据分析平台。Foundry（商业）+ Gotham（政府）+ AIP（AI 工作台），从「数据中台」转型「AI 应用工厂」。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2026 Q1 美国商业营收 +104% YoY，总营收 +85% YoY 至 16.3 亿美元，全年指引上修至 76.5 亿；运营利润率 40%+，自由现金流强劲。</p></div>
+    <div class="sec"><h4>📈 近2年走势</h4><p>2024-2025 涨 10 倍至 180+，2026 YTD -25%，从高点深度回调，RSI 44。</p></div>
+    <div class="sec"><h4>🏭 行业地位 & 板块</h4><p>AI 软件应用层最先变现的标的，企业 AI agents 趋势核心受益者。</p></div>
+    <div class="sec sec-good"><h4>✅ 核心优势</h4><p>本体论 Ontology 数据建模无对手；CEO Karp 个人品牌；政府订单稳定现金流。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>估值高（PE 142）；对个人投资者「meme 股」属性强；客户拓展依赖前向部署工程师，规模化难。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>逢低布局</b>。120-130 分批，跌破 110 撤；目标 200。仓位 5-7%。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-TEM">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">TEM</span>
+      <span class="cn">Tempus AI</span>
+      <span class="sector-tag">医疗 AI</span>
+    </div>
+    <div class="rating-pill" style="background:#fff7ed;color:#ea580c">
+      增持 · 7.0/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">$46.95</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-3.12%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#16a34a">-22.02%</div></div>
+    <div class="m"><div class="m-l">市值</div><div class="m-v">$8.4B</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">40 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">$42 – $104</div></div>
+    <div class="m"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:8.339990413804133%"></div></div>
+        <span class="small">8%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>肿瘤精准医疗 AI 平台。基因检测 + 临床数据 + AI 诊断，覆盖全美 65% 学术医疗中心；与 AstraZeneca/Merck/GSK 等药企合作 Insights 业务。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2026 Q1 营收 3.48 亿（+36% YoY），全年指引 15.9-16.0 亿；EBITDA 转正在即；现金 8 亿+。</p></div>
+    <div class="sec"><h4>📈 近2年走势</h4><p>IPO 后从 35 涨至 90 又跌至 40，2026 YTD -22%；当前接近 52w 低点 (8% 位置)，RSI 40。</p></div>
+    <div class="sec"><h4>🏭 行业地位 & 板块</h4><p>医疗 AI 第一梯队，AI 在医药/诊断的最先变现赛道。</p></div>
+    <div class="sec sec-good"><h4>✅ 核心优势</h4><p>数据壁垒（百万级肿瘤患者多模态数据）+ 检测+药企双轮商业化。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>亏损未消除；医保支付议价压力；与 Veracyte/Foundation Medicine/Guardant 直接竞争。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>左侧逆向</b>。45-48 分批，跌破 40 撤；目标 75。仓位 3-5%。</p></div>
+  </div>
+</div>
+
+
+<div class="card" id="stock-HIMS">
+  <div class="card-header">
+    <div class="card-title">
+      <span class="ticker">HIMS</span>
+      <span class="cn">Hims & Hers</span>
+      <span class="sector-tag">数字健康</span>
+    </div>
+    <div class="rating-pill" style="background:#fff7ed;color:#ea580c">
+      增持 · 6.7/10
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="m"><div class="m-l">现价</div><div class="m-v">$25.03</div></div>
+    <div class="m"><div class="m-l">日涨跌</div><div class="m-v" style="color:#16a34a">-14.10%</div></div>
+    <div class="m"><div class="m-l">YTD</div><div class="m-v" style="color:#16a34a">-24.15%</div></div>
+    <div class="m"><div class="m-l">市值</div><div class="m-v">$5.8B</div></div>
+    <div class="m"><div class="m-l">PE (TTM)</div><div class="m-v">N/A</div></div>
+    <div class="m"><div class="m-l">RSI14</div><div class="m-v">47 <span class="tag">中性</span></div></div>
+    <div class="m"><div class="m-l">52w 区间</div><div class="m-v small">$14 – $70</div></div>
+    <div class="m"><div class="m-l">52w 位置</div>
+      <div class="m-v">
+        <div class="bar"><div class="bar-fill" style="width:19.915328982183805%"></div></div>
+        <span class="small">20%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sections">
+    <div class="sec"><h4>📌 公司主营</h4><p>DTC 数字健康平台。从男性脱发/勃起功能起家，扩展至女性健康、心理健康、皮肤、GLP-1 减重；订阅会员超 240 万。</p></div>
+    <div class="sec"><h4>💰 财务状况</h4><p>2026 Q1 营收 6.08 亿但 EPS 亏损 0.4 美元（GLP-1 转型 3300 万重组成本），全年营收指引仍上修；订阅留存 80%+。</p></div>
+    <div class="sec"><h4>📈 近2年走势</h4><p>2025 年涨 4 倍至 60+，2026 YTD -24%，今日 (5/13) <b>暴跌 14%</b>（财报失望），跌至 25 附近。</p></div>
+    <div class="sec"><h4>🏭 行业地位 & 板块</h4><p>DTC 健康+ GLP-1 仿制结束后向品牌药 (Wegovy/Zepbound) 合作转型。</p></div>
+    <div class="sec sec-good"><h4>✅ 核心优势</h4><p>品牌+订阅+垂直整合（自有药房+实验室）；面向 Z 世代渠道难以复制。</p></div>
+    <div class="sec sec-bad"><h4>⚠️ 主要风险</h4><p>GLP-1 仿制版被 FDA 禁后收入断档（短期阵痛）；监管对处方药 DTC 营销趋严；执行成本高。</p></div>
+    <div class="sec sec-action"><h4>🎯 建仓建议</h4><p><b>风险已部分释放</b>。22-25 区间逐步建仓，跌破 20 撤；目标 40。仓位 3-4%。</p></div>
+  </div>
+</div>
+
+
+<div class="disclaimer">
+<b>⚠️ 风险提示</b><br>
+本报告仅作为研究参考，不构成投资建议。所有数据来自公开市场，分析基于公开信息和模型推断，可能存在数据延迟或事实偏差。美股市场波动剧烈，单一股票最大回撤可达 50%+，请基于自身风险承受能力决策。生成时间：2026-05-13 20:44:06。
+</div>
 
 </div>
 </body>
