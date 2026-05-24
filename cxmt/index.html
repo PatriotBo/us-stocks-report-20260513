@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>长鑫存储 IPO 深度分析 · 产业链全景与投资机会</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%); color:#e2e8f0; line-height:1.6; min-height:100vh; }
+.container { max-width:1280px; margin:0 auto; padding:32px 24px; }
+header { background:linear-gradient(135deg,#dc2626 0%,#7c2d12 50%,#a16207 100%); padding:48px 32px; border-radius:20px; margin-bottom:32px; box-shadow:0 20px 60px rgba(0,0,0,.4); }
+header h1 { font-size:36px; font-weight:800; margin-bottom:12px; letter-spacing:-.5px; }
+header .sub { font-size:16px; opacity:.85; }
+.tag { display:inline-block; padding:4px 12px; background:rgba(255,255,255,.18); border-radius:20px; font-size:13px; margin:6px 6px 0 0; }
+.kpi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-bottom:32px; }
+.kpi { background:rgba(30,41,59,.6); border:1px solid rgba(148,163,184,.15); padding:20px; border-radius:14px; backdrop-filter:blur(10px); }
+.kpi .label { font-size:12px; color:#94a3b8; text-transform:uppercase; letter-spacing:.5px; margin-bottom:6px; }
+.kpi .value { font-size:24px; font-weight:700; color:#fbbf24; }
+.kpi .desc { font-size:12px; color:#94a3b8; margin-top:4px; }
+.callout { background:linear-gradient(135deg,rgba(220,38,38,.15) 0%,rgba(124,45,18,.1) 100%); border-left:4px solid #dc2626; padding:20px 24px; border-radius:8px; margin:24px 0; }
+.callout h3 { color:#fbbf24; margin-bottom:10px; }
+.callout p { font-size:14px; color:#cbd5e1; }
+section { background:rgba(30,41,59,.5); padding:28px; border-radius:16px; margin-bottom:24px; border:1px solid rgba(148,163,184,.12); }
+section h2 { font-size:22px; font-weight:700; color:#fbbf24; margin-bottom:18px; display:flex; align-items:center; gap:10px; }
+.count { font-size:13px; color:#94a3b8; font-weight:500; background:rgba(148,163,184,.15); padding:3px 10px; border-radius:12px; }
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+thead th { background:rgba(15,23,42,.7); color:#94a3b8; padding:10px 12px; text-align:left; font-weight:600; font-size:12px; text-transform:uppercase; border-bottom:1px solid rgba(148,163,184,.2); }
+thead th.num, td.num { text-align:right; }
+tbody td { padding:14px 12px; border-bottom:1px solid rgba(148,163,184,.08); }
+tbody tr:hover { background:rgba(251,191,36,.05); }
+.name { font-weight:600; color:#f1f5f9; margin-bottom:3px; }
+.desc { font-size:12px; color:#94a3b8; }
+.sigs { font-size:11px; color:#64748b; margin-top:5px; }
+.sig { display:inline-block; margin-right:4px; }
+.up { color:#ef4444; }
+.down { color:#10b981; }
+.badge-good { background:#10b981; color:#fff; padding:2px 7px; border-radius:10px; font-size:10px; margin-left:6px; }
+.badge-mid { background:#3b82f6; color:#fff; padding:2px 7px; border-radius:10px; font-size:10px; margin-left:6px; }
+.badge-warn { background:#f59e0b; color:#fff; padding:2px 7px; border-radius:10px; font-size:10px; margin-left:6px; }
+.badge-bad { background:#dc2626; color:#fff; padding:2px 7px; border-radius:10px; font-size:10px; margin-left:6px; }
+.badge-etf { background:#6366f1; color:#fff; padding:2px 7px; border-radius:10px; font-size:10px; margin-left:6px; }
+.top-card { display:flex; gap:18px; padding:18px; background:rgba(15,23,42,.5); border-radius:12px; margin-bottom:12px; border:1px solid rgba(251,191,36,.2); }
+.medal { font-size:32px; }
+.top-body { flex:1; }
+.top-name { font-size:18px; font-weight:700; color:#fbbf24; margin-bottom:3px; }
+.top-code { font-size:13px; color:#94a3b8; font-weight:500; }
+.top-tier { font-size:13px; color:#cbd5e1; margin-bottom:8px; }
+.top-stats { font-size:13px; color:#94a3b8; }
+.top-stats span { display:inline-block; margin-right:16px; }
+.top-sigs { font-size:11px; color:#64748b; margin-top:8px; }
+.config-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; }
+.config-card { padding:20px; border-radius:12px; border:1px solid rgba(148,163,184,.18); }
+.config-card.aggressive { background:linear-gradient(135deg,rgba(220,38,38,.12) 0%,rgba(220,38,38,.04) 100%); border-color:rgba(220,38,38,.3); }
+.config-card.balanced { background:linear-gradient(135deg,rgba(245,158,11,.12) 0%,rgba(245,158,11,.04) 100%); border-color:rgba(245,158,11,.3); }
+.config-card.lazy { background:linear-gradient(135deg,rgba(16,185,129,.12) 0%,rgba(16,185,129,.04) 100%); border-color:rgba(16,185,129,.3); }
+.config-card h3 { font-size:16px; margin-bottom:10px; }
+.config-card ul { font-size:13px; color:#cbd5e1; padding-left:18px; }
+.config-card li { margin-bottom:4px; }
+.config-card .ret { font-size:18px; font-weight:700; color:#fbbf24; margin-top:10px; }
+.avoid-list li { margin-bottom:10px; padding:10px 14px; background:rgba(220,38,38,.08); border-left:3px solid #dc2626; border-radius:6px; font-size:13px; list-style:none; }
+.avoid-reason { font-size:12px; color:#94a3b8; margin-top:3px; }
+.timeline { position:relative; padding-left:24px; }
+.timeline-item { position:relative; padding:12px 0 12px 24px; border-left:2px solid rgba(251,191,36,.4); }
+.timeline-item::before { content:''; position:absolute; left:-7px; top:18px; width:12px; height:12px; background:#fbbf24; border-radius:50%; }
+.timeline-date { font-weight:700; color:#fbbf24; }
+.timeline-event { font-size:13px; color:#cbd5e1; margin-top:2px; }
+footer { text-align:center; padding:24px; font-size:12px; color:#64748b; }
+@media (max-width:640px) {
+  header h1 { font-size:24px; }
+  .container { padding:16px; }
+  section { padding:18px; }
+  .top-stats span { display:block; margin:2px 0; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>🔴 长鑫存储 CXMT IPO 深度分析</h1>
+  <div class="sub">国产 DRAM 唯一量产玩家上市 · A 股产业链全景与投资机会</div>
+  <div style="margin-top:14px;">
+    <span class="tag">5/27 上会</span>
+    <span class="tag">募资 295 亿</span>
+    <span class="tag">2026Q1 净利 247.6 亿</span>
+    <span class="tag">25 只标的覆盖</span>
+    <span class="tag">数据更新 2026-05-24 16:37</span>
+  </div>
+</header>
+
+<div class="kpi-grid">
+  <div class="kpi"><div class="label">IPO 进度</div><div class="value">5/27 上会</div><div class="desc">已问询 · 招股书 5/17 更新</div></div>
+  <div class="kpi"><div class="label">2026 Q1 业绩</div><div class="value">¥247.6 亿</div><div class="desc">单季利润超科创板全 605 家总和</div></div>
+  <div class="kpi"><div class="label">2026 H1 指引</div><div class="value">¥500-570 亿</div><div class="desc">同比扭亏，营收增 612-677%</div></div>
+  <div class="kpi"><div class="label">产能排名</div><div class="value">中国第一 / 全球第四</div><div class="desc">2026 全年扩产 5-6 万片</div></div>
+  <div class="kpi"><div class="label">设备采购</div><div class="value">$50-60 亿</div><div class="desc">2026 全年长鑫 + 长江存储合计</div></div>
+  <div class="kpi"><div class="label">兆易持股</div><div class="value">1.88%</div><div class="desc">A 股唯一股权直接绑定标的</div></div>
+</div>
+
+<section>
+  <h2>🎯 核心投资逻辑</h2>
+  <div class="callout">
+    <h3>为什么 CXMT IPO 是 2026 半导体最大催化剂？</h3>
+    <p>① <b>国产 DRAM 唯一量产玩家</b>，对标三星/海力士/美光的"国产替代"逻辑无可替代；② 2026 Q1 已从巨亏翻身到 <b>单季 247.6 亿利润</b>，业绩兑现速度远超市场预期；③ 募资 295 亿全部用于产能/技术升级，<b>设备/材料采购释放确定性最强</b>；④ AI 算力对 HBM/DDR5 的需求爆发，存储周期与 AI 周期叠加共振。</p>
+  </div>
+  <div class="callout">
+    <h3>投资框架：谁是真受益方？</h3>
+    <p><b>顺序 = 设备 &gt; 材料 &gt; 股权 &gt; 封测 &gt; 模组</b>。长鑫 IPO 本身（CXMT 自己）不在 A 股，<b>真正能买到的是"卖铲人"</b>——设备供应商订单确定性最高（招标 2026Q2 启动），材料厂商业绩弹性最大（产能爬坡=耗材线性增长）。模组厂（江波龙/佰维）跟存储价格周期，<b>不算长鑫专属受益</b>。</p>
+  </div>
+  <div class="callout">
+    <h3>残酷现实：板块已经被市场充分挖掘</h3>
+    <p>25 只候选标的中，<b>YTD 翻倍 / 距高 -10% 以内</b> 的占 60%。兆易创新今天 +8.53% 直接干到 52 周高位附近；华峰测控/富创精密/佰维存储/新锐股份 YTD 翻倍。<b>这说明：① 5/27 上会已经被price in；② 想"埋伏"的窗口几乎关闭；③ 任何追涨都是给前期资金接盘</b>。真正的机会只剩两类：低位还没启动的 + 二级回调后的左侧布局。</p>
+  </div>
+</section>
+
+<section>
+  <h2>🏆 技术面机会 TOP 5（基于 7 维周线打分）</h2>
+  
+    <div class="top-card">
+      <div class="medal">🥇</div>
+      <div class="top-body">
+        <div class="top-name">金宏气体 <span class="top-code">688106</span></div>
+        <div class="top-tier">T3-材料 · 电子特气（高纯氨/氟气）</div>
+        <div class="top-stats">
+          <span>现价 <b>¥28.93</b></span>
+          <span>今日 <b class="up">+0.91%</b></span>
+          <span>YTD <b class="up">+46.5%</b></span>
+          <span>距高 <b>-32.9%</b></span>
+          <span>评分 <b style="color:#10b981">+30</b></span>
+        </div>
+        <div class="top-sigs">MACD:0.56 · KDJ:J=20 偏弱+10 · RSI:57 · BOLL:64% · VOL:温和放量1.6x+5 · POS:距高-33%+10 · MA30:站上+5</div>
+      </div>
+    </div>
+    <div class="top-card">
+      <div class="medal">🥈</div>
+      <div class="top-body">
+        <div class="top-name">上海贝岭 <span class="top-code">600171</span></div>
+        <div class="top-tier">T4-封测 · 存储相关IC</div>
+        <div class="top-stats">
+          <span>现价 <b>¥29.55</b></span>
+          <span>今日 <b class="up">+3.94%</b></span>
+          <span>YTD <b class="down">-6.9%</b></span>
+          <span>距高 <b>-26.1%</b></span>
+          <span>评分 <b style="color:#10b981">+22</b></span>
+        </div>
+        <div class="top-sigs">MACD:动能向上+5 · KDJ:J=86 超买-15 · RSI:46 中性偏弱+12 · BOLL:下半轨44%+5 · VOL:温和放量1.4x+5 · POS:距高-38%+10 · MA30:位下</div>
+      </div>
+    </div>
+    <div class="top-card">
+      <div class="medal">🥉</div>
+      <div class="top-body">
+        <div class="top-name">盛美上海 <span class="top-code">688082</span></div>
+        <div class="top-tier">T2-设备 · 清洗设备核心，长鑫主力供应</div>
+        <div class="top-stats">
+          <span>现价 <b>¥213.17</b></span>
+          <span>今日 <b class="up">+0.21%</b></span>
+          <span>YTD <b class="up">+19.4%</b></span>
+          <span>距高 <b>-5.3%</b></span>
+          <span>评分 <b style="color:#10b981">+17</b></span>
+        </div>
+        <div class="top-sigs">MACD:红柱翻红+25 · KDJ:J=103 超买-15 · RSI:68 · BOLL:上轨101%-10 · VOL:放量3.0x+12 · POS:距高-5% · MA30:站上+5</div>
+      </div>
+    </div>
+    <div class="top-card">
+      <div class="medal">4️⃣</div>
+      <div class="top-body">
+        <div class="top-name">安集科技 <span class="top-code">688019</span></div>
+        <div class="top-tier">T3-材料 · ★CMP抛光液，17nm国产独家</div>
+        <div class="top-stats">
+          <span>现价 <b>¥311.19</b></span>
+          <span>今日 <b class="up">+2.10%</b></span>
+          <span>YTD <b class="up">+42.9%</b></span>
+          <span>距高 <b>-9.6%</b></span>
+          <span>评分 <b style="color:#10b981">+17</b></span>
+        </div>
+        <div class="top-sigs">MACD:红柱翻红+25 · KDJ:J=85 超买-15 · RSI:69 · BOLL:上轨106%-10 · VOL:放量2.2x+12 · POS:距高-10% · MA30:站上+5</div>
+      </div>
+    </div>
+    <div class="top-card">
+      <div class="medal">5️⃣</div>
+      <div class="top-body">
+        <div class="top-name">神工股份 <span class="top-code">688233</span></div>
+        <div class="top-tier">T3-材料 · 刻蚀用硅材料，全球市占15%</div>
+        <div class="top-stats">
+          <span>现价 <b>¥94.65</b></span>
+          <span>今日 <b class="up">+0.71%</b></span>
+          <span>YTD <b class="up">+34.4%</b></span>
+          <span>距高 <b>-14.7%</b></span>
+          <span>评分 <b style="color:#10b981">+17</b></span>
+        </div>
+        <div class="top-sigs">MACD:红柱翻红+25 · KDJ:J=86 超买-15 · RSI:62 · BOLL:上轨86%-10 · VOL:放量1.7x+12 · POS:距高-15% · MA30:站上+5</div>
+      </div>
+    </div>
+</section>
+
+
+    <section class="tier">
+      <h2>🎯 第一档：股权直接绑定（最纯） <span class="count">2 只</span></h2>
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>代码</th><th>名称 / 说明</th><th>现价</th><th>今日</th><th>YTD</th><th>距高</th><th>评分</th></tr>
+        </thead>
+        <tbody>
+    <tr>
+      <td><b>000021</b></td>
+      <td>
+        <div class="name">深科技 <span class="badge-warn">高位</span></div>
+        <div class="desc">中电科系，DRAM封测+模组深度绑定</div>
+        <div class="sigs"><span class="sig">MACD:红柱翻红+25</span> · <span class="sig">KDJ:J=94 超买-15</span> · <span class="sig">RSI:68</span> · <span class="sig">BOLL:上轨112%-10</span> · <span class="sig">VOL:温和放量1.3x+5</span> · <span class="sig">POS:距高-6%</span> · <span class="sig">MA30:站上+5</span></div>
+      </td>
+      <td class="num">¥37.73</td>
+      <td class="num up">+3.74%</td>
+      <td class="num up">+52.4%</td>
+      <td class="num">-5.7%</td>
+      <td class="num"><b style="color:#f59e0b">+10</b></td>
+    </tr>
+
+    <tr>
+      <td><b>603986</b></td>
+      <td>
+        <div class="name">兆易创新 <span class="badge-bad">已透支</span></div>
+        <div class="desc">★直接持股长鑫1.88%+独家代销至2030</div>
+        <div class="sigs"><span class="sig">MACD:动能向上+5</span> · <span class="sig">KDJ:J=111 超买-15</span> · <span class="sig">RSI:81 超买-12</span> · <span class="sig">BOLL:上轨133%-10</span> · <span class="sig">VOL:温和放量1.4x+5</span> · <span class="sig">POS:距高-1%</span> · <span class="sig">MA30:站上+5</span></div>
+      </td>
+      <td class="num">¥468.74</td>
+      <td class="num up">+8.53%</td>
+      <td class="num up">+106.5%</td>
+      <td class="num">-0.9%</td>
+      <td class="num"><b style="color:#ef4444">-22</b></td>
+    </tr></tbody>
+      </table>
+      </div>
+    </section>
+    
+    <section class="tier">
+      <h2>⚙️ 第二档：半导体设备（卖铲人） <span class="count">7 只</span></h2>
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>代码</th><th>名称 / 说明</th><th>现价</th><th>今日</th><th>YTD</th><th>距高</th><th>评分</th></tr>
+        </thead>
+        <tbody>
+    <tr>
+      <td><b>688082</b></td>
+      <td>
+        <div class="name">盛美上海 <span class="badge-mid">中性</span></div>
+        <div class="desc">清洗设备核心，长鑫主力供应</div>
+        <div class="sigs"><span class="sig">MACD:红柱翻红+25</span> · <span class="sig">KDJ:J=103 超买-15</span> · <span class="sig">RSI:68</span> · <span class="sig">BOLL:上轨101%-10</span> · <span class="sig">VOL:放量3.0x+12</span> · <span class="sig">POS:距高-5%</span> · <span class="sig">MA30:站上+5</span></div>
+      </td>
+      <td class="num">¥213.17</td>
+      <td class="num up">+0.21%</td>
+      <td class="num up">+19.4%</td>
+      <td class="num">-5.3%</td>
+      <td class="num"><b style="color:#f59e0b">+17</b></td>
+    </tr>
+
+    <tr>
+      <td><b>688012</b></td>
+      <td>
+        <div class="name">中微公司 <span class="badge-warn">观望</span></div>
+        <div class="desc">★刻蚀机龙头，先进制程主力</div>
+        <div class="sigs"><span class="sig">MACD:动能向上+5</span> · <span class="sig">KDJ:J=91 超买-15</span> · <span class="sig">RSI:76 超买-12</span> · <span class="sig">BOLL:上轨119%-10</span> · <span class="sig">VOL:放量2.1x+12</span> · <span class="sig">POS:距高-12%</span> · <span class="sig">MA30:站上+5</span></div>
+      </td>
+      <td class="num">¥469.6</td>
+      <td class="num down">-1.30%</td>
+      <td class="num up">+68.0%</td>
+      <td class="num">-11.9%</td>
+      <td class="num"><b style="color:#ef4444">-15</b></td>
+    </tr>
+
+    <tr>
+      <td><b>002371</b></td>
+      <td>
+        <div class="name">北方华创 <span class="badge-warn">观望</span></div>
+        <div class="desc">★薄膜/刻蚀/清洗全平台龙头</div>
+        <div class="sigs"><span class="sig">MACD:动能向上+5</span> · <span class="sig">KDJ:J=98 超买-15</span> · <span class="sig">RSI:78 超买-12</span> · <span class="sig">BOLL:上轨130%-10</span> · <span class="sig">VOL:放量1.6x+12</span> · <span class="sig">POS:距高-7%</span> · <span class="sig">MA30:站上+5</span></div>
+      </td>
+      <td class="num">¥669.0</td>
+      <td class="num up">+0.91%</td>
+      <td class="num up">+45.7%</td>
+      <td class="num">-7.3%</td>
+      <td class="num"><b style="color:#ef4444">-15</b></td>
+    </tr>
+
+    <tr>
+      <td><b>688120</b></td>
+      <td>
+        <div class="name">华海清科 <span class="badge-warn">观望</span></div>
+        <div class="desc">★CMP抛光设备，长鑫市占60%+</div>
+        <div class="sigs"><span class="sig">MACD:动能向上+5</span> · <span class="sig">KDJ:J=88 超买-15</span> · <span class="sig">RSI:80 超买-12</span> · <span class="sig">BOLL:上轨122%-10</span> · <span class="sig">VOL:放量2.2x+12</span> · <span class="sig">POS:距高-12%</span> · <span class="sig">MA30:站上+5</span></div>
+      </td>
+      <td class="num">¥276.28</td>
+      <td class="num down">-1.33%</td>
+      <td class="num up">+75.0%</td>
+      <td class="num">-11.7%</td>
+      <td class="num"><b style="color:#ef4444">-15</b></td>
+    </tr>
+
+    <tr>
+      <td><b>688409</b></td>
+      <td>
+        <div class="name">富创精密 <span class="badge-warn">观望</span></div>
+        <div class="desc">半导体设备零部件</div>
+        <div class="sigs"><span class="sig">MACD:动能向上+5</span> · <span class="sig">KDJ:J=95 超买-15</span> · <span class="sig">RSI:77 超买-12</span> · <span class="sig">BOLL:上轨115%-10</span> · <span class="sig">VOL:放量1.5x+12</span> · <span class="sig">POS:距高-11%</span> · <span class="sig">MA30:站上+5</span></div>
+      </td>
+      <td class="num">¥167.07</td>
+      <td class="num up">+2.13%</td>
+      <td class="num up">+143.0%</td>
+      <td class="num">-11.3%</td>
+      <td class="num"><b style="color:#ef4444">-15</b></td>
+    </tr>
+
+    <tr>
+      <td><b>688627</b></td>
+      <td>
+        <div class="name">精智达 <span class="badge-warn">高位</span></div>
+        <div class="desc">存储芯片专用测试设备</div>
+        <div class="sigs"><span class="sig">MACD:动能向上+5</span> · <span class="sig">KDJ:J=98 超买-15</span> · <span class="sig">RSI:79 超买-12</span> · <span class="sig">BOLL:上轨129%-10</span> · <span class="sig">VOL:温和放量1.2x+5</span> · <span class="sig">POS:距高-8%</span> · <span class="sig">MA30:站上+5</span></div>
+      </td>
+      <td class="num">¥416.97</td>
+      <td class="num up">+1.71%</td>
+      <td class="num up">+70.5%</td>
+      <td class="num">-7.5%</td>
+      <td class="num"><b style="color:#ef4444">-22</b></td>
+    </tr>
+
+    <tr>
+      <td><b>688200</b></td>
+      <td>
+        <div class="name">华峰测控 <span class="badge-warn">观望</span></div>
+        <div class="desc">存储测试设备</div>
+        <div class="sigs"><span class="sig">MACD:动能向上+5</span> · <span class="sig">KDJ:J=91 超买-15</span> · <span class="sig">RSI:80 超买-12</span> · <span class="sig">BOLL:上轨116%-10</span> · <span class="sig">VOL:1.0x</span> · <span class="sig">POS:距高-10%</span> · <span class="sig">MA30:站上+5</span></div>
+      </td>
+      <td class="num">¥449.95</td>
+      <td class="num up">+4.16%</td>
+      <td class="num up">+136.8%</td>
+      <td class="num">-10.0%</td>
+      <td class="num"><b style="color:#ef4444">-27</b></td>
+    </tr></tbody>
+      </table>
+      </div>
+    </section>
+    
+    <section class="tier">
+      <h2>🧪 第三档：半导体材料（耗材刚需） <span class="count">8 只</span></h2>
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>代码</th><th>名称 / 说明</th><th>现价</th><th>今日</th><th>YTD</th><th>距高</th><th>评分</th></tr>
+        </thead>
+        <tbody>
+    <tr>
+      <td><b>688106</b></td>
+      <td>
+        <div class="name">金宏气体 <span class="badge-good">机会</span></div>
+        <div class="desc">电子特气（高纯氨/氟气）</div>
+        <div class="sigs"><span class="sig">MACD:0.56</span> · <span class="sig">KDJ:J=20 偏弱+10</span> · <span class="sig">RSI:57</span> · <span class="sig">BOLL:64%</span> · <span class="sig">VOL:温和放量1.6x+5</span> · <span class="sig">POS:距高-33%+10</span> · <span class="sig">MA30:站上+5</span></div>
+      </td>
+      <td class="num">¥28.93</td>
+      <td class="num up">+0.91%</td>
+      <td class="num up">+46.5%</td>
+      <td class="num">-32.9%</td>
+      <td class="num"><b style="color:#10b981">+30</b></td>
+    </tr>
+
+    <tr>
+      <td><b>688019</b></td>
+      <td>
+        <div class="name">安集科技 <span class="badge-mid">中性</span></div>
+        <div class="desc">★CMP抛光液，17nm国产独家</div>
+        <div class="sigs"><span class="sig">MACD:红柱翻红+25</span> · <span class="sig">KDJ:J=85 超买-15</span> · <span class="sig">RSI:69</span> · <span class="sig">BOLL:上轨106%-10</span> · <span class="sig">VOL:放量2.2x+12</span> · <span class="sig">POS:距高-10%</span> · <span class="sig">MA30:站上+5</span></div>
+      </td>
+      <td class="num">¥311.19</td>
+      <td class="num up">+2.10%</td>
+      <td class="num up">+42.9%</td>
+      <td class="num">-9.6%</td>
+      <td class="num"><b style="color:#f59e0b">+17</b></td>
+    </tr>
+
+    <tr>
+      <td><b>688233</b></td>
+      <td>
+        <div class="name">神工股份 <span class="badge-mid">中性</span></div>
+        <div class="desc">刻蚀用硅材料，全球市占15%</div>
+        <div class="sigs"><span class="sig">MACD:红柱翻红+25</span> · <span class="sig">KDJ:J=86 超买-15</span> · <span class="sig">RSI:62</span> · <span class="sig">BOLL:上轨86%-10</span> · <span class="sig">VOL:放量1.7x+12</span> · <span class="sig">POS:距高-15%</span> · <span class="sig">MA30:站上+5</span></div>
+      </td>
+      <td class="num">¥94.65</td>
+      <td class="num up">+0.71%</td>
+      <td class="num up">+34.4%</td>
+      <td class="num">-14.7%</td>
+      <td class="num"><b style="color:#f59e0b">+17</b></td>
+    </tr>
+
+    <tr>
+      <td><b>603650</b></td>
+      <td>
+        <div class="name">彤程新材 <span class="badge-mid">中性</span></div>
+        <div class="desc">光刻胶树脂</div>
+        <div class="sigs"><span class="sig">MACD:绿柱缩短+15</span> · <span class="sig">KDJ:J=84 超买-15</span> · <span class="sig">RSI:62</span> · <span class="sig">BOLL:70%</span> · <span class="sig">VOL:温和放量1.4x+5</span> · <span class="sig">POS:距高-9%</span> · <span class="sig">MA30:站上+5</span></div>
+      </td>
+      <td class="num">¥58.84</td>
+      <td class="num up">+2.22%</td>
+      <td class="num up">+27.7%</td>
+      <td class="num">-9.2%</td>
+      <td class="num"><b style="color:#f59e0b">+10</b></td>
+    </tr>
+
+    <tr>
+      <td><b>300666</b></td>
+      <td>
+        <div class="name">江丰电子 <span class="badge-warn">观望</span></div>
+        <div class="desc">高纯溅射靶材</div>
+        <div class="sigs"><span class="sig">MACD:动能向上+5</span> · <span class="sig">KDJ:J=80</span> · <span class="sig">RSI:75</span> · <span class="sig">BOLL:上轨98%-10</span> · <span class="sig">VOL:温和放量1.3x+5</span> · <span class="sig">POS:距高-11%</span> · <span class="sig">MA30:站上+5</span></div>
+      </td>
+      <td class="num">¥196.6</td>
+      <td class="num up">+3.13%</td>
+      <td class="num up">+108.5%</td>
+      <td class="num">-11.4%</td>
+      <td class="num"><b style="color:#f59e0b">+5</b></td>
+    </tr>
+
+    <tr>
+      <td><b>002409</b></td>
+      <td>
+        <div class="name">雅克科技 <span class="badge-warn">高位</span></div>
+        <div class="desc">★前驱体龙头，长鑫采购占比60%+</div>
+        <div class="sigs"><span class="sig">MACD:动能向上+5</span> · <span class="sig">KDJ:J=93 超买-15</span> · <span class="sig">RSI:72</span> · <span class="sig">BOLL:上轨121%-10</span> · <span class="sig">VOL:放量2.1x+12</span> · <span class="sig">POS:距高-7%</span> · <span class="sig">MA30:站上+5</span></div>
+      </td>
+      <td class="num">¥116.5</td>
+      <td class="num up">+2.28%</td>
+      <td class="num up">+57.4%</td>
+      <td class="num">-6.8%</td>
+      <td class="num"><b style="color:#ef4444">-3</b></td>
+    </tr>
+
+    <tr>
+      <td><b>300054</b></td>
+      <td>
+        <div class="name">鼎龙股份 <span class="badge-warn">观望</span></div>
+        <div class="desc">★CMP抛光垫龙头</div>
+        <div class="sigs"><span class="sig">MACD:动能向上+5</span> · <span class="sig">KDJ:J=85 超买-15</span> · <span class="sig">RSI:82 超买-12</span> · <span class="sig">BOLL:上轨109%-10</span> · <span class="sig">VOL:温和放量1.5x+5</span> · <span class="sig">POS:距高-9%</span> · <span class="sig">MA30:站上+5</span></div>
+      </td>
+      <td class="num">¥73.0</td>
+      <td class="num up">+0.03%</td>
+      <td class="num up">+90.3%</td>
+      <td class="num">-9.1%</td>
+      <td class="num"><b style="color:#ef4444">-22</b></td>
+    </tr>
+
+    <tr>
+      <td><b>688257</b></td>
+      <td>
+        <div class="name">新锐股份 <span class="badge-bad">已透支</span></div>
+        <div class="desc">硅零部件</div>
+        <div class="sigs"><span class="sig">MACD:动能向上+5</span> · <span class="sig">KDJ:J=92 超买-15</span> · <span class="sig">RSI:76 超买-12</span> · <span class="sig">BOLL:上轨102%-10</span> · <span class="sig">VOL:1.1x</span> · <span class="sig">POS:距高-1%</span> · <span class="sig">MA30:站上+5</span></div>
+      </td>
+      <td class="num">¥96.84</td>
+      <td class="num up">+13.94%</td>
+      <td class="num up">+177.5%</td>
+      <td class="num">-1.3%</td>
+      <td class="num"><b style="color:#ef4444">-27</b></td>
+    </tr></tbody>
+      </table>
+      </div>
+    </section>
+    
+    <section class="tier">
+      <h2>📦 第四档：封测/模组/接口芯片 <span class="count">5 只</span></h2>
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>代码</th><th>名称 / 说明</th><th>现价</th><th>今日</th><th>YTD</th><th>距高</th><th>评分</th></tr>
+        </thead>
+        <tbody>
+    <tr>
+      <td><b>600171</b></td>
+      <td>
+        <div class="name">上海贝岭 <span class="badge-mid">中性</span></div>
+        <div class="desc">存储相关IC</div>
+        <div class="sigs"><span class="sig">MACD:动能向上+5</span> · <span class="sig">KDJ:J=86 超买-15</span> · <span class="sig">RSI:46 中性偏弱+12</span> · <span class="sig">BOLL:下半轨44%+5</span> · <span class="sig">VOL:温和放量1.4x+5</span> · <span class="sig">POS:距高-38%+10</span> · <span class="sig">MA30:位下</span></div>
+      </td>
+      <td class="num">¥29.55</td>
+      <td class="num up">+3.94%</td>
+      <td class="num down">-6.9%</td>
+      <td class="num">-26.1%</td>
+      <td class="num"><b style="color:#10b981">+22</b></td>
+    </tr>
+
+    <tr>
+      <td><b>002156</b></td>
+      <td>
+        <div class="name">通富微电 <span class="badge-warn">高位</span></div>
+        <div class="desc">HBM/2.5D先进封装</div>
+        <div class="sigs"><span class="sig">MACD:动能向上+5</span> · <span class="sig">KDJ:J=99 超买-15</span> · <span class="sig">RSI:72</span> · <span class="sig">BOLL:上轨109%-10</span> · <span class="sig">VOL:放量1.7x+12</span> · <span class="sig">POS:距高-5%</span> · <span class="sig">MA30:站上+5</span></div>
+      </td>
+      <td class="num">¥63.44</td>
+      <td class="num up">+2.72%</td>
+      <td class="num up">+69.1%</td>
+      <td class="num">-5.1%</td>
+      <td class="num"><b style="color:#ef4444">-3</b></td>
+    </tr>
+
+    <tr>
+      <td><b>301308</b></td>
+      <td>
+        <div class="name">江波龙 <span class="badge-warn">观望</span></div>
+        <div class="desc">存储模组龙头</div>
+        <div class="sigs"><span class="sig">MACD:动能向上+5</span> · <span class="sig">KDJ:J=88 超买-15</span> · <span class="sig">RSI:74</span> · <span class="sig">BOLL:上轨105%-10</span> · <span class="sig">VOL:温和放量1.3x+5</span> · <span class="sig">POS:距高-14%</span> · <span class="sig">MA30:站上+5</span></div>
+      </td>
+      <td class="num">¥549.5</td>
+      <td class="num up">+1.95%</td>
+      <td class="num up">+105.9%</td>
+      <td class="num">-13.9%</td>
+      <td class="num"><b style="color:#ef4444">-10</b></td>
+    </tr>
+
+    <tr>
+      <td><b>688525</b></td>
+      <td>
+        <div class="name">佰维存储 <span class="badge-warn">观望</span></div>
+        <div class="desc">存储模组+先进封装</div>
+        <div class="sigs"><span class="sig">MACD:动能向上+5</span> · <span class="sig">KDJ:J=74</span> · <span class="sig">RSI:80 超买-12</span> · <span class="sig">BOLL:上轨93%-10</span> · <span class="sig">VOL:1.0x</span> · <span class="sig">POS:距高-9%</span> · <span class="sig">MA30:站上+5</span></div>
+      </td>
+      <td class="num">¥312.25</td>
+      <td class="num up">+3.74%</td>
+      <td class="num up">+176.1%</td>
+      <td class="num">-9.5%</td>
+      <td class="num"><b style="color:#ef4444">-12</b></td>
+    </tr>
+
+    <tr>
+      <td><b>688008</b></td>
+      <td>
+        <div class="name">澜起科技 <span class="badge-warn">高位</span></div>
+        <div class="desc">★DDR5内存接口芯片独家供应</div>
+        <div class="sigs"><span class="sig">MACD:动能向上+5</span> · <span class="sig">KDJ:J=105 超买-15</span> · <span class="sig">RSI:81 超买-12</span> · <span class="sig">BOLL:上轨121%-10</span> · <span class="sig">VOL:放量1.8x+12</span> · <span class="sig">POS:距高-5%</span> · <span class="sig">MA30:站上+5</span></div>
+      </td>
+      <td class="num">¥271.83</td>
+      <td class="num up">+3.68%</td>
+      <td class="num up">+124.9%</td>
+      <td class="num">-5.4%</td>
+      <td class="num"><b style="color:#ef4444">-15</b></td>
+    </tr></tbody>
+      </table>
+      </div>
+    </section>
+    
+    <section class="tier">
+      <h2>🗂️ 第五档：芯片ETF（懒人选择） <span class="count">3 只</span></h2>
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>代码</th><th>名称 / 说明</th><th>现价</th><th>今日</th><th>YTD</th><th>距高</th><th>评分</th></tr>
+        </thead>
+        <tbody>
+    <tr>
+      <td><b>512760</b></td>
+      <td>
+        <div class="name">芯片ETF <span class="badge-warn">观望</span></div>
+        <div class="desc">国泰半导体ETF</div>
+        <div class="sigs"><span class="sig">MACD:动能向上+5</span> · <span class="sig">KDJ:J=103 超买-15</span> · <span class="sig">RSI:76 超买-12</span> · <span class="sig">BOLL:上轨119%-10</span> · <span class="sig">VOL:放量2.1x+12</span> · <span class="sig">POS:距高-5%</span> · <span class="sig">MA30:站上+5</span></div>
+      </td>
+      <td class="num">¥1.19</td>
+      <td class="num up">+2.33%</td>
+      <td class="num up">+46.6%</td>
+      <td class="num">-4.7%</td>
+      <td class="num"><b style="color:#ef4444">-15</b></td>
+    </tr>
+
+    <tr>
+      <td><b>588200</b></td>
+      <td>
+        <div class="name">科创芯片ETF <span class="badge-warn">高位</span></div>
+        <div class="desc">华夏科创板芯片ETF</div>
+        <div class="sigs"><span class="sig">MACD:动能向上+5</span> · <span class="sig">KDJ:J=99 超买-15</span> · <span class="sig">RSI:78 超买-12</span> · <span class="sig">BOLL:上轨115%-10</span> · <span class="sig">VOL:温和放量1.3x+5</span> · <span class="sig">POS:距高-6%</span> · <span class="sig">MA30:站上+5</span></div>
+      </td>
+      <td class="num">¥3.64</td>
+      <td class="num up">+2.02%</td>
+      <td class="num up">+56.3%</td>
+      <td class="num">-5.8%</td>
+      <td class="num"><b style="color:#ef4444">-22</b></td>
+    </tr>
+
+    <tr>
+      <td><b>159995</b></td>
+      <td>
+        <div class="name">芯片ETF基金 <span class="badge-etf">ETF</span></div>
+        <div class="desc">华夏国证半导体芯片ETF</div>
+        
+      </td>
+      <td class="num">¥2.54</td>
+      <td class="num up">+2.38%</td>
+      <td class="num up">+51.0%</td>
+      <td class="num">-3.1%</td>
+      <td class="num">—</td>
+    </tr></tbody>
+      </table>
+      </div>
+    </section>
+    
+
+<section>
+  <h2>💼 三档配置建议</h2>
+  <div class="config-grid">
+    <div class="config-card aggressive">
+      <h3>🔴 激进型（博 IPO 当日及后续行情）</h3>
+      <ul>
+        <li>金宏气体 25%（低位+评分最高）</li>
+        <li>上海贝岭 15%（深度回调+反弹）</li>
+        <li>盛美上海 15%（设备+MACD 翻红）</li>
+        <li>安集科技 10%（CMP 独家）</li>
+        <li>兆易创新 10%（股权绑定，但已高位）</li>
+        <li>159995 芯片ETF 15%</li>
+        <li>588200 科创芯片ETF 10%</li>
+      </ul>
+      <div class="ret">预期年化 +30-50%（高波动）</div>
+    </div>
+    <div class="config-card balanced">
+      <h3>🟡 平衡型（推荐）</h3>
+      <ul>
+        <li>金宏气体 15%（低位龙头）</li>
+        <li>神工股份 10%（硅零部件+评分高）</li>
+        <li>雅克科技 10%（前驱体真王者）</li>
+        <li>北方华创 10%（设备龙头）</li>
+        <li>澜起科技 10%（DDR5 独家）</li>
+        <li>兆易创新 5%（小仓位绑定）</li>
+        <li>159995 芯片ETF 20%</li>
+        <li>588200 科创芯片ETF 20%</li>
+      </ul>
+      <div class="ret">预期年化 +18-28%</div>
+    </div>
+    <div class="config-card lazy">
+      <h3>🟢 懒人型（纯 ETF）</h3>
+      <ul>
+        <li>588200 科创芯片ETF 35%</li>
+        <li>159995 国证芯片ETF 30%</li>
+        <li>512760 国泰芯片ETF 20%</li>
+        <li>北方华创 / 兆易创新 各 7.5%（满足"打榜"心理）</li>
+      </ul>
+      <div class="ret">预期年化 +12-20%</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>⚠️ 必须回避的"看起来很好"标的</h2>
+  <ul class="avoid-list">
+    <li><b>新锐股份 688257</b> · 现价 ¥96.84 · <span class="down">YTD +177.5%</span> · 距高 -1.3% · 评分 <b style="color:#ef4444">-27</b>
+    <div class="avoid-reason">硅零部件</div></li>
+    <li><b>华峰测控 688200</b> · 现价 ¥449.95 · <span class="down">YTD +136.8%</span> · 距高 -10.0% · 评分 <b style="color:#ef4444">-27</b>
+    <div class="avoid-reason">存储测试设备</div></li>
+    <li><b>兆易创新 603986</b> · 现价 ¥468.74 · <span class="down">YTD +106.5%</span> · 距高 -0.9% · 评分 <b style="color:#ef4444">-22</b>
+    <div class="avoid-reason">★直接持股长鑫1.88%+独家代销至2030</div></li></ul>
+  <div class="callout" style="margin-top:18px;">
+    <h3>共同特征</h3>
+    <p>① YTD 翻倍 + 距 52 周高 -5% 以内 = <b>前期资金已套牢</b>；② 周线 KDJ &gt; 80 + RSI &gt; 70 = <b>技术面超买，回调风险大</b>；③ 即使 IPO 当日大涨，这些标的也大概率是"利好出尽是利空"的标准案例。</p>
+  </div>
+</section>
+
+<section>
+  <h2>📅 关键时间窗口</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">2026-05-27（3 天后）</div>
+      <div class="timeline-event">🔴 长鑫上交所上市审核委员会上会，过会概率高，<b>当日板块情绪冲顶</b></div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2026-06 初</div>
+      <div class="timeline-event">注册申请提交证监会，注册批文（预计 4-6 周）</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2026-Q2 末</div>
+      <div class="timeline-event">长鑫 2026 年扩产招投标启动，<b>设备订单实际下达 → 设备股业绩兑现</b></div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2026-07/08</div>
+      <div class="timeline-event">注册批文 + 路演定价区间披露，<b>板块二次发酵窗口</b></div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2026-08/09（预估）</div>
+      <div class="timeline-event">🚀 CXMT 正式挂牌上市，<b>当日大概率板块"利好出尽"集体回调</b></div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2026-Q4</div>
+      <div class="timeline-event">长鑫披露上市后首份季报，业绩验证窗口，<b>真受益方水落石出</b></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>📋 操作纪律（请贴在交易桌前）</h2>
+  <ol style="padding-left:20px;color:#cbd5e1;">
+    <li style="margin:8px 0;"><b>5/27 上会前不要追高</b>，已经涨疯的标的（兆易/澜起/华峰/富创/佰维）一律不碰</li>
+    <li style="margin:8px 0;"><b>只买"还没启动"的低位龙头</b>：金宏气体、上海贝岭、神工股份、雅克科技、安集科技</li>
+    <li style="margin:8px 0;"><b>分批建仓，单一标的仓位 ≤ 15%</b>，整个 CXMT 主题不超过组合 30%</li>
+    <li style="margin:8px 0;"><b>设备股看招标兑现，材料股看产能爬坡</b>——这两条主线最确定</li>
+    <li style="margin:8px 0;"><b>IPO 挂牌前 1 周减仓 50%</b>，复刻 SpaceX 报告的核心纪律：永远不要持有到事件兑现日</li>
+    <li style="margin:8px 0;"><b>跌破 30 周均线无条件止损</b>，半导体板块波动大，纪律 &gt; 信仰</li>
+    <li style="margin:8px 0;"><b>不会选个股就买 588200 + 159995</b>，长期跑赢 80% 散户</li>
+  </ol>
+</section>
+
+<footer>
+  <p>数据来源：新浪财经 / 腾讯证券 · 截至 2026-05-24 16:37</p>
+  <p style="margin-top:6px;">本报告仅供研究参考，不构成任何投资建议。投资有风险，决策需谨慎。</p>
+</footer>
+
+</div>
+</body>
+</html>
