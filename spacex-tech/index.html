@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8">
+<title>SpaceX 概念股周线技术面分析 - 左侧反转信号扫描</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#0a0e1a;color:#e8eaf0;line-height:1.7;padding:20px}
+.wrap{max-width:1280px;margin:0 auto}
+header{padding:50px 0;text-align:center;border-bottom:1px solid #1f2940;margin-bottom:32px}
+h1{font-size:38px;background:linear-gradient(120deg,#3b82f6,#10b981);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:14px;line-height:1.3}
+header .sub{color:#9da9c0;font-size:15px;letter-spacing:1px}
+header .upd{margin-top:10px;color:#5c6680;font-size:13px}
+section{margin-bottom:48px}
+h2{font-size:26px;color:#fff;border-left:4px solid #3b82f6;padding-left:14px;margin-bottom:20px}
+h2 small{font-weight:400;color:#9da9c0;font-size:14px;margin-left:12px}
+.intro{background:#0f1525;padding:22px;border-radius:10px;border:1px solid #1f2940;margin-bottom:24px;font-size:14px;color:#c5cde0}
+.intro b{color:#10b981}
+.method{background:#0f1525;padding:18px;border-radius:10px;border:1px solid #1f2940;margin-bottom:20px}
+.method table{width:100%;font-size:13px}
+.method th{padding:8px;text-align:left;color:#3b82f6;border-bottom:1px solid #1f2940}
+.method td{padding:8px;color:#c5cde0;border-bottom:1px dashed #1f2940}
+.method td:first-child{color:#fff;font-weight:600;width:140px}
+.tc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:18px}
+.tech-card{background:#0f1525;border:1px solid #1f2940;border-radius:12px;padding:20px;transition:all .2s}
+.tech-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(59,130,246,0.15)}
+.tc-head{display:flex;align-items:center;gap:14px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #1f2940}
+.tc-rank{font-size:22px;font-weight:700;color:#5c6680;min-width:42px}
+.tc-title{flex:1}
+.tc-name{font-size:18px;font-weight:600;color:#fff}
+.tc-code{font-family:Menlo,monospace;color:#5c6680;font-size:12px;font-weight:400;margin-left:6px}
+.tc-desc{font-size:12px;color:#9da9c0;margin-top:2px}
+.tc-score{padding:10px 16px;border-radius:8px;text-align:center;color:#fff}
+.tc-num{font-size:22px;font-weight:700;line-height:1}
+.tc-lbl{font-size:11px;opacity:0.85;margin-top:2px}
+.tc-price{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:6px;padding:8px 0;border-bottom:1px dashed #1f2940}
+.tc-price div{text-align:center;font-size:14px;color:#fff}
+.tc-price label{display:block;color:#5c6680;font-size:11px;margin-bottom:2px}
+.up{color:#10b981}
+.down{color:#ef4444}
+.flat{color:#9da9c0}
+.tc-indicators{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:12px}
+.ind{background:#0a0e1a;padding:8px;border-radius:6px;text-align:center}
+.ind label{display:block;color:#5c6680;font-size:11px;margin-bottom:3px}
+.ind span{font-weight:600;font-size:14px}
+.tc-signals{list-style:none;font-size:13px;margin-bottom:12px}
+.tc-signals li{padding:4px 0;color:#c5cde0;border-bottom:1px dashed #1f2940}
+.tc-signals li:last-child{border:none}
+.tc-action{padding:10px 12px;border-radius:6px;font-size:13px;color:#fff}
+.summary{background:linear-gradient(135deg,#1a2138,#0f1525);padding:32px;border-radius:12px;border:2px solid #3b82f6;margin-bottom:32px}
+.summary h2{border:none;color:#3b82f6;padding:0}
+.toplist{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:16px}
+.toplist .item{background:#0a0e1a;padding:14px;border-radius:8px;border-left:3px solid #10b981}
+.toplist .item b{display:block;color:#10b981;font-size:18px;margin-bottom:4px}
+.toplist .item p{color:#c5cde0;font-size:13px}
+footer{text-align:center;padding:32px;color:#5c6680;font-size:13px;border-top:1px solid #1f2940;margin-top:32px}
+footer a{color:#3b82f6;margin:0 8px}
+@media(max-width:768px){.tc-grid{grid-template-columns:1fr}.tc-price{grid-template-columns:repeat(2,1fr)}}
+</style></head><body><div class="wrap">
+
+<header>
+  <h1>📈 SpaceX 概念股 · 周线技术面分析</h1>
+  <div class="sub">左侧反转信号扫描 · 20 只候选标的 · 7 维技术指标量化打分</div>
+  <div class="upd">更新：2026-05-24 08:42 · 数据：腾讯财经周 K 线（前复权）</div>
+</header>
+
+<div class="summary">
+<h2>🎯 一句话结论</h2>
+<p style="color:#c5cde0;margin-top:14px;font-size:15px">
+20 只候选中，<b style="color:#10b981">4 只技术分≥40</b>（中等以上反转信号），<b style="color:#eab308">10 只在 20-40 区间</b>（弱信号待确认），<b style="color:#ef4444">3 只≤0 分</b>（高位/趋势衰竭，建议回避）。
+</p>
+<div class="toplist">
+<div class="item"><b>#1 抚顺特钢 SH600399</b><p>评分 +55 · 🟢 中等反转信号 · ¥5.11</p></div>
+<div class="item"><b>#2 铂力特 SH688333</b><p>评分 +48 · 🟢 中等反转信号 · ¥88.44</p></div>
+<div class="item"><b>#3 深桑达A SZ000032</b><p>评分 +48 · 🟢 中等反转信号 · ¥19.19</p></div>
+<div class="item"><b>#4 海格通信 SZ002465</b><p>评分 +46 · 🟢 中等反转信号 · ¥16.41</p></div>
+</div>
+</div>
+
+<div class="method">
+<h2 style="margin-bottom:14px">📊 评分方法（7 维量化）</h2>
+<table>
+<tr><th>维度</th><th>左侧反转加分项</th><th>权重</th></tr>
+<tr><td>周 MACD</td><td>红柱翻红（强金叉）+25 / 绿柱缩短（底部背离）+15 / 红柱放大 +8</td><td>核心</td></tr>
+<tr><td>周 KDJ</td><td>J 值<20 拐头 +20 / J<30 +10 / J>80 -10</td><td>核心</td></tr>
+<tr><td>周 RSI</td><td>30-50 中性偏低 +12 / <30 超卖 +18 / >70 -8</td><td>辅助</td></tr>
+<tr><td>布林带位置</td><td>下轨附近<25% +15 / 中下方 +8 / 上轨>80% -8</td><td>辅助</td></tr>
+<tr><td>量能</td><td>放大 1.5x+收阳 +12 / 缩量回调 +8</td><td>辅助</td></tr>
+<tr><td>距 52 高/低</td><td>距高<-30%且距低>20% +10 / 距高>-10% -10</td><td>背景</td></tr>
+<tr><td>30 周均线</td><td>上穿 +10 / 站上 +5</td><td>趋势确认</td></tr>
+</table>
+<p style="margin-top:12px;color:#9da9c0;font-size:13px">总分=各项加和。<b style="color:#10b981">≥50 强反转</b> · <b style="color:#22c55e">40-50 中等</b> · <b style="color:#eab308">20-40 弱信号</b> · <b style="color:#ef4444"><0 高位/衰竭</b></p>
+</div>
+
+<section>
+<h2>🟢 强反转/中等反转信号（评分 ≥40）<small>立即/分批建仓首选</small></h2>
+<p style="color:#c5cde0;margin-bottom:16px">这 4 只是当前 SpaceX 概念股里<b>技术面最干净</b>的，多数已经出现 KDJ 超卖拐头、MACD 底背离、布林带下轨支撑等左侧信号，性价比明显高于已涨幅过百的派克/信维。</p>
+<div class="tc-grid">{cards(strong, 1)}</div>
+</section>
+
+<section>
+<h2>🟡 弱反转/观察（评分 20-40）<small>加自选，等右侧确认信号</small></h2>
+<p style="color:#c5cde0;margin-bottom:16px">这批标的位置已经够低，但<b>缺乏明确启动信号</b>，多数是周 MACD 还在零轴下、量能没放出来的状态。建议加自选追踪，等周 MACD 红柱出现或者放量过 30 周均线再上车。</p>
+<div class="tc-grid">{cards(weak, len(strong)+1)}</div>
+</section>
+
+
+<section>
+<h2>⚪ 中性/弱势<small>暂不建议</small></h2>
+<div class="tc-grid">
+    <div class="tech-card" style="border-left:4px solid #f59e0b">
+      <div class="tc-head">
+        <div class="tc-rank">#17</div>
+        <div class="tc-title">
+          <div class="tc-name">中贝通信 <span class="tc-code">SH603220</span></div>
+          <div class="tc-desc">卫星地面</div>
+        </div>
+        <div class="tc-score" style="background:#f59e0b">
+          <div class="tc-num">+3</div>
+          <div class="tc-lbl">技术分</div>
+        </div>
+      </div>
+
+      <div class="tc-price">
+        <div><label>现价</label>¥30.62</div>
+        <div><label>距高</label><span class="down">-11.5%</span></div>
+        <div><label>距低</label><span class="up">+53.9%</span></div>
+        <div><label>30周线</label>¥25.62</div>
+      </div>
+
+      
+        <svg width="100%" height="60" viewBox="0 0 280 60" preserveAspectRatio="none" style="margin:8px 0">
+          <path d="M 0.0,45.5 L 9.7,45.1 L 19.3,41.8 L 29.0,46.5 L 38.6,51.7 L 48.3,50.4 L 57.9,50.5 L 67.6,50.5 L 77.2,55.0 L 86.9,56.0 L 96.6,55.4 L 106.2,44.4 L 115.9,43.7 L 125.5,36.3 L 135.2,33.8 L 144.8,36.4 L 154.5,33.0 L 164.1,24.9 L 173.8,26.6 L 183.4,32.3 L 193.1,34.1 L 202.8,38.5 L 212.4,32.2 L 222.1,31.1 L 231.7,4.0 L 241.4,5.9 L 251.0,22.7 L 260.7,4.6 L 270.3,9.1 L 280.0,11.6" fill="none" stroke="#10b981" stroke-width="1.8"/>
+          <circle cx="280.0" cy="11.6" r="3" fill="#10b981"/>
+        </svg>
+
+      <div class="tc-indicators">
+        <div class="ind">
+          <label>MACD柱</label>
+          <span class="up">+0.86</span>
+        </div>
+        <div class="ind">
+          <label>KDJ-J</label>
+          <span class="flat">71</span>
+        </div>
+        <div class="ind">
+          <label>RSI</label>
+          <span class="flat">60</span>
+        </div>
+        <div class="ind">
+          <label>布林带</label>
+          <span class="flat">79%</span>
+        </div>
+      </div>
+
+      <ul class="tc-signals"><li>⚠️ 周MACD 红柱缩短（趋势衰竭）</li><li>➕ 周RSI 60（强势中性）</li><li>➕ 站上 30 周均线</li></ul>
+
+      <div class="tc-action" style="background:#f59e0b22;border-left:3px solid #f59e0b">🟡 <b>暂时回避</b> · 信号不明，等更好位置</div>
+    </div>
+    </div>
+</section>
+
+
+<section>
+<h2>🔴 高位/趋势衰竭（评分 &lt;0）<small>不建议买入</small></h2>
+<p style="color:#c5cde0;margin-bottom:16px">这些标的虽然在前两份报告里被点名，但<b>周线技术面已发出衰竭信号</b>（接近上轨 / RSI 高位 / KDJ 顶背离）。即使基本面再好，<b>当前位置追入大概率被埋</b>。等 -20% 回调再说。</p>
+<div class="tc-grid">
+    <div class="tech-card" style="border-left:4px solid #ef4444">
+      <div class="tc-head">
+        <div class="tc-rank">#18</div>
+        <div class="tc-title">
+          <div class="tc-name">电连技术 <span class="tc-code">SZ300679</span></div>
+          <div class="tc-desc">射频连接器</div>
+        </div>
+        <div class="tc-score" style="background:#ef4444">
+          <div class="tc-num">-2</div>
+          <div class="tc-lbl">技术分</div>
+        </div>
+      </div>
+
+      <div class="tc-price">
+        <div><label>现价</label>¥53.80</div>
+        <div><label>距高</label><span class="down">-12.5%</span></div>
+        <div><label>距低</label><span class="up">+66.9%</span></div>
+        <div><label>30周线</label>¥45.36</div>
+      </div>
+
+      
+        <svg width="100%" height="60" viewBox="0 0 280 60" preserveAspectRatio="none" style="margin:8px 0">
+          <path d="M 0.0,12.3 L 9.7,14.7 L 19.3,16.4 L 29.0,20.8 L 38.6,28.1 L 48.3,22.6 L 57.9,23.0 L 67.6,21.7 L 77.2,16.9 L 86.9,18.2 L 96.6,18.9 L 106.2,13.2 L 115.9,16.6 L 125.5,27.0 L 135.2,33.8 L 144.8,36.1 L 154.5,36.5 L 164.1,32.0 L 173.8,44.7 L 183.4,46.9 L 193.1,54.9 L 202.8,55.2 L 212.4,56.0 L 222.1,33.5 L 231.7,32.7 L 241.4,29.9 L 251.0,28.1 L 260.7,14.4 L 270.3,4.0 L 280.0,6.2" fill="none" stroke="#10b981" stroke-width="1.8"/>
+          <circle cx="280.0" cy="6.2" r="3" fill="#10b981"/>
+        </svg>
+
+      <div class="tc-indicators">
+        <div class="ind">
+          <label>MACD柱</label>
+          <span class="up">+3.94</span>
+        </div>
+        <div class="ind">
+          <label>KDJ-J</label>
+          <span class="down">106</span>
+        </div>
+        <div class="ind">
+          <label>RSI</label>
+          <span class="flat">63</span>
+        </div>
+        <div class="ind">
+          <label>布林带</label>
+          <span class="down">91%</span>
+        </div>
+      </div>
+
+      <ul class="tc-signals"><li>➕ 周MACD 红柱放大（趋势延续）</li><li>⚠️ 周KDJ 超买（高位风险）</li><li>➕ 周RSI 63（强势中性）</li><li>⚠️ 布林带上轨附近（91% 位置）</li><li>➕ 站上 30 周均线</li></ul>
+
+      <div class="tc-action" style="background:#ef444422;border-left:3px solid #ef4444">🔴 <b>不建议买入</b> · 高位风险或趋势衰竭</div>
+    </div>
+    
+
+    <div class="tech-card" style="border-left:4px solid #ef4444">
+      <div class="tc-head">
+        <div class="tc-rank">#19</div>
+        <div class="tc-title">
+          <div class="tc-name">西部材料 <span class="tc-code">SZ002149</span></div>
+          <div class="tc-desc">钛/钼/复材</div>
+        </div>
+        <div class="tc-score" style="background:#ef4444">
+          <div class="tc-num">-23</div>
+          <div class="tc-lbl">技术分</div>
+        </div>
+      </div>
+
+      <div class="tc-price">
+        <div><label>现价</label>¥72.12</div>
+        <div><label>距高</label><span class="down">-8.6%</span></div>
+        <div><label>距低</label><span class="up">+348.5%</span></div>
+        <div><label>30周线</label>¥43.14</div>
+      </div>
+
+      
+        <svg width="100%" height="60" viewBox="0 0 280 60" preserveAspectRatio="none" style="margin:8px 0">
+          <path d="M 0.0,54.7 L 9.7,54.3 L 19.3,54.3 L 29.0,55.1 L 38.6,56.0 L 48.3,54.6 L 57.9,52.0 L 67.6,44.2 L 77.2,36.1 L 86.9,27.7 L 96.6,28.9 L 106.2,24.2 L 115.9,32.1 L 125.5,30.7 L 135.2,25.4 L 144.8,19.9 L 154.5,25.4 L 164.1,22.8 L 173.8,25.2 L 183.4,30.7 L 193.1,31.0 L 202.8,25.2 L 212.4,27.4 L 222.1,28.8 L 231.7,20.3 L 241.4,17.4 L 251.0,12.3 L 260.7,4.0 L 270.3,7.2 L 280.0,4.3" fill="none" stroke="#10b981" stroke-width="1.8"/>
+          <circle cx="280.0" cy="4.3" r="3" fill="#10b981"/>
+        </svg>
+
+      <div class="tc-indicators">
+        <div class="ind">
+          <label>MACD柱</label>
+          <span class="up">+3.38</span>
+        </div>
+        <div class="ind">
+          <label>KDJ-J</label>
+          <span class="down">90</span>
+        </div>
+        <div class="ind">
+          <label>RSI</label>
+          <span class="down">73</span>
+        </div>
+        <div class="ind">
+          <label>布林带</label>
+          <span class="down">102%</span>
+        </div>
+      </div>
+
+      <ul class="tc-signals"><li>➕ 周MACD 红柱放大（趋势延续）</li><li>⚠️ 周KDJ 超买（高位风险）</li><li>⚠️ 周RSI 73（超买）</li><li>⚠️ 布林带上轨附近（102% 位置）</li><li>⚠️ 接近 52 周高（距高-9%）</li><li>➕ 站上 30 周均线</li></ul>
+
+      <div class="tc-action" style="background:#ef444422;border-left:3px solid #ef4444">🔴 <b>不建议买入</b> · 高位风险或趋势衰竭</div>
+    </div>
+    
+
+    <div class="tech-card" style="border-left:4px solid #ef4444">
+      <div class="tc-head">
+        <div class="tc-rank">#20</div>
+        <div class="tc-title">
+          <div class="tc-name">兴瑞科技 <span class="tc-code">SZ002937</span></div>
+          <div class="tc-desc">精密结构件</div>
+        </div>
+        <div class="tc-score" style="background:#ef4444">
+          <div class="tc-num">-26</div>
+          <div class="tc-lbl">技术分</div>
+        </div>
+      </div>
+
+      <div class="tc-price">
+        <div><label>现价</label>¥33.82</div>
+        <div><label>距高</label><span class="down">-10.0%</span></div>
+        <div><label>距低</label><span class="up">+119.6%</span></div>
+        <div><label>30周线</label>¥25.22</div>
+      </div>
+
+      
+        <svg width="100%" height="60" viewBox="0 0 280 60" preserveAspectRatio="none" style="margin:8px 0">
+          <path d="M 0.0,54.2 L 9.7,55.1 L 19.3,54.8 L 29.0,56.0 L 38.6,53.3 L 48.3,50.8 L 57.9,50.1 L 67.6,44.8 L 77.2,47.1 L 86.9,40.8 L 96.6,39.2 L 106.2,37.6 L 115.9,39.2 L 125.5,36.7 L 135.2,38.0 L 144.8,38.4 L 154.5,33.3 L 164.1,32.4 L 173.8,24.1 L 183.4,28.9 L 193.1,35.9 L 202.8,36.6 L 212.4,28.6 L 222.1,17.9 L 231.7,14.8 L 241.4,9.4 L 251.0,9.0 L 260.7,4.0 L 270.3,8.2 L 280.0,8.1" fill="none" stroke="#10b981" stroke-width="1.8"/>
+          <circle cx="280.0" cy="8.1" r="3" fill="#10b981"/>
+        </svg>
+
+      <div class="tc-indicators">
+        <div class="ind">
+          <label>MACD柱</label>
+          <span class="up">+1.19</span>
+        </div>
+        <div class="ind">
+          <label>KDJ-J</label>
+          <span class="flat">80</span>
+        </div>
+        <div class="ind">
+          <label>RSI</label>
+          <span class="down">72</span>
+        </div>
+        <div class="ind">
+          <label>布林带</label>
+          <span class="down">86%</span>
+        </div>
+      </div>
+
+      <ul class="tc-signals"><li>⚠️ 周MACD 红柱缩短（趋势衰竭）</li><li>⚠️ 周RSI 72（超买）</li><li>⚠️ 布林带上轨附近（86% 位置）</li><li>⚠️ 接近 52 周高（距高-10%）</li><li>➕ 站上 30 周均线</li></ul>
+
+      <div class="tc-action" style="background:#ef444422;border-left:3px solid #ef4444">🔴 <b>不建议买入</b> · 高位风险或趋势衰竭</div>
+    </div>
+    </div>
+</section>
+
+<section style="background:#0f1525;padding:24px;border-radius:10px;border:1px solid #1f2940">
+<h2 style="border:none;padding:0;margin-bottom:14px">📋 实战操作清单</h2>
+<table style="width:100%;font-size:14px">
+<tr><th style="text-align:left;padding:10px;color:#3b82f6;border-bottom:1px solid #1f2940">优先级</th><th style="text-align:left;padding:10px;color:#3b82f6;border-bottom:1px solid #1f2940">标的</th><th style="text-align:left;padding:10px;color:#3b82f6;border-bottom:1px solid #1f2940">操作</th></tr>
+<tr><td style="padding:10px;border-bottom:1px dashed #1f2940">⭐⭐⭐</td><td style="padding:10px;border-bottom:1px dashed #1f2940"><b style="color:#10b981">抚顺特钢</b> SH600399 · ¥5.11</td><td style="padding:10px;border-bottom:1px dashed #1f2940;color:#c5cde0">立即分批，首笔 40%，跌 -5% 加 30%，跌 -10% 加 30%。止损 -12%</td></tr>
+<tr><td style="padding:10px;border-bottom:1px dashed #1f2940">⭐⭐⭐</td><td style="padding:10px;border-bottom:1px dashed #1f2940"><b style="color:#10b981">铂力特</b> SH688333 · ¥88.44</td><td style="padding:10px;border-bottom:1px dashed #1f2940;color:#c5cde0">周 MACD 已经出现底部信号，可建仓 30%，等下周红柱确认加仓</td></tr>
+<tr><td style="padding:10px;border-bottom:1px dashed #1f2940">⭐⭐⭐</td><td style="padding:10px;border-bottom:1px dashed #1f2940"><b style="color:#10b981">深桑达A</b> SZ000032 · ¥19.19</td><td style="padding:10px;border-bottom:1px dashed #1f2940;color:#c5cde0">周 MACD 已经出现底部信号，可建仓 30%，等下周红柱确认加仓</td></tr>
+<tr><td style="padding:10px;border-bottom:1px dashed #1f2940">⭐⭐⭐</td><td style="padding:10px;border-bottom:1px dashed #1f2940"><b style="color:#10b981">海格通信</b> SZ002465 · ¥16.41</td><td style="padding:10px;border-bottom:1px dashed #1f2940;color:#c5cde0">周 MACD 已经出现底部信号，可建仓 30%，等下周红柱确认加仓</td></tr>
+<tr><td style="padding:10px;border-bottom:1px dashed #1f2940">⭐</td><td style="padding:10px;border-bottom:1px dashed #1f2940;color:#9da9c0">弱信号 12 只</td><td style="padding:10px;border-bottom:1px dashed #1f2940;color:#c5cde0">加自选，盯 5 个信号：① 周 MACD 红柱出现 ② 放量过 30 周线 ③ KDJ 金叉 ④ 布林带中轨突破 ⑤ 站上前期低点连线</td></tr>
+<tr><td style="padding:10px">🚫</td><td style="padding:10px;color:#9da9c0">高位 3 只</td><td style="padding:10px;color:#c5cde0">直接跳过，等深度回调（≥-20%）+ 重新出现底部信号再考虑</td></tr>
+</table>
+</section>
+
+<footer>
+<p>📊 SpaceX 概念股周线技术面分析 · 2026-05-24 08:42</p>
+<p style="margin-top:8px">姊妹篇：
+<a href="../spacex/">美股版</a>
+<a href="../spacex-cn/">A股+ETF版</a>
+<a href="../spacex-supply/">供应链增补版</a>
+<a href="../spacex-all/">总册</a>
+</p>
+<p style="margin-top:8px;color:#5c6680">本报告基于公开行情数据的技术面量化评估，仅供研究参考，不构成投资建议。</p>
+</footer>
+
+</div></body></html>
