@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>14 智能体投研圆桌：中科曙光 vs 福晶科技</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro SC','PingFang SC','Helvetica Neue',Arial,sans-serif;background:#0a0e1a;color:#e4e9f2;line-height:1.65;font-size:15px}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 20px 60px}
+header{text-align:center;padding:32px 20px;background:linear-gradient(135deg,#1a2440 0%,#0d1428 100%);border-radius:16px;margin-bottom:24px;border:1px solid #2a3754}
+h1{font-size:26px;background:linear-gradient(90deg,#4dd0e1,#ab47bc);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:8px}
+.sub{color:#a0b0c8;font-size:13px}
+.tagline{display:inline-block;margin-top:10px;padding:5px 14px;background:#1e2a4a;border:1px solid #4dd0e1;color:#4dd0e1;border-radius:20px;font-size:12px}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0}
+@media (max-width:768px){.grid2{grid-template-columns:1fr}}
+
+.card{background:#111827;border-radius:14px;padding:20px;border:1px solid #1e2a44;margin-bottom:16px}
+.card-sg{border-top:3px solid #4dd0e1}
+.card-fj{border-top:3px solid #ab47bc}
+
+h2{font-size:19px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid #2a3754;color:#fff}
+h2 .badge{font-size:12px;padding:3px 9px;border-radius:12px;margin-left:8px;font-weight:500;vertical-align:middle}
+.b-buy{background:#0f3a2c;color:#4ade80;border:1px solid #16a34a}
+.b-hold{background:#3a2f0f;color:#fbbf24;border:1px solid #d97706}
+
+h3{font-size:15px;color:#9bb0d0;margin:14px 0 8px;font-weight:600}
+
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13.5px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid #1e2a44}
+th{background:#162038;color:#9bb0d0;font-weight:600;font-size:12.5px}
+td.num{text-align:right;font-variant-numeric:tabular-nums;font-family:'SF Mono',Monaco,monospace}
+.up{color:#4ade80}
+.down{color:#f87171}
+.mid{color:#fbbf24}
+
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:13.5px;margin:8px 0}
+.kv dt{color:#9bb0d0}
+.kv dd{color:#e4e9f2;font-weight:500}
+
+.pill{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11.5px;margin-right:5px}
+.p-bull{background:#0f3a2c;color:#4ade80}
+.p-bear{background:#3a0f1c;color:#f87171}
+.p-neu{background:#1f2a44;color:#9bb0d0}
+
+.score-bar{display:flex;align-items:center;gap:8px;margin:4px 0;font-size:13px}
+.score-bar .label{width:88px;color:#9bb0d0;font-size:12.5px}
+.score-bar .track{flex:1;height:8px;background:#1e2a44;border-radius:4px;overflow:hidden}
+.score-bar .fill{height:100%;border-radius:4px}
+.score-bar .val{width:34px;text-align:right;color:#fff;font-variant-numeric:tabular-nums;font-size:12.5px}
+
+.compare-box{background:linear-gradient(135deg,#162038 0%,#0d1730 100%);border:1px solid #2a3754;border-radius:14px;padding:22px;margin:22px 0}
+.compare-box h2{border:none;text-align:center;margin-bottom:18px;background:linear-gradient(90deg,#4dd0e1,#ab47bc);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+.debate{background:#0e1626;border-left:3px solid #4dd0e1;padding:10px 14px;margin:10px 0;font-size:13.5px;border-radius:0 8px 8px 0}
+.debate.bear{border-left-color:#f87171}
+.debate.judge{border-left-color:#fbbf24;background:#241e0e}
+.debate strong{color:#fff}
+
+.alloc{background:#0f1a2e;border:1px solid #2a3754;border-radius:12px;padding:16px;margin:14px 0}
+.alloc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+@media (max-width:768px){.alloc-grid{grid-template-columns:1fr}}
+.alloc-item{background:#162038;padding:12px;border-radius:8px;border:1px solid #2a3754}
+.alloc-item h4{color:#4dd0e1;font-size:13px;margin-bottom:6px}
+.alloc-item p{font-size:13px;color:#e4e9f2}
+
+.warn{background:#241e0e;border:1px solid #d97706;padding:14px;border-radius:10px;margin:14px 0;font-size:13.5px}
+.warn h3{color:#fbbf24;margin-top:0}
+
+.final{background:linear-gradient(135deg,#1a2440 0%,#0d1428 100%);border:1px solid #2a3754;border-radius:14px;padding:22px;text-align:center;margin-top:24px}
+.final h2{border:none;justify-content:center;background:linear-gradient(90deg,#4dd0e1,#ab47bc);-webkit-background-clip:text;background-clip:text;color:transparent}
+.final blockquote{font-size:16px;color:#e4e9f2;font-style:italic;margin:14px 0;padding:0 14px;border-left:3px solid #4dd0e1}
+
+footer{text-align:center;padding:22px 14px 10px;color:#6b7a99;font-size:12px;border-top:1px solid #1e2a44;margin-top:30px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>🎯 14 智能体投研圆桌：中科曙光 vs 福晶科技</h1>
+  <p class="sub">量子计算硬通货组核心标的 · 2026-05-28 · 数据时点 2026-05-28 收盘</p>
+  <div class="tagline">6 分析师 + 多空辩论 + 研究总监 + 交易员 + 三方风控 + 组合经理</div>
+</header>
+
+<!-- 双卡核心终裁 -->
+<div class="grid2">
+
+  <!-- 中科曙光 -->
+  <div class="card card-sg">
+    <h2>🥇 中科曙光 sh603019 <span class="badge b-buy">BUY · 慢分批</span></h2>
+    <dl class="kv">
+      <dt>现价 / 总市值</dt><dd>¥91.25 / 1,335 亿</dd>
+      <dt>YTD / 距 52w 高</dt><dd>+6.64% / -29%</dd>
+      <dt>PE-2026E</dt><dd>45.7x</dd>
+      <dt>综合评分</dt><dd>73.6 / 100</dd>
+      <dt>Confidence</dt><dd><strong style="color:#4ade80">75</strong></dd>
+    </dl>
+
+    <h3>核心标签</h3>
+    <span class="pill p-bull">国产超算龙头</span>
+    <span class="pill p-bull">参股海光 27%</span>
+    <span class="pill p-bull">参股本源量子 18%</span>
+    <span class="pill p-neu">量超融合平台</span>
+    <span class="pill p-bear">主力 20D -42 亿</span>
+
+    <h3>6 维评分</h3>
+    <div class="score-bar"><span class="label">基本面</span><span class="track"><span class="fill" style="width:90%;background:#4ade80"></span></span><span class="val">9</span></div>
+    <div class="score-bar"><span class="label">技术面</span><span class="track"><span class="fill" style="width:50%;background:#f87171"></span></span><span class="val">5</span></div>
+    <div class="score-bar"><span class="label">情绪面</span><span class="track"><span class="fill" style="width:60%;background:#fbbf24"></span></span><span class="val">6</span></div>
+    <div class="score-bar"><span class="label">新闻面</span><span class="track"><span class="fill" style="width:90%;background:#4ade80"></span></span><span class="val">9</span></div>
+    <div class="score-bar"><span class="label">宏观面</span><span class="track"><span class="fill" style="width:90%;background:#4ade80"></span></span><span class="val">9</span></div>
+    <div class="score-bar"><span class="label">资金面</span><span class="track"><span class="fill" style="width:30%;background:#f87171"></span></span><span class="val">3</span></div>
+
+    <h3>交易方案</h3>
+    <table>
+      <tr><td>进场区间</td><td class="num">¥83-91（3 档分批）</td></tr>
+      <tr><td>目标 12M</td><td class="num up">¥118 (+29%)</td></tr>
+      <tr><td>目标 24M</td><td class="num up">¥135 (+48%)</td></tr>
+      <tr><td>止损</td><td class="num down">¥80 (-12%)</td></tr>
+      <tr><td><strong>风险报酬比</strong></td><td class="num up"><strong>2.38 : 1 ✅</strong></td></tr>
+      <tr><td>仓位 / 持仓</td><td class="num">5-7% / 12-24 月</td></tr>
+    </table>
+  </div>
+
+  <!-- 福晶科技 -->
+  <div class="card card-fj">
+    <h2>🥈 福晶科技 sz002222 <span class="badge b-hold">BUY-on-Dip · 严控仓</span></h2>
+    <dl class="kv">
+      <dt>现价 / 总市值</dt><dd>¥107.84 / 507 亿</dd>
+      <dt>YTD / 距 52w 高</dt><dd>+91.4% / -13%</dd>
+      <dt>PE-2026E</dt><dd>110.4x</dd>
+      <dt>综合评分</dt><dd>78.85 / 100</dd>
+      <dt>Confidence</dt><dd><strong style="color:#fbbf24">68</strong></dd>
+    </dl>
+
+    <h3>核心标签</h3>
+    <span class="pill p-bull">BBO 晶体全球 70%</span>
+    <span class="pill p-bull">光量子核心元件</span>
+    <span class="pill p-bull">激光 + 量子 + 通信</span>
+    <span class="pill p-bull">今日主力 +2.54 亿</span>
+    <span class="pill p-bear">PE 已脱锚</span>
+
+    <h3>6 维评分</h3>
+    <div class="score-bar"><span class="label">基本面</span><span class="track"><span class="fill" style="width:80%;background:#4ade80"></span></span><span class="val">8</span></div>
+    <div class="score-bar"><span class="label">技术面</span><span class="track"><span class="fill" style="width:80%;background:#4ade80"></span></span><span class="val">8</span></div>
+    <div class="score-bar"><span class="label">情绪面</span><span class="track"><span class="fill" style="width:60%;background:#fbbf24"></span></span><span class="val">6</span></div>
+    <div class="score-bar"><span class="label">新闻面</span><span class="track"><span class="fill" style="width:90%;background:#4ade80"></span></span><span class="val">9</span></div>
+    <div class="score-bar"><span class="label">宏观面</span><span class="track"><span class="fill" style="width:90%;background:#4ade80"></span></span><span class="val">9</span></div>
+    <div class="score-bar"><span class="label">资金面</span><span class="track"><span class="fill" style="width:80%;background:#4ade80"></span></span><span class="val">8</span></div>
+
+    <h3>交易方案</h3>
+    <table>
+      <tr><td>进场区间</td><td class="num">¥95-108（不追高）</td></tr>
+      <tr><td>目标 12M</td><td class="num up">¥140 (+30%)</td></tr>
+      <tr><td>目标 24M</td><td class="num up">¥165 (+53%)</td></tr>
+      <tr><td>止损</td><td class="num down">¥88 (-18%)</td></tr>
+      <tr><td><strong>风险报酬比</strong></td><td class="num mid"><strong>1.62 : 1 ⚠️</strong></td></tr>
+      <tr><td>仓位 / 持仓</td><td class="num">3-5% / 6-18 月</td></tr>
+    </table>
+  </div>
+
+</div>
+
+<!-- 圆桌核心分歧 -->
+<div class="compare-box">
+<h2>💬 圆桌核心分歧（4 轮多空压缩版）</h2>
+
+<div class="grid2">
+  <div>
+    <h3 style="color:#4dd0e1">中科曙光</h3>
+    <div class="debate"><strong>多头：</strong>A 股最干净的量子壳：海光 + 本源 + 自家量超平台三重资产堆叠。PE 45.7x 在国产算力中不贵，海光 H2 分拆 + 本源 IPO 双催化在路上。</div>
+    <div class="debate bear"><strong>空头：</strong>主力 20 日 -42 亿是教科书级派发；量子营收 &lt;5%，是期权不是业绩；YTD 仅 +6.6% 跑输板块 = 市场已用脚投票。</div>
+    <div class="debate judge"><strong>总监裁定：</strong>分歧在「资金面是否已透支 6 个月后的事」。多头逻辑成立但需时间，空头风险短期真实 → <strong>看多，必须分批</strong>。</div>
+  </div>
+  <div>
+    <h3 style="color:#ab47bc">福晶科技</h3>
+    <div class="debate"><strong>多头：</strong>全球 70% BBO 晶体隐形冠军；今日 +7.57% 主力 +2.54 亿是新主升浪起点；2027E EPS 1.27 × PE 100 = ¥127 仍有空间。</div>
+    <div class="debate bear"><strong>空头：</strong>PE 110x 已脱锚；年内 +91% 透支太多；光量子仅占 5 大路线 25% 份额，赌错就归零。</div>
+    <div class="debate judge"><strong>总监裁定：</strong>估值是空头唯一硬伤，其他都被反驳；但估值在主题股中非短期决定因素 → <strong>看多但严控仓位</strong>。</div>
+  </div>
+</div>
+</div>
+
+<!-- 两家对比一览 -->
+<div class="card">
+<h2>📊 双家关键维度对比</h2>
+<table>
+<thead><tr><th>维度</th><th>🥇 中科曙光</th><th>🥈 福晶科技</th><th>赢家</th></tr></thead>
+<tbody>
+<tr><td>商业模式护城河</td><td>国产算力 Top 3 + 量子参股</td><td>BBO 晶体全球 70% 隐形冠军</td><td class="up">福晶（更深）</td></tr>
+<tr><td>量子业务实质度</td><td>参股本源 18% + 量超融合平台</td><td>光量子核心元件供应商</td><td class="up">曙光（更近期落地）</td></tr>
+<tr><td>财务质量（ROE/CF）</td><td>ROE 12% / 现金流 1.4x 净利</td><td>ROE 14% / 现金流 1.35x 净利</td><td class="mid">持平</td></tr>
+<tr><td>估值</td><td class="up">PE 45.7x ✅</td><td class="down">PE 110.4x ❌</td><td class="up">曙光</td></tr>
+<tr><td>近期资金面</td><td class="down">主力 20D -42 亿</td><td class="up">主力 20D -8 亿且今日 +2.54 亿</td><td class="up">福晶（今日反转）</td></tr>
+<tr><td>技术面</td><td class="down">MACD 死叉 + RSI 34 超卖</td><td class="up">多头排列 + 突破信号</td><td class="up">福晶</td></tr>
+<tr><td>YTD 涨幅</td><td class="up">+6.6%（未透支）</td><td class="down">+91%（已透支）</td><td class="up">曙光（更安全）</td></tr>
+<tr><td>风险报酬比</td><td class="up">2.38 : 1 ✅</td><td class="mid">1.62 : 1 ⚠️</td><td class="up">曙光</td></tr>
+<tr><td>催化时间</td><td>12-24 月（海光/本源）</td><td>6-12 月（趋势延续）</td><td class="mid">差异化</td></tr>
+<tr><td><strong>Confidence</strong></td><td class="up"><strong>75</strong></td><td class="mid"><strong>68</strong></td><td class="up">曙光</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- 三档配置 -->
+<div class="alloc">
+<h2 style="margin-top:0">💼 圆桌建议配置（量子总仓 ≤ 10%）</h2>
+<div class="alloc-grid">
+  <div class="alloc-item">
+    <h4>🟢 稳健派（推荐）</h4>
+    <p>曙光 <strong>5%</strong> + 福晶 <strong>2%</strong> + 现金 93%<br>
+    曙光首仓 25% 试 + 福晶首仓 20% 试，跌下去都有钱加</p>
+  </div>
+  <div class="alloc-item">
+    <h4>🟡 平衡派</h4>
+    <p>曙光 <strong>6%</strong> + 福晶 <strong>4%</strong> + 现金 90%<br>
+    价值锚（曙光）+ 趋势 α（福晶）双重曝光</p>
+  </div>
+  <div class="alloc-item">
+    <h4>🔴 进攻派</h4>
+    <p>曙光 <strong>7%</strong> + 福晶 <strong>5%</strong> + 现金 88%<br>
+    必须能承受 -25% 浮亏 + 严格执行止损</p>
+  </div>
+</div>
+</div>
+
+<!-- 必须监测 -->
+<div class="warn">
+<h3>⚠️ 必须监测的 5 个变量</h3>
+<ol style="padding-left:20px;line-height:1.9">
+  <li><strong>曙光主力 5 日资金流：</strong>从 -27.5 亿持续收窄 = 派发尾声 → 加仓信号；继续扩大 → 暂停</li>
+  <li><strong>福晶 RSI6 是否破 80：</strong>当前 55，过 80 即兑现 30%</li>
+  <li><strong>海光信息分拆 / 本源量子 IPO 进展：</strong>曙光的核心催化</li>
+  <li><strong>美国 CHIPS 后续 + 中国对策：</strong>6-8 月窗口期，板块整体波动放大</li>
+  <li><strong>光量子路线 vs 超导路线竞争格局：</strong>2026 H2 IBM/Google 进展直接影响福晶估值锚</li>
+</ol>
+</div>
+
+<!-- 最终建议 -->
+<div class="final">
+<h2>🎬 圆桌最终建议</h2>
+<blockquote>
+"曙光是<strong>价值锚 + 期权</strong>组合（PE 45.7x + 海光/本源双催化），<br>
+福晶是<strong>趋势 α + 隐形冠军</strong>组合（PE 110x 但全球 70% BBO 不可替代）。<br>
+<br>
+两家都值得布局，但姿势不同——<br>
+<strong>曙光逢低分批，福晶等回踩，仓位曙光重于福晶。</strong>"
+</blockquote>
+<p style="margin-top:14px;color:#9bb0d0;font-size:13.5px">
+关键操作：曙光首仓 25% ¥91、加仓 ¥85 / ¥83；福晶首仓 20% ¥108、加仓 ¥100 / ¥95<br>
+组合视角：两家合计仓位上限 10%，留 90% 现金应对板块二次回调
+</p>
+</div>
+
+<footer>
+<p>本报告由 14 智能体投研圆桌生成 · 仅供研究参考，不构成投资建议<br>
+数据来源：westock-data 实时接口 · 生成时间 2026-05-28 22:56</p>
+</footer>
+
+</div>
+</body>
+</html>
