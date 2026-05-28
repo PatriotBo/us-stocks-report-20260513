@@ -25,5 +25,5 @@
 
 ---
 
-📊 [查看完整 HTML 报告](http://127.0.0.1:8088/daily-watch/index.html)
+📊 [查看完整 HTML 报告](https://patriotbo.github.io/us-stocks-report-20260513/daily-watch/)
 🤖 由 Claw 自动巡检 · 工作日 22:00 自动推送
