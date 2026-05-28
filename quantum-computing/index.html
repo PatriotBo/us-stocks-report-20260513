@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>量子计算产业研判 · 中美 15 标的硬通货 vs 故事股</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:linear-gradient(135deg,#0f0c29 0%,#302b63 50%,#24243e 100%);color:#e6e6f0;line-height:1.7;padding:30px 16px;min-height:100vh}
+.container{max-width:1200px;margin:0 auto}
+
+header{text-align:center;margin-bottom:36px;padding:36px 20px;background:linear-gradient(135deg,rgba(168,85,247,.2),rgba(59,130,246,.2));border-radius:16px;border:1px solid rgba(168,85,247,.3);backdrop-filter:blur(10px)}
+header h1{font-size:2.1rem;margin-bottom:10px;background:linear-gradient(90deg,#a855f7,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+header .sub{opacity:.85;font-size:1.02rem}
+header .meta{margin-top:14px;font-size:.85rem;opacity:.65}
+
+section{background:rgba(255,255,255,.04);border:1px solid rgba(168,85,247,.15);border-radius:14px;padding:28px;margin-bottom:28px;backdrop-filter:blur(10px)}
+section h2{font-size:1.35rem;margin-bottom:18px;color:#c4b5fd;border-bottom:2px solid rgba(168,85,247,.25);padding-bottom:8px}
+section h3{font-size:1.08rem;margin:18px 0 10px;color:#a78bfa}
+section p{margin-bottom:10px;color:#d1d5db}
+.key{background:rgba(245,158,11,.2);color:#fbbf24;padding:1px 8px;border-radius:4px;font-weight:600}
+.bad{background:rgba(239,68,68,.2);color:#fca5a5;padding:1px 8px;border-radius:4px;font-weight:600}
+.good{background:rgba(16,185,129,.2);color:#6ee7b7;padding:1px 8px;border-radius:4px;font-weight:600}
+
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92rem}
+th,td{padding:9px 11px;text-align:left;border-bottom:1px solid rgba(168,85,247,.2)}
+th{background:rgba(168,85,247,.15);color:#c4b5fd;font-weight:600}
+td{color:#d1d5db}
+
+.tldr-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+@media(max-width:768px){.tldr-cards{grid-template-columns:1fr}}
+.tldr-c{padding:16px;border-radius:10px;border:1px solid rgba(168,85,247,.3)}
+.tldr-c.green{background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.4)}
+.tldr-c.purple{background:rgba(168,85,247,.1);border-color:rgba(168,85,247,.4)}
+.tldr-c.red{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.4)}
+.tldr-c h4{margin-bottom:10px;font-size:1rem}
+.tldr-c ul{padding-left:18px;font-size:.88rem}
+.tldr-c li{margin:4px 0;color:#d1d5db}
+
+.path-table th:first-child{width:120px}
+
+.stock-card{background:rgba(255,255,255,.03);border:1px solid rgba(168,85,247,.2);border-radius:12px;padding:18px;margin-bottom:14px}
+.sc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:10px}
+.sc-code{font-family:Menlo,monospace;background:rgba(168,85,247,.15);padding:3px 10px;border-radius:5px;font-size:.85rem;margin-right:10px;color:#c4b5fd}
+.sc-name{font-size:1.15rem;font-weight:700;color:#fff;margin-right:10px}
+.sc-tier{font-size:.72rem;padding:3px 9px;border-radius:5px;color:white;font-weight:600}
+.sc-verdict{font-size:1rem}
+.sc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+@media(max-width:600px){.sc-grid{grid-template-columns:repeat(2,1fr)}}
+.sc-grid>div{background:rgba(255,255,255,.03);padding:8px 10px;border-radius:6px}
+.kl{font-size:.7rem;color:#9ca3af;margin-bottom:2px}
+.kv{font-size:.95rem;font-weight:700;color:#e6e6f0}
+.sc-body>div{padding:9px 12px;border-radius:6px;margin-bottom:6px;font-size:.88rem;line-height:1.65}
+.sc-body>div b{display:inline-block;margin-right:6px;font-size:.78rem;color:#fff;padding:1px 6px;border-radius:3px}
+.why{background:rgba(16,185,129,.08)} .why b{background:#10b981}
+.concern{background:rgba(239,68,68,.08)} .concern b{background:#ef4444}
+.advice{background:rgba(59,130,246,.08)} .advice b{background:#3b82f6}
+
+.us-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px}
+@media(max-width:768px){.us-grid{grid-template-columns:1fr}}
+.us-card{background:rgba(255,255,255,.03);border:1px solid rgba(168,85,247,.2);border-radius:10px;padding:14px}
+.us-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.us-code{font-family:Menlo,monospace;background:rgba(168,85,247,.2);padding:2px 8px;border-radius:4px;font-size:.82rem;color:#c4b5fd}
+.us-name{font-weight:700;color:#fff}
+.us-tier{font-size:.7rem;padding:2px 7px;border-radius:4px;color:white}
+.us-row{font-size:.85rem;color:#d1d5db;margin-bottom:5px}
+.us-row b{color:#a78bfa;margin-right:6px;font-size:.78rem}
+.us-view{font-size:.83rem;color:#cbd5e1;margin-top:6px;padding-top:8px;border-top:1px dashed rgba(168,85,247,.2);line-height:1.6}
+
+.config-box{background:linear-gradient(135deg,rgba(168,85,247,.15),rgba(59,130,246,.15));border:1px solid rgba(168,85,247,.4);border-radius:12px;padding:24px;margin:18px 0}
+.config-box h3{margin-bottom:12px;color:#c4b5fd}
+.config-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:14px}
+@media(max-width:768px){.config-row{grid-template-columns:1fr}}
+.config-c{background:rgba(0,0,0,.2);padding:16px;border-radius:8px}
+.config-c h4{font-size:1rem;margin-bottom:10px;color:#fbbf24}
+.config-c ul{padding-left:18px;font-size:.88rem}
+.config-c li{margin:5px 0}
+
+footer{text-align:center;padding:28px 18px;color:#6b7280;font-size:.78rem;line-height:1.7}
+.disc{font-size:.74rem;color:#6b7280;background:rgba(0,0,0,.3);padding:14px;border-radius:8px;margin-top:14px;border:1px solid rgba(168,85,247,.15);text-align:left}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>⚛️ 量子计算产业研判 · 提前布局指南</h1>
+  <div class="sub">技术现状 + 路线之争 + 中美 15 标的硬通货 / 故事股分档</div>
+  <div class="meta">2026-05-28 · 数据基于雪球 / 中国信通院 / 西证财经接口实盘 · 当前已是主升浪中后段</div>
+</header>
+
+<section>
+  <h2>📍 一句话研判（TL;DR）</h2>
+  <p><b style="color:#fbbf24;font-size:1.08rem">量子计算 = 真实技术拐点 + 短期估值泡沫 + 长期 10 年期产业。</b></p>
+  <p>2025-2026 是量子从"<span class="key">优越性</span>"跨入"<span class="key">实用性</span>"的拐点：Google Willow 首次将逻辑比特相干维持 + IBM Heron R3 模块化路线全面铺开 + 美国 5/21 砸 20 亿美元 CHIPS 法案 = 产业从科研走向工业级备战阶段。</p>
+  <p>但短期看，A 股 6 家相关标的<span class="bad">已经全部进入主力派发期</span>：5/28 单日主力净流出合计 -242 亿元（光迅 -2.65 亿、华工 -0.88 亿、曙光 -1.75 亿都是单日数据；20 日累计国盾 -7 亿、光迅 -89 亿、华工 -73 亿、曙光 -42 亿）。</p>
+  <p style="margin-top:14px"><b>结论</b>：量子<span class="good">值得提前布局</span>但<span class="bad">不能现价追高</span>。要分清"硬通货"（有主业现金流 + 估值有锚）和"故事股"（PE 千倍 + 纯主题驱动），用三档配置策略而非梭哈。</p>
+
+  <div class="tldr-cards">
+    <div class="tldr-c green">
+      <h4>🟢 硬通货首选</h4>
+      <ul>
+        <li><b>中科曙光</b>（PE 46，量超融合最近落地）</li>
+        <li><b>福晶科技</b>（晶体全球 70% 份额）</li>
+        <li><b>IBM</b>（CHIPS 10 亿美元 + 量子免费期权）</li>
+        <li><b>GlobalFoundries</b>（卖铲人）</li>
+      </ul>
+    </div>
+    <div class="tldr-c purple">
+      <h4>🟡 故事股酌情参与</h4>
+      <ul>
+        <li><b>国盾量子</b>（最纯但 PE 2598x，仅小仓博主题）</li>
+        <li><b>光迅 / 华工</b>（已涨多，等回调）</li>
+        <li><b>IonQ / Rigetti</b>（美股纯 play，仅小仓）</li>
+      </ul>
+    </div>
+    <div class="tldr-c red">
+      <h4>🔴 回避</h4>
+      <ul>
+        <li><b>科大国创</b>（2025 净利 -4 亿 + 质押 27%）</li>
+        <li><b>QUBT</b>（口号 > 实物的投机品）</li>
+        <li>任何 YTD +200% 的纯题材股</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>🔬 一、量子计算技术现状（2026 视角）</h2>
+
+  <h3>1.1 关键里程碑（2025-2026）</h3>
+  <table>
+    <tr><th>时间</th><th>事件</th><th>意义</th></tr>
+    <tr><td>2024.12</td><td>Google Willow 105 量子比特芯片</td><td>首次实现纠错率<span class="good">低于阈值</span>，FTQC 路径打通</td></tr>
+    <tr><td>2025.06</td><td>IBM 公布 Kookaburra 计划（2026 出货）</td><td>首款<span class="good">模块化存储 + 处理</span>系统，规模化路径明确</td></tr>
+    <tr><td>2025.Q3</td><td>Quantinuum H2 + IBM Heron R3 商用</td><td>离子阱 99.9% 双比特保真度，超导 1000+ 比特</td></tr>
+    <tr><td>2025.下半</td><td>祖冲之 3 号在国内启用（中科大 + 国盾）</td><td>中国超导路线进入全球第二梯队</td></tr>
+    <tr><td><b>2026.05.21</b></td><td><b>美国 CHIPS 法案 20 亿美元砸 9 家</b></td><td>政府股权入股 = 国家级背书 + 中美技术战正式开打</td></tr>
+  </table>
+
+  <h3>1.2 五大技术路线对比</h3>
+  <table>
+    <tr><th>路线</th><th>代表</th><th>优势</th><th>劣势</th><th>商业化时间</th></tr>
+    <tr><td><b>超导</b></td><td>Google / IBM / 国盾</td><td>大公司投入大、扩展性好</td><td>需极低温（10mK）、<br>布线挑战</td><td>已商用（NISQ 阶段）</td></tr>
+    <tr><td><b>离子阱</b></td><td>IonQ / Quantinuum</td><td>保真度最高（99.9%+）、<br>常温可运行</td><td>扩展难（光路复杂）</td><td>已商用</td></tr>
+    <tr><td><b>光子</b></td><td>PsiQuantum / 华工 / 福晶</td><td>常温运行、<br>可走光纤天然适配通信</td><td>损耗大、<br>探测效率受限</td><td>2027-2028</td></tr>
+    <tr><td><b>中性原子</b></td><td>Atom Computing / QuEra</td><td>可扩展至 1000+ 比特、<br>制造简单</td><td>双比特门速度慢</td><td>2027-2028</td></tr>
+    <tr><td><b>量子退火</b></td><td>D-Wave</td><td>已解决组合优化问题</td><td><span class="bad">非通用</span>，估值天花板低</td><td>已商用（受限）</td></tr>
+  </table>
+  <p style="margin-top:10px;font-size:.92rem;color:#9ca3af">📌 <b>路线观察</b>：Google 押"高保真度 + 表面码"，IBM 押"模块化 + 重十六进制"。预计 <b>2028 年左右</b>两路线开始融合，届时通用量子曙光初现。中国走"小步快跑 + 量超融合"路径（中科曙光 + 本源量子）规避全栈短板。</p>
+
+  <h3>1.3 商业化时间表（机构共识）</h3>
+  <table>
+    <tr><th>阶段</th><th>时间</th><th>能力</th><th>市场</th></tr>
+    <tr><td>NISQ（含噪声）</td><td><b>已经发生</b></td><td>50-1000 比特，可解部分量子化学/优化</td><td>云服务订阅、政府/科研/金融试点</td></tr>
+    <tr><td>早期容错（Early FTQC）</td><td>2027-2030</td><td>10-100 逻辑比特，密码学/材料模拟突破</td><td>少数高价值垂直行业</td></tr>
+    <tr><td>通用容错（FTQC）</td><td>2032-2035</td><td>1000+ 逻辑比特，<span class="key">RSA-2048 可破</span></td><td>全行业转型，万亿级</td></tr>
+  </table>
+  <p style="margin-top:8px;font-size:.92rem;color:#9ca3af">📌 <b>投资视角</b>：当前是 <span class="key">NISQ 商业化早期 + Early FTQC 备战期</span>。与 AI 类比，相当于<b>2017 年的深度学习</b>（已能商用但远未规模化）。<span class="good">提前布局窗口期约 18-24 个月</span>，但要避开估值过头的票。</p>
+</section>
+
+<section>
+  <h2>🇨🇳 二、A 股 6 大量子标的深度拆解</h2>
+  <p style="margin-bottom:18px;color:#9ca3af;font-size:.92rem">下表按"硬通货优先级"排序，重点关注<span class="good">主业现金流强 + 量子是免费期权</span>的组合。</p>
+  
+    <div class="stock-card">
+      <div class="sc-head">
+        <div>
+          <span class="sc-code">688027</span>
+          <span class="sc-name">国盾量子</span>
+          <span class="sc-tier" style="background:#a855f7">故事股·首选</span>
+        </div>
+        <div class="sc-verdict" style="color:#f59e0b"><b>中性·只能小仓位赌主题</b></div>
+      </div>
+      <div class="sc-grid">
+        <div><div class="kl">现价</div><div class="kv">¥580.5</div></div>
+        <div><div class="kl">PE-2026E</div><div class="kv">2598</div></div>
+        <div><div class="kl">YTD 涨幅</div><div class="kv" style="color:#ef4444">+15.2%</div></div>
+        <div><div class="kl">距高点</div><div class="kv">-23.7%</div></div>
+        <div><div class="kl">主力 5 日</div><div class="kv" style="color:#ef4444">-1.5 亿</div></div>
+        <div><div class="kl">主力 20 日</div><div class="kv" style="color:#ef4444">-7.1 亿</div></div>
+        <div><div class="kl">量子纯度</div><div class="kv">100%</div></div>
+        <div><div class="kl">综合评分</div><div class="kv" style="color:#f59e0b">71.2</div></div>
+      </div>
+      <div class="sc-body">
+        <div class="why"><b>✓ 看点</b>A 股最纯量子标的，量子通信国内市占 90%+；超导量子计算机整机/测控/稀释制冷机一站式；唯一参与祖冲之 3 号企业；为中电信交付天衍-504/287</div>
+        <div class="concern"><b>⚠ 隐忧</b>全年净利仅 539 万 = 实际亏损边缘 + PE-2026E 2598x（无估值锚）+ 一致目标价 651 仅 +12% 空间 + 主力 20 日净流出 7 亿</div>
+        <div class="advice"><b>💼 操作</b>主题催化期可博弈 1-2% 仓位，跌至 ¥500 加仓但严守止损 ¥460；不能作为价值投资标的，2026 主题降温必杀估值</div>
+      </div>
+    </div>
+    
+    <div class="stock-card">
+      <div class="sc-head">
+        <div>
+          <span class="sc-code">603019</span>
+          <span class="sc-name">中科曙光</span>
+          <span class="sc-tier" style="background:#10b981">硬通货·首选</span>
+        </div>
+        <div class="sc-verdict" style="color:#10b981"><b>买入·分批建仓</b></div>
+      </div>
+      <div class="sc-grid">
+        <div><div class="kl">现价</div><div class="kv">¥91.25</div></div>
+        <div><div class="kl">PE-2026E</div><div class="kv">45.7</div></div>
+        <div><div class="kl">YTD 涨幅</div><div class="kv" style="color:#ef4444">+6.6%</div></div>
+        <div><div class="kl">距高点</div><div class="kv">-28.7%</div></div>
+        <div><div class="kl">主力 5 日</div><div class="kv" style="color:#ef4444">-27.5 亿</div></div>
+        <div><div class="kl">主力 20 日</div><div class="kv" style="color:#ef4444">-42.0 亿</div></div>
+        <div><div class="kl">量子纯度</div><div class="kv">5%</div></div>
+        <div><div class="kl">综合评分</div><div class="kv" style="color:#10b981">73.6</div></div>
+      </div>
+      <div class="sc-body">
+        <div class="why"><b>✓ 看点</b>国内超算龙头，'量超融合'架构落地最近的商业模式；参股本源量子 18% 是 A 股最大量子赌注；超算主业现金流强劲提供估值底</div>
+        <div class="concern"><b>⚠ 隐忧</b>短期资金 5 日净流出 27.5 亿是全市场前列 + 技术面 MACD -2.18 跌势中段 + RSI=35 接近超卖</div>
+        <div class="advice"><b>💼 操作</b>PE 45 是合理区间，超算主业 PE 35 是估值底（对应 ¥75）。现价 ¥91 + ¥85 + ¥78 三档建仓；目标 ¥100（一致）→ ¥120（年高），止损 ¥75</div>
+      </div>
+    </div>
+    
+    <div class="stock-card">
+      <div class="sc-head">
+        <div>
+          <span class="sc-code">300520</span>
+          <span class="sc-name">科大国创</span>
+          <span class="sc-tier" style="background:#a855f7">故事股·谨慎</span>
+        </div>
+        <div class="sc-verdict" style="color:#ef4444"><b>回避·只能博 IPO 催化</b></div>
+      </div>
+      <div class="sc-grid">
+        <div><div class="kl">现价</div><div class="kv">¥36.48</div></div>
+        <div><div class="kl">PE-2026E</div><div class="kv">亏损</div></div>
+        <div><div class="kl">YTD 涨幅</div><div class="kv" style="color:#ef4444">+4.6%</div></div>
+        <div><div class="kl">距高点</div><div class="kv">-34.0%</div></div>
+        <div><div class="kl">主力 5 日</div><div class="kv" style="color:#ef4444">1.6 亿</div></div>
+        <div><div class="kl">主力 20 日</div><div class="kv" style="color:#ef4444">-1.6 亿</div></div>
+        <div><div class="kl">量子纯度</div><div class="kv">30%</div></div>
+        <div><div class="kl">综合评分</div><div class="kv" style="color:#ef4444">62.3</div></div>
+      </div>
+      <div class="sc-body">
+        <div class="why"><b>✓ 看点</b>参股国仪量子 2.75%（已启动科创板 IPO，拟募 11.69 亿）+ 参股九章量子 4.29%；新能源汽车 BMS 业务作为现金牛</div>
+        <div class="concern"><b>⚠ 隐忧</b>2025 全年净利 -4 亿（**真亏损**）+ 主业 BMS 行业承压 + 量子参股比例小贡献有限；股权质押 27%（高风险）</div>
+        <div class="advice"><b>💼 操作</b>国仪量子 IPO 过会前可博弈，过会后兑现；不建议中长线持有；如要参与最多 1% 仓位 + 严守 ¥32 止损</div>
+      </div>
+    </div>
+    
+    <div class="stock-card">
+      <div class="sc-head">
+        <div>
+          <span class="sc-code">002281</span>
+          <span class="sc-name">光迅科技</span>
+          <span class="sc-tier" style="background:#10b981">硬通货·已涨多</span>
+        </div>
+        <div class="sc-verdict" style="color:#f59e0b"><b>持有·不追高</b></div>
+      </div>
+      <div class="sc-grid">
+        <div><div class="kl">现价</div><div class="kv">¥214.9</div></div>
+        <div><div class="kl">PE-2026E</div><div class="kv">96.3</div></div>
+        <div><div class="kl">YTD 涨幅</div><div class="kv" style="color:#ef4444">+207.2%</div></div>
+        <div><div class="kl">距高点</div><div class="kv">-12.9%</div></div>
+        <div><div class="kl">主力 5 日</div><div class="kv" style="color:#ef4444">-68.8 亿</div></div>
+        <div><div class="kl">主力 20 日</div><div class="kv" style="color:#ef4444">-89.7 亿</div></div>
+        <div><div class="kl">量子纯度</div><div class="kv">8%</div></div>
+        <div><div class="kl">综合评分</div><div class="kv" style="color:#f59e0b">73.1</div></div>
+      </div>
+      <div class="sc-body">
+        <div class="why"><b>✓ 看点</b>全国领先光模块龙头，**主业是 AI 算力光模块**（非量子驱动主升浪）；与国盾合资山东国迅量子芯，量子光模块市占率 60%、单光子探测器效率 90%+、传输距离 600 公里</div>
+        <div class="concern"><b>⚠ 隐忧</b>**YTD +207% 巅峰** + 主力 20 日净流出 89.7 亿（全市场资金出逃前列）+ MACD -4.79 死叉中段 + 量子贡献仅 ~8%</div>
+        <div class="advice"><b>💼 操作</b>已经是主升浪末期，现价 ¥215 不进；持有者可看 ¥240 一致目标但要严防 ¥180 跌破年线信号；想买等回调至 ¥160 以下</div>
+      </div>
+    </div>
+    
+    <div class="stock-card">
+      <div class="sc-head">
+        <div>
+          <span class="sc-code">000988</span>
+          <span class="sc-name">华工科技</span>
+          <span class="sc-tier" style="background:#10b981">硬通货·已涨多</span>
+        </div>
+        <div class="sc-verdict" style="color:#f59e0b"><b>持有·不追高</b></div>
+      </div>
+      <div class="sc-grid">
+        <div><div class="kl">现价</div><div class="kv">¥165.63</div></div>
+        <div><div class="kl">PE-2026E</div><div class="kv">70.3</div></div>
+        <div><div class="kl">YTD 涨幅</div><div class="kv" style="color:#ef4444">+108.8%</div></div>
+        <div><div class="kl">距高点</div><div class="kv">-5.8%</div></div>
+        <div><div class="kl">主力 5 日</div><div class="kv" style="color:#ef4444">-49.7 亿</div></div>
+        <div><div class="kl">主力 20 日</div><div class="kv" style="color:#ef4444">-73.2 亿</div></div>
+        <div><div class="kl">量子纯度</div><div class="kv">10%</div></div>
+        <div><div class="kl">综合评分</div><div class="kv" style="color:#10b981">77.1</div></div>
+      </div>
+      <div class="sc-body">
+        <div class="why"><b>✓ 看点</b>全球唯一量产**量子点激光器芯片**（光量子计算核心光源），2025 推无铍 LSBO 晶体国际首选；主业激光加工为现金牛 + 光通信模块</div>
+        <div class="concern"><b>⚠ 隐忧</b>YTD +109% + 主力 20 日净流出 73.2 亿 + 距 52 周高仅 -5.8% = 见顶临近 + 量子营收占比仅 10%</div>
+        <div class="advice"><b>💼 操作</b>PE 70 已 stretched，等回调至 ¥140 以下再考虑；持有者目标 ¥175（已接近）→ ¥190，止损 ¥145</div>
+      </div>
+    </div>
+    
+    <div class="stock-card">
+      <div class="sc-head">
+        <div>
+          <span class="sc-code">002222</span>
+          <span class="sc-name">福晶科技</span>
+          <span class="sc-tier" style="background:#10b981">硬通货·中坚</span>
+        </div>
+        <div class="sc-verdict" style="color:#10b981"><b>买入·中坚配置</b></div>
+      </div>
+      <div class="sc-grid">
+        <div><div class="kl">现价</div><div class="kv">¥107.84</div></div>
+        <div><div class="kl">PE-2026E</div><div class="kv">110.4</div></div>
+        <div><div class="kl">YTD 涨幅</div><div class="kv" style="color:#ef4444">+91.4%</div></div>
+        <div><div class="kl">距高点</div><div class="kv">-13.4%</div></div>
+        <div><div class="kl">主力 5 日</div><div class="kv" style="color:#ef4444">-5.0 亿</div></div>
+        <div><div class="kl">主力 20 日</div><div class="kv" style="color:#ef4444">-8.0 亿</div></div>
+        <div><div class="kl">量子纯度</div><div class="kv">35%</div></div>
+        <div><div class="kl">综合评分</div><div class="kv" style="color:#10b981">78.9</div></div>
+      </div>
+      <div class="sc-body">
+        <div class="why"><b>✓ 看点</b>**BBO/LBO 非线性光学晶体全球市占 70%+**（产生量子纠缠光子对的核心材料），所有海外量子实验室都用它的；2025 推无铍 LSBO 替代 BBO；隐形冠军级</div>
+        <div class="concern"><b>⚠ 隐忧</b>PE 110 偏贵（合理 70-80）+ YTD +91% + 主力 20 日净流出 8 亿（相对温和）</div>
+        <div class="advice"><b>💼 操作</b>现价 ¥108 偏高但护城河最深，分批 ¥105 + ¥98 + ¥90 建仓；目标 ¥125（一致路径）→ ¥140（PE 100 + 业绩兑现），止损 ¥85</div>
+      </div>
+    </div>
+    
+</section>
+
+<section>
+  <h2>🇺🇸 三、美股量子标的（CHIPS 受益方）</h2>
+  <p style="margin-bottom:14px;color:#9ca3af;font-size:.92rem">2026.05.21 美国商务部 CHIPS 法案 20 亿美元分配明细：</p>
+  <table class="path-table">
+    <tr><th>公司</th><th>金额</th><th>路线</th></tr>
+    <tr><td><b>IBM</b></td><td>$10 亿（最大头）</td><td>超导，子公司 Anderon 建美国首座量子晶圆代工厂</td></tr>
+    <tr><td><b>GlobalFoundries</b></td><td>$3.75 亿</td><td>芯片代工</td></tr>
+    <tr><td>D-Wave / Rigetti / Infleqtion / Atom / PsiQuantum / Quantinuum</td><td>各约 $1 亿</td><td>各路线代表</td></tr>
+    <tr><td>Diraq</td><td>$3800 万</td><td>硅基量子（澳籍美企）</td></tr>
+  </table>
+  <div class="us-grid">
+    <div class="us-card">
+      <div class="us-head">
+        <span class="us-code">IBM</span>
+        <span class="us-name">IBM</span>
+        <span class="us-tier" style="background:#10b981">硬通货·首选</span>
+      </div>
+      <div class="us-row"><b>路线</b>超导（Heron R3 / Kookaburra 2026）</div>
+      <div class="us-row"><b>CHIPS</b>10 亿美元 + 自投 10 亿 + Anderon 子公司晶圆代工厂</div>
+      <div class="us-view">唯一兼具'技术领先 + 商业落地 + CHIPS 巨额加持'的标的，PE 25x，主业云+AI 现金流强劲。**量子是免费期权**</div>
+    </div>
+    
+    <div class="us-card">
+      <div class="us-head">
+        <span class="us-code">GFS</span>
+        <span class="us-name">GlobalFoundries</span>
+        <span class="us-tier" style="background:#10b981">硬通货·卖铲人</span>
+      </div>
+      <div class="us-row"><b>路线</b>量子芯片代工</div>
+      <div class="us-row"><b>CHIPS</b>3.75 亿美元</div>
+      <div class="us-view">卖铲人模式 = 不押注路线赢家，所有路线都需要它的 fab；PE 28x 比 IBM 略贵但成长更快</div>
+    </div>
+    
+    <div class="us-card">
+      <div class="us-head">
+        <span class="us-code">IONQ</span>
+        <span class="us-name">IonQ</span>
+        <span class="us-tier" style="background:#a855f7">故事股·明牌</span>
+      </div>
+      <div class="us-row"><b>路线</b>离子阱（保真度最高路线）</div>
+      <div class="us-row"><b>CHIPS</b>未在 9 家明单（但已是 Wall Street 明牌）</div>
+      <div class="us-view">纯 play 量子龙头，市值 200 亿美元，营收 $4000 万 = PS 500x；YTD +120%，**不可作为价值标的**，只能博主题</div>
+    </div>
+    
+    <div class="us-card">
+      <div class="us-head">
+        <span class="us-code">RGTI</span>
+        <span class="us-name">Rigetti</span>
+        <span class="us-tier" style="background:#a855f7">故事股·小盘弹性</span>
+      </div>
+      <div class="us-row"><b>路线</b>超导（85 比特 Ankaa-3）</div>
+      <div class="us-row"><b>CHIPS</b>1 亿美元</div>
+      <div class="us-view">超导路线小盘弹性最大，CHIPS 加持后 5/21 涨 +15%；但商业化进度落后 IBM 2 年；高波动短线博弈</div>
+    </div>
+    
+    <div class="us-card">
+      <div class="us-head">
+        <span class="us-code">QBTS</span>
+        <span class="us-name">D-Wave Quantum</span>
+        <span class="us-tier" style="background:#a855f7">故事股·量子退火</span>
+      </div>
+      <div class="us-row"><b>路线</b>量子退火（解决组合优化问题，非通用门）</div>
+      <div class="us-row"><b>CHIPS</b>1 亿美元</div>
+      <div class="us-view">唯一已商业化（联合利华、丰田、万事达使用），但**退火不是通用量子计算**，长期估值天花板低于 IonQ</div>
+    </div>
+    
+    <div class="us-card">
+      <div class="us-head">
+        <span class="us-code">QUBT</span>
+        <span class="us-name">Quantum Computing Inc</span>
+        <span class="us-tier" style="background:#ef4444">故事股·投机</span>
+      </div>
+      <div class="us-row"><b>路线</b>光量子（口号大于实物）</div>
+      <div class="us-row"><b>CHIPS</b>未在 9 家明单</div>
+      <div class="us-view">Ascendiant 喊 +264% 上涨至 $40 = 典型投机；营收极低 + 技术不领先；**不建议参与**</div>
+    </div>
+    
+    <div class="us-card">
+      <div class="us-head">
+        <span class="us-code">ATOM*</span>
+        <span class="us-name">Atom Computing（未上市）</span>
+        <span class="us-tier" style="background:#10b981">硬通货·中性原子</span>
+      </div>
+      <div class="us-row"><b>路线</b>中性原子（IPO 候选）</div>
+      <div class="us-row"><b>CHIPS</b>1 亿美元</div>
+      <div class="us-view">已实现 1180 比特中性原子系统，路线最 sexy；等待 IPO，**关注'下一只 IonQ'机会**</div>
+    </div>
+    
+    <div class="us-card">
+      <div class="us-head">
+        <span class="us-code">PSIQ*</span>
+        <span class="us-name">PsiQuantum（未上市）</span>
+        <span class="us-tier" style="background:#10b981">硬通货·光子</span>
+      </div>
+      <div class="us-row"><b>路线</b>光子（百万比特目标）</div>
+      <div class="us-row"><b>CHIPS</b>1 亿美元</div>
+      <div class="us-view">目标百万物理比特，最激进路线；获 BlackRock + 富士通投资，IPO 候选关注</div>
+    </div>
+    
+    <div class="us-card">
+      <div class="us-head">
+        <span class="us-code">QTUM*</span>
+        <span class="us-name">Quantinuum（未上市）</span>
+        <span class="us-tier" style="background:#10b981">硬通货·离子阱二供</span>
+      </div>
+      <div class="us-row"><b>路线</b>离子阱（霍尼韦尔 + 剑桥联合）</div>
+      <div class="us-row"><b>CHIPS</b>1 亿美元</div>
+      <div class="us-view">H2-1 商用机已运行，技术比 IonQ 更强；霍尼韦尔持有 54%，IPO 候选</div>
+    </div>
+    </div>
+</section>
+
+<section>
+  <h2>💼 四、三档配置建议（核心）</h2>
+
+  <div class="config-box">
+    <h3>🎯 总仓位 = 量子主题板块 ≤ 10%（其余仍配主流资产）</h3>
+    <p style="font-size:.92rem;color:#cbd5e1">量子是<b>10 年长跑赛道</b>，但当前估值已透支 2-3 年预期。三档配置思路：</p>
+
+    <div class="config-row">
+      <div class="config-c">
+        <h4>🟢 价值派（推荐）</h4>
+        <ul>
+          <li>中科曙光 3-4%</li>
+          <li>福晶科技 2-3%</li>
+          <li>IBM (美股) 2-3%</li>
+          <li>现金 + 等回调资金 88-90%</li>
+        </ul>
+        <p style="font-size:.82rem;color:#9ca3af;margin-top:8px">✓ 估值有锚 + 主业现金流强 + 量子是免费期权</p>
+      </div>
+      <div class="config-c">
+        <h4>🟡 平衡派</h4>
+        <ul>
+          <li>中科曙光 3%</li>
+          <li>福晶 2% + 光迅 1%（等 ¥160 加）</li>
+          <li>国盾量子 1%（小仓博主题）</li>
+          <li>IBM 2% + IonQ 1%</li>
+          <li>现金 90%</li>
+        </ul>
+        <p style="font-size:.82rem;color:#9ca3af;margin-top:8px">✓ 价值 + 主题双重曝光，可承受 -25% 浮亏</p>
+      </div>
+      <div class="config-c">
+        <h4>🔴 趋势派</h4>
+        <ul>
+          <li>国盾量子 2%（首选纯主题）</li>
+          <li>光迅 / 华工 各 1%（仅 RSI &lt; 50 才进）</li>
+          <li>IonQ / Rigetti 各 1%（CHIPS 续航）</li>
+          <li>现金 94%</li>
+        </ul>
+        <p style="font-size:.82rem;color:#9ca3af;margin-top:8px">⚠ 高波动，必须设严格止损 -15%</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>⚙️ 关键操作纪律</h3>
+  <table>
+    <tr><th>原则</th><th>说明</th></tr>
+    <tr><td><b>不追高</b></td><td>YTD 涨幅 +90% 以上的票，等至少 -20% 回调</td></tr>
+    <tr><td><b>分批建仓</b></td><td>所有仓位都用 30/30/40 三档进，不一次性梭哈</td></tr>
+    <tr><td><b>止损纪律</b></td><td>故事股 -15%、硬通货 -20% 必须止损，不靠"信仰"扛单</td></tr>
+    <tr><td><b>催化跟踪</b></td><td>① 国仪量子 IPO 进度  ② 祖冲之 4 号发布  ③ Google/IBM 季度路线图  ④ 美国对华量子出口管制升级</td></tr>
+    <tr><td><b>退出信号</b></td><td>① 各家 PE 突破历史 95 分位（普遍）  ② 主力 60 日累计净流出超流通市值 10%（已经临近）  ③ 主题板块出现 -8% 单日跌幅</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>⚠️ 五、必须知道的 5 个风险</h2>
+  <p>1. <b style="color:#fca5a5">估值泡沫已成形</b>：A 股量子主题 PE 中位数 80-100x，2018 年区块链/2021 年元宇宙的剧本可能重演。一旦主题降温，跌幅 30-50% 不夸张。</p>
+  <p>2. <b style="color:#fca5a5">技术路线之争未定</b>：超导/离子阱/光子/中性原子中至少 2 条会"输"，押错路线全归零。这就是"卖铲人"（GFS / 福晶 / 光迅）比"挖矿人"安全的根本原因。</p>
+  <p>3. <b style="color:#fca5a5">商业化时间可能延后</b>：FTQC 时间表 2030 vs 2035 差 5 年，估值差 10 倍。机构共识可能过于乐观。</p>
+  <p>4. <b style="color:#fca5a5">美国 CHIPS 是双刃剑</b>：短期催化 = 长期排他。美国可能 2026 H2 升级对华量子出口管制（参考 AI 芯片管制），中国标的会先涨后跌。</p>
+  <p>5. <b style="color:#fca5a5">A 股主力 5/26-28 持续派发</b>：6 家合计 20 日净流出 220+ 亿，散户接力中。**今天进场就是接最后一棒的高概率位置**。</p>
+</section>
+
+<section>
+  <h2>🎬 六、最终建议</h2>
+  <p style="font-size:1.05rem">🔮 <b>量子计算值得提前布局，但布局姿势 ≠ 现价梭哈。</b></p>
+  <p>✅ <b>正确姿势</b>：用 3-5% 总仓位，挑硬通货（中科曙光 / 福晶 / IBM），等回调（光迅 ¥160、华工 ¥140 以下）；故事股仅 1-2% 试仓博主题。</p>
+  <p>❌ <b>错误姿势</b>：现价追高已涨 +200% 的票、All-in 国盾量子、相信"5 年 10 倍"的故事而忽略 PE 2598x 的现实。</p>
+  <p style="margin-top:14px;font-size:.95rem;color:#a78bfa"><b>👁 接下来 12 个月跟踪三个 trigger</b>：</p>
+  <ul style="padding-left:24px;color:#cbd5e1;font-size:.92rem">
+    <li>① 2026 Q3 - <b>国仪量子科创板 IPO 过会</b>（科大国创直接受益）</li>
+    <li>② 2026 H2 - <b>美国对华量子出口管制升级</b>（A 股会先涨后跌）</li>
+    <li>③ 2027 Q1 - <b>祖冲之 4 号 + 本源量子悟空 2 号发布</b>（国盾 / 中科曙光实质性催化）</li>
+  </ul>
+</section>
+
+<footer>
+  <div>量子计算产业研判 · 中美 15 标的硬通货 vs 故事股分档 · 2026-05-28</div>
+  <div class="disc">
+    <b>⚠️ 免责声明</b>：本报告基于雪球、中国信通院《量子计算发展态势研究报告》、qasm.tech 技术架构对比、西证财经接口实盘数据综合分析，仅供研究讨论与教育用途。所述标的、价格、目标均不构成投资建议、不保证准确性、不替代专业投顾。量子计算是<b>典型高波动主题板块</b>，单日 ±10% 振幅是常态，请严格按照风险承受能力配置，避免重仓追高。投资有风险，决策请自行承担。
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
